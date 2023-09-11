@@ -70,7 +70,9 @@ export interface Message {
 	saved?: boolean
 	distributed?: boolean
 	seen?: boolean
+	edited?: boolean
 	deleted?: boolean
+  encrypted?: boolean
 	failure?: boolean
 	disableActions?: boolean
 	disableReactions?: boolean

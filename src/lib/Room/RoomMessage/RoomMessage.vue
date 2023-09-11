@@ -149,6 +149,24 @@
 									<svg-icon name="pencil" />
 								</slot>
 							</div>
+
+              <div
+                v-if="message.encrypted === true"
+                class="vac-icon-safe"
+              >
+                <slot :name="'safe-icon_' + message._id">
+                  <svg-icon name="safe" />
+                </slot>
+              </div>
+              <div
+                v-if="message.encrypted === false"
+                class="vac-icon-unsafe"
+              >
+                <slot :name="'safe-icon_' + message._id">
+                  <svg-icon name="unsafe" />
+                </slot>
+              </div>
+
 							<span>{{ message.timestamp }}</span>
 							<span v-if="isCheckmarkVisible">
 								<slot :name="'checkmark-icon_' + message._id">
