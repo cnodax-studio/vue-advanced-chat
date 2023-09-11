@@ -212,11 +212,11 @@
 	}
 
 	.vac-icon-safe {
-		fill: green;
+		fill: var(--chat-message-color-timestamp);
 	}
 
 	.vac-icon-unsafe {
-		fill: red;
+		fill: var(--chat-message-color-timestamp-unsafe);
 	}
 
 	.vac-icon-check {
