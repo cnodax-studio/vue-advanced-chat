@@ -1,4 +1,9 @@
 .vac-message-wrapper {
+	.vac-message-sticker {
+		background-color: transparent !important;
+		box-shadow: none !important;
+	}
+
 	.vac-card-info {
 		border-radius: 4px;
 		text-align: center;

@@ -79,6 +79,7 @@ export interface Message {
 	files?: MessageFile[]
 	reactions?: MessageReactions
 	replyMessage?: Message
+  sticker?: boolean
 }
 
 export interface CustomAction {

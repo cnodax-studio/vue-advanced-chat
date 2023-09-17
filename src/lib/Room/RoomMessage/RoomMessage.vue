@@ -61,7 +61,8 @@
 							'vac-message-current': message.senderId === currentUserId,
 							'vac-message-deleted': message.deleted,
 							'vac-item-clickable': messageSelectionEnabled,
-							'vac-message-selected': isMessageSelected
+							'vac-message-selected': isMessageSelected,
+							'vac-message-sticker': isSticker,
 						}"
 						@mouseover="onHoverMessage"
 						@mouseleave="onLeaveMessage"
@@ -331,6 +332,9 @@ export default {
 				this.message.senderId !== this.messages[this.index - 1].senderId
 			)
 		},
+    isSticker() {
+      return this.message.sticker === true
+    },
 		isMessageHover() {
 			return (
 				this.editedMessageId === this.message._id ||
