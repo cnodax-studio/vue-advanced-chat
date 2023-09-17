@@ -58,7 +58,7 @@
 						class="vac-message-card"
 						:class="{
 							'vac-message-highlight': isMessageHover,
-							'vac-message-current': message.senderId === currentUserId,
+							'vac-message-current': message.senderId === currentUserId && !isSticker,
 							'vac-message-deleted': message.deleted,
 							'vac-item-clickable': messageSelectionEnabled,
 							'vac-message-selected': isMessageSelected,

@@ -125,9 +125,7 @@
 	}
 
 	.vac-message-card {
-		:not(.vac-message-sticker) {
-			background-color: var(--chat-message-bg-color);
-		}
+		background-color: var(--chat-message-bg-color);
 		color: var(--chat-message-color);
 		border-radius: 8px;
 		font-size: 14px;
@@ -147,7 +145,7 @@
 			0 1px 2px -1px rgba(0, 0, 0, 0.11), 0 1px 5px -1px rgba(0, 0, 0, 0.11);
 	}
 
-	.vac-message-current :not(.vac-message-sticker) {
+	.vac-message-current {
 		background-color: var(--chat-message-bg-color-me) !important;
 	}
 
