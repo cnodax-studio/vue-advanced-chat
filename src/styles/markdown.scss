@@ -37,4 +37,8 @@
 			padding: 2px 3px;
 		}
 	}
+
+	img, p > img {
+		width: -webkit-fill-available;
+	}
 }
