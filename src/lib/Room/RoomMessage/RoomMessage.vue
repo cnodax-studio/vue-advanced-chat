@@ -92,7 +92,9 @@
             <loader
               v-if="message.loading === true"
               :show="message.loading === true"
+              :infinite="true"
               type="infinite-messages"
+              style='height: 50px; width: 50px; position: relative; left: 0; right: 0; transform: none;'
             >
               <template v-for="(idx, name) in $slots" #[name]="data">
                 <slot :name="name" v-bind="data" />
@@ -101,7 +103,7 @@
 
 						<format-message
 							v-if="
-								!!message.deleted || !message.files || !message.files.length || (message.loading !== true)
+								!!message.deleted || !message.files || !message.files.length
 							"
 							:message-id="message._id"
 							:content="message.content"

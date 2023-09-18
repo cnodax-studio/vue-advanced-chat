@@ -33734,7 +33734,9 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
             $props.message.loading === true ? (openBlock(), createBlock(_component_loader, {
               key: 2,
               show: $props.message.loading === true,
-              type: "infinite-messages"
+              infinite: true,
+              type: "infinite-messages",
+              style: { "height": "50px", "width": "50px", "position": "relative", "left": "0", "right": "0", "transform": "none" }
             }, createSlots({ _: 2 }, [
               renderList(_ctx.$slots, (idx, name) => {
                 return {
@@ -33745,7 +33747,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
                 };
               })
             ]), 1032, ["show"])) : createCommentVNode("", true),
-            !!$props.message.deleted || !$props.message.files || !$props.message.files.length || $props.message.loading !== true ? (openBlock(), createBlock(_component_format_message, {
+            !!$props.message.deleted || !$props.message.files || !$props.message.files.length ? (openBlock(), createBlock(_component_format_message, {
               key: 3,
               "message-id": $props.message._id,
               content: $props.message.content,
