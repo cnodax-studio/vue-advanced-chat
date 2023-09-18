@@ -35062,7 +35062,7 @@ const _sfc_main = {
     roomMessage: { type: String, default: "" },
     scrollDistance: { type: Number, default: 60 },
     acceptedFiles: { type: String, default: "*" },
-    captureFiles: { type: String, default: "" },
+    captureFiles: { type: String, default: void 0 },
     templatesText: { type: [Array, String], default: () => [] },
     mediaPreviewEnabled: { type: [Boolean, String], default: true },
     usernameOptions: {
