@@ -80,6 +80,7 @@ export interface Message {
 	reactions?: MessageReactions
 	replyMessage?: Message
   sticker?: boolean
+  loading?: boolean
 }
 
 export interface CustomAction {

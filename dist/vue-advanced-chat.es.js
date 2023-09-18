@@ -33430,7 +33430,8 @@ const _sfc_main$3 = {
     MessageReply,
     MessageFiles,
     MessageActions,
-    MessageReactions
+    MessageReactions,
+    Loader
   },
   props: {
     currentUserId: { type: [String, Number], required: true },
@@ -33640,6 +33641,7 @@ const _hoisted_14 = {
 function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
   const _component_format_message = resolveComponent("format-message");
   const _component_message_reply = resolveComponent("message-reply");
+  const _component_loader = resolveComponent("loader");
   const _component_message_files = resolveComponent("message-files");
   const _component_audio_player = resolveComponent("audio-player");
   const _component_svg_icon = resolveComponent("svg-icon");
@@ -33729,8 +33731,22 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
                 };
               })
             ]), 1032, ["message", "room-users", "text-formatting", "link-options"])) : createCommentVNode("", true),
-            !!$props.message.deleted || !$props.message.files || !$props.message.files.length ? (openBlock(), createBlock(_component_format_message, {
+            $props.message.loading === true ? (openBlock(), createBlock(_component_loader, {
               key: 2,
+              show: $props.message.loading === true,
+              type: "infinite-messages"
+            }, createSlots({ _: 2 }, [
+              renderList(_ctx.$slots, (idx, name) => {
+                return {
+                  name,
+                  fn: withCtx((data) => [
+                    renderSlot(_ctx.$slots, name, normalizeProps(guardReactiveProps(data)))
+                  ])
+                };
+              })
+            ]), 1032, ["show"])) : createCommentVNode("", true),
+            !!$props.message.deleted || !$props.message.files || !$props.message.files.length || $props.message.loading !== true ? (openBlock(), createBlock(_component_format_message, {
+              key: 3,
               "message-id": $props.message._id,
               content: $props.message.content,
               deleted: !!$props.message.deleted,
@@ -33749,7 +33765,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
                 };
               })
             ]), 1032, ["message-id", "content", "deleted", "users", "text-formatting", "text-messages", "link-options", "onOpenUserTag"])) : !$options.isAudio || $props.message.files.length > 1 ? (openBlock(), createBlock(_component_message_files, {
-              key: 3,
+              key: 4,
               "current-user-id": $props.currentUserId,
               message: $props.message,
               "room-users": $props.roomUsers,
@@ -33767,7 +33783,7 @@ function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
                   ])
                 };
               })
-            ]), 1032, ["current-user-id", "message", "room-users", "text-formatting", "link-options", "message-selection-enabled", "onOpenFile", "onOpenUserTag"])) : (openBlock(), createElementBlock(Fragment, { key: 4 }, [
+            ]), 1032, ["current-user-id", "message", "room-users", "text-formatting", "link-options", "message-selection-enabled", "onOpenFile", "onOpenUserTag"])) : (openBlock(), createElementBlock(Fragment, { key: 5 }, [
               createVNode(_component_audio_player, {
                 "message-id": $props.message._id,
                 src: $props.message.files[0].url,

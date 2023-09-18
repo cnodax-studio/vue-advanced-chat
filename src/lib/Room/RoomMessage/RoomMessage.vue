@@ -89,9 +89,19 @@
 							</template>
 						</message-reply>
 
+            <loader
+              v-if="message.loading === true"
+              :show="message.loading === true"
+              type="infinite-messages"
+            >
+              <template v-for="(idx, name) in $slots" #[name]="data">
+                <slot :name="name" v-bind="data" />
+              </template>
+            </loader>
+
 						<format-message
 							v-if="
-								!!message.deleted || !message.files || !message.files.length
+								!!message.deleted || !message.files || !message.files.length || (message.loading !== true)
 							"
 							:message-id="message._id"
 							:content="message.content"
@@ -251,6 +261,8 @@ import MessageActions from './MessageActions/MessageActions'
 import MessageReactions from './MessageReactions/MessageReactions'
 import AudioPlayer from './AudioPlayer/AudioPlayer'
 
+import Loader from '../../../components/Loader/Loader'
+
 import { messagesValidation } from '../../../utils/data-validation'
 import { isAudioFile } from '../../../utils/media-file'
 
@@ -263,7 +275,8 @@ export default {
 		MessageReply,
 		MessageFiles,
 		MessageActions,
-		MessageReactions
+		MessageReactions,
+    Loader
 	},
 
 	props: {
