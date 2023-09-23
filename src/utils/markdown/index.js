@@ -28,7 +28,7 @@ export default (text, { textFormatting }) => {
 					gfmHtml(),
 					underlineHtml,
 					usertagHtml(textFormatting.users),
-          directiveHtml({ rainbow })
+          directiveHtml({ rainbow, blink, red, gold, silver, bronze })
 				]
 			}
 		)
@@ -71,6 +71,71 @@ function rainbow(d) {
   if (d.type !== 'textDirective') return false
 
   this.tag('<span class="vac-effects-rainbow">')
+  this.raw(this.encode(d.label))
+  this.tag('</span>')
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function blink(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span class="vac-effects-blink">')
+  this.raw(this.encode(d.label))
+  this.tag('</span>')
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function red(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span style="color: red">')
+  this.raw(this.encode(d.label))
+  this.tag('</span>')
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function gold(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span class="vac-effects-gold">')
+  this.raw(this.encode(d.label))
+  this.tag('</span>')
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function silver(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span class="vac-effects-silver">')
+  this.raw(this.encode(d.label))
+  this.tag('</span>')
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function bronze(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span class="vac-effects-bronze">')
   this.raw(this.encode(d.label))
   this.tag('</span>')
 }
