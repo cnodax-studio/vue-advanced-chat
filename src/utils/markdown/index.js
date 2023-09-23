@@ -3,7 +3,6 @@ import { gfm, gfmHtml } from 'micromark-extension-gfm'
 import { underline, underlineHtml } from './underline'
 import { usertag, usertagHtml } from './usertag'
 import { directive, directiveHtml } from 'micromark-extension-directive'
-import { rainbow } from '@/utils/markdown/rainbow'
 
 export default (text, { textFormatting }) => {
 	if (textFormatting) {
@@ -61,4 +60,17 @@ export default (text, { textFormatting }) => {
 			value: text
 		}
 	]
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function rainbow(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span class="vac-effects-rainbow">')
+  this.raw(this.encode(d.label))
+  this.tag('</span>')
 }
