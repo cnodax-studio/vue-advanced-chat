@@ -2,6 +2,8 @@ import { micromark } from 'micromark'
 import { gfm, gfmHtml } from 'micromark-extension-gfm'
 import { underline, underlineHtml } from './underline'
 import { usertag, usertagHtml } from './usertag'
+import { directive, directiveHtml } from 'micromark-extension-directive'
+import { rainbow } from '@/utils/markdown/rainbow'
 
 export default (text, { textFormatting }) => {
 	if (textFormatting) {
@@ -20,12 +22,14 @@ export default (text, { textFormatting }) => {
 						disable: { null: gfmDisabled }
 					},
 					underline,
-					usertag
+					usertag,
+          directive()
 				],
 				htmlExtensions: [
 					gfmHtml(),
 					underlineHtml,
-					usertagHtml(textFormatting.users)
+					usertagHtml(textFormatting.users),
+          directiveHtml({ rainbow })
 				]
 			}
 		)
