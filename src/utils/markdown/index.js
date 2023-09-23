@@ -155,7 +155,7 @@ function shake(d) {
   for (let i = 0; i < encodedText.length; i++) {
     const letter = encodedText.charAt(i)
     if (letter === ' ') {
-      this.tag('<pre style="margin: 0"> </pre>')
+      this.raw('<pre style="margin: 0"> </pre>')
     } else {
       const delay = (-Math.random()).toString()
       this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">')
