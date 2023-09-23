@@ -28,7 +28,7 @@ export default (text, { textFormatting }) => {
 					gfmHtml(),
 					underlineHtml,
 					usertagHtml(textFormatting.users),
-          directiveHtml({ rainbow, blink, red, gold, silver, bronze })
+          directiveHtml({ rainbow, blink, red, gold, silver, bronze, shake })
 				]
 			}
 		)
@@ -137,5 +137,32 @@ function bronze(d) {
 
   this.tag('<span class="vac-effects-bronze">')
   this.raw(this.encode(d.label))
+  this.tag('</span>')
+}
+
+/**
+ * @this {import('micromark-util-types').CompileContext}
+ * @type {import('micromark-extension-directive').Handle}
+ * @returns {undefined}
+ */
+function shake(d) {
+  if (d.type !== 'textDirective') return false
+
+  this.tag('<span class="vac-effects-shake">')
+
+  const encodedText = this.encode(d.label)
+
+  for (let i = 0; i < encodedText.length; i++) {
+    const letter = encodedText.charAt(i)
+    if (letter === ' ') {
+      this.tag('<pre style="margin: 0"> </pre>')
+    } else {
+      const delay = (-Math.random()).toString()
+      this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">')
+      this.raw(letter)
+      this.tag('</span>')
+    }
+  }
+
   this.tag('</span>')
 }
