@@ -68,7 +68,7 @@ export default (text, { textFormatting }) => {
  * @returns {undefined}
  */
 function rainbow(d) {
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   const target = d.content ?? d.label
 
@@ -83,7 +83,7 @@ function rainbow(d) {
  * @returns {undefined}
  */
 function blink(d) {
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   const target = d.content ?? d.label
 
@@ -98,9 +98,7 @@ function blink(d) {
  * @returns {undefined}
  */
 function red(d) {
-  console.log(d)
-
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   const target = d.content ?? d.label
 
@@ -115,7 +113,7 @@ function red(d) {
  * @returns {undefined}
  */
 function gold(d) {
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   const target = d.content ?? d.label
 
@@ -130,7 +128,7 @@ function gold(d) {
  * @returns {undefined}
  */
 function silver(d) {
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   const target = d.content ?? d.label
 
@@ -145,7 +143,7 @@ function silver(d) {
  * @returns {undefined}
  */
 function bronze(d) {
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   const target = d.content ?? d.label
 
@@ -160,7 +158,7 @@ function bronze(d) {
  * @returns {undefined}
  */
 function shake(d) {
-  if (d.type !== 'textDirective') return false
+  if (d.type !== 'textDirective' && d.type !== 'containerDirective') return false
 
   this.tag('<span class="vac-effects-shake">')
 

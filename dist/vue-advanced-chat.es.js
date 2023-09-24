@@ -13188,7 +13188,7 @@ var markdown = (text2, { textFormatting }) => {
 };
 function rainbow(d) {
   var _a;
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-rainbow">');
@@ -13197,7 +13197,7 @@ function rainbow(d) {
 }
 function blink(d) {
   var _a;
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-blink">');
@@ -13206,8 +13206,7 @@ function blink(d) {
 }
 function red(d) {
   var _a;
-  console.log(d);
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span style="color: red">');
@@ -13216,7 +13215,7 @@ function red(d) {
 }
 function gold(d) {
   var _a;
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-gold">');
@@ -13225,7 +13224,7 @@ function gold(d) {
 }
 function silver(d) {
   var _a;
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-silver">');
@@ -13234,7 +13233,7 @@ function silver(d) {
 }
 function bronze(d) {
   var _a;
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-bronze">');
@@ -13243,7 +13242,7 @@ function bronze(d) {
 }
 function shake(d) {
   var _a;
-  if (d.type !== "textDirective")
+  if (d.type !== "textDirective" && d.type !== "containerDirective")
     return false;
   this.tag('<span class="vac-effects-shake">');
   const target = (_a = d.content) != null ? _a : d.label;
