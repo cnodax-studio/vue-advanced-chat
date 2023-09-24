@@ -13235,10 +13235,16 @@ function shake(d) {
   const encodedText = this.encode(d.label);
   for (let i = 0; i < encodedText.length; i++) {
     const letter = encodedText.charAt(i);
-    const delay = (-Math.random()).toString();
-    this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">');
-    this.raw(letter === " " ? "<pre>  </pre>" : letter);
-    this.tag("</span>");
+    if (letter === " ") {
+      this.tag("<pre>");
+      this.raw("  ");
+      this.tag("</pre>");
+    } else {
+      const delay = (-Math.random()).toString();
+      this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">');
+      this.raw(letter);
+      this.tag("</span>");
+    }
   }
   this.tag("</span>");
 }
