@@ -98,6 +98,8 @@ function blink(d) {
  * @returns {undefined}
  */
 function red(d) {
+  console.log(d)
+
   if (d.type !== 'textDirective') return false
 
   const target = d.content ?? d.label

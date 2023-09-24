@@ -13206,6 +13206,7 @@ function blink(d) {
 }
 function red(d) {
   var _a;
+  console.log(d);
   if (d.type !== "textDirective")
     return false;
   const target = (_a = d.content) != null ? _a : d.label;
