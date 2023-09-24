@@ -5702,27 +5702,27 @@ function normalizeIdentifier(value) {
   return value.replace(/[\t\n\r ]+/g, " ").replace(/^ | $/g, "").toLowerCase().toUpperCase();
 }
 const unicodePunctuationRegex = /[!-\/:-@\[-`\{-~\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061D-\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C77\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1B7D\u1B7E\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4F\u2E52-\u2E5D\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;
-const asciiAlpha = regexCheck(/[A-Za-z]/);
-const asciiAlphanumeric = regexCheck(/[\dA-Za-z]/);
-const asciiAtext = regexCheck(/[#-'*+\--9=?A-Z^-~]/);
+const asciiAlpha$1 = regexCheck$1(/[A-Za-z]/);
+const asciiAlphanumeric$1 = regexCheck$1(/[\dA-Za-z]/);
+const asciiAtext = regexCheck$1(/[#-'*+\--9=?A-Z^-~]/);
 function asciiControl(code2) {
   return code2 !== null && (code2 < 32 || code2 === 127);
 }
-const asciiDigit = regexCheck(/\d/);
-const asciiHexDigit = regexCheck(/[\dA-Fa-f]/);
-const asciiPunctuation = regexCheck(/[!-/:-@[-`{-~]/);
-function markdownLineEnding(code2) {
+const asciiDigit = regexCheck$1(/\d/);
+const asciiHexDigit = regexCheck$1(/[\dA-Fa-f]/);
+const asciiPunctuation = regexCheck$1(/[!-/:-@[-`{-~]/);
+function markdownLineEnding$1(code2) {
   return code2 !== null && code2 < -2;
 }
-function markdownLineEndingOrSpace(code2) {
+function markdownLineEndingOrSpace$1(code2) {
   return code2 !== null && (code2 < 0 || code2 === 32);
 }
-function markdownSpace(code2) {
+function markdownSpace$1(code2) {
   return code2 === -2 || code2 === -1 || code2 === 32;
 }
-const unicodePunctuation = regexCheck(unicodePunctuationRegex);
-const unicodeWhitespace = regexCheck(/\s/);
-function regexCheck(regex) {
+const unicodePunctuation = regexCheck$1(unicodePunctuationRegex);
+const unicodeWhitespace = regexCheck$1(/\s/);
+function regexCheck$1(regex) {
   return check;
   function check(code2) {
     return code2 !== null && regex.test(String.fromCharCode(code2));
@@ -5750,7 +5750,7 @@ function normalizeUri(value) {
   while (++index < value.length) {
     const code2 = value.charCodeAt(index);
     let replace2 = "";
-    if (code2 === 37 && asciiAlphanumeric(value.charCodeAt(index + 1)) && asciiAlphanumeric(value.charCodeAt(index + 2))) {
+    if (code2 === 37 && asciiAlphanumeric$1(value.charCodeAt(index + 1)) && asciiAlphanumeric$1(value.charCodeAt(index + 2))) {
       skip = 2;
     } else if (code2 < 128) {
       if (!/[!#$&-;=?-Z_a-z~]/.test(String.fromCharCode(code2))) {
@@ -6363,19 +6363,19 @@ function compile(options) {
     tag("</a>");
   }
 }
-function factorySpace(effects, ok, type, max) {
+function factorySpace$1(effects, ok, type, max) {
   const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
   let size2 = 0;
   return start;
   function start(code2) {
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.enter(type);
       return prefix(code2);
     }
     return ok(code2);
   }
   function prefix(code2) {
-    if (markdownSpace(code2) && size2++ < limit) {
+    if (markdownSpace$1(code2) && size2++ < limit) {
       effects.consume(code2);
       return prefix;
     }
@@ -6402,7 +6402,7 @@ function initializeContent(effects) {
     effects.enter("lineEnding");
     effects.consume(code2);
     effects.exit("lineEnding");
-    return factorySpace(effects, contentStart, "linePrefix");
+    return factorySpace$1(effects, contentStart, "linePrefix");
   }
   function paragraphInitial(code2) {
     effects.enter("paragraph");
@@ -6426,7 +6426,7 @@ function initializeContent(effects) {
       effects.consume(code2);
       return;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.consume(code2);
       effects.exit("chunkText");
       return lineStart;
@@ -6560,7 +6560,7 @@ function initializeDocument(effects) {
       effects.consume(code2);
       return;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.consume(code2);
       writeToChild(effects.exit("chunkFlow"));
       continued = 0;
@@ -6632,7 +6632,7 @@ function initializeDocument(effects) {
   }
 }
 function tokenizeContainer(effects, ok, nok) {
-  return factorySpace(
+  return factorySpace$1(
     effects,
     effects.attempt(this.parser.constructs.document, ok, nok),
     "linePrefix",
@@ -6640,7 +6640,7 @@ function tokenizeContainer(effects, ok, nok) {
   );
 }
 function classifyCharacter(code2) {
-  if (code2 === null || markdownLineEndingOrSpace(code2) || unicodeWhitespace(code2)) {
+  if (code2 === null || markdownLineEndingOrSpace$1(code2) || unicodeWhitespace(code2)) {
     return 1;
   }
   if (unicodePunctuation(code2)) {
@@ -6806,14 +6806,14 @@ function tokenizeAutolink(effects, ok, nok) {
     return open;
   }
   function open(code2) {
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       return schemeOrEmailAtext;
     }
     return emailAtext(code2);
   }
   function schemeOrEmailAtext(code2) {
-    if (code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric(code2)) {
+    if (code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric$1(code2)) {
       size2 = 1;
       return schemeInsideOrEmailAtext(code2);
     }
@@ -6825,7 +6825,7 @@ function tokenizeAutolink(effects, ok, nok) {
       size2 = 0;
       return urlInside;
     }
-    if ((code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric(code2)) && size2++ < 32) {
+    if ((code2 === 43 || code2 === 45 || code2 === 46 || asciiAlphanumeric$1(code2)) && size2++ < 32) {
       effects.consume(code2);
       return schemeInsideOrEmailAtext;
     }
@@ -6859,7 +6859,7 @@ function tokenizeAutolink(effects, ok, nok) {
     return nok(code2);
   }
   function emailAtSignOrDot(code2) {
-    return asciiAlphanumeric(code2) ? emailLabel(code2) : nok(code2);
+    return asciiAlphanumeric$1(code2) ? emailLabel(code2) : nok(code2);
   }
   function emailLabel(code2) {
     if (code2 === 46) {
@@ -6878,7 +6878,7 @@ function tokenizeAutolink(effects, ok, nok) {
     return emailValue(code2);
   }
   function emailValue(code2) {
-    if ((code2 === 45 || asciiAlphanumeric(code2)) && size2++ < 63) {
+    if ((code2 === 45 || asciiAlphanumeric$1(code2)) && size2++ < 63) {
       const next = code2 === 45 ? emailValue : emailLabel;
       effects.consume(code2);
       return next;
@@ -6893,10 +6893,10 @@ const blankLine = {
 function tokenizeBlankLine(effects, ok, nok) {
   return start;
   function start(code2) {
-    return markdownSpace(code2) ? factorySpace(effects, after, "linePrefix")(code2) : after(code2);
+    return markdownSpace$1(code2) ? factorySpace$1(effects, after, "linePrefix")(code2) : after(code2);
   }
   function after(code2) {
-    return code2 === null || markdownLineEnding(code2) ? ok(code2) : nok(code2);
+    return code2 === null || markdownLineEnding$1(code2) ? ok(code2) : nok(code2);
   }
 }
 const blockQuote = {
@@ -6928,7 +6928,7 @@ function tokenizeBlockQuoteStart(effects, ok, nok) {
     return nok(code2);
   }
   function after(code2) {
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.enter("blockQuotePrefixWhitespace");
       effects.consume(code2);
       effects.exit("blockQuotePrefixWhitespace");
@@ -6943,8 +6943,8 @@ function tokenizeBlockQuoteContinuation(effects, ok, nok) {
   const self2 = this;
   return contStart;
   function contStart(code2) {
-    if (markdownSpace(code2)) {
-      return factorySpace(
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(
         effects,
         contBefore,
         "linePrefix",
@@ -7010,7 +7010,7 @@ function tokenizeCharacterReference(effects, ok, nok) {
     }
     effects.enter("characterReferenceValue");
     max = 31;
-    test = asciiAlphanumeric;
+    test = asciiAlphanumeric$1;
     return value(code2);
   }
   function numeric(code2) {
@@ -7031,7 +7031,7 @@ function tokenizeCharacterReference(effects, ok, nok) {
   function value(code2) {
     if (code2 === 59 && size2) {
       const token = effects.exit("characterReferenceValue");
-      if (test === asciiAlphanumeric && !decodeNamedCharacterReference(self2.sliceSerialize(token))) {
+      if (test === asciiAlphanumeric$1 && !decodeNamedCharacterReference(self2.sliceSerialize(token))) {
         return nok(code2);
       }
       effects.enter("characterReferenceMarker");
@@ -7088,10 +7088,10 @@ function tokenizeCodeFenced(effects, ok, nok) {
       return nok(code2);
     }
     effects.exit("codeFencedFenceSequence");
-    return markdownSpace(code2) ? factorySpace(effects, infoBefore, "whitespace")(code2) : infoBefore(code2);
+    return markdownSpace$1(code2) ? factorySpace$1(effects, infoBefore, "whitespace")(code2) : infoBefore(code2);
   }
   function infoBefore(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("codeFencedFence");
       return self2.interrupt ? ok(code2) : effects.check(nonLazyContinuation, atNonLazyBreak, after)(code2);
     }
@@ -7102,15 +7102,15 @@ function tokenizeCodeFenced(effects, ok, nok) {
     return info(code2);
   }
   function info(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("chunkString");
       effects.exit("codeFencedFenceInfo");
       return infoBefore(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.exit("chunkString");
       effects.exit("codeFencedFenceInfo");
-      return factorySpace(effects, metaBefore, "whitespace")(code2);
+      return factorySpace$1(effects, metaBefore, "whitespace")(code2);
     }
     if (code2 === 96 && code2 === marker) {
       return nok(code2);
@@ -7119,7 +7119,7 @@ function tokenizeCodeFenced(effects, ok, nok) {
     return info;
   }
   function metaBefore(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return infoBefore(code2);
     }
     effects.enter("codeFencedFenceMeta");
@@ -7129,7 +7129,7 @@ function tokenizeCodeFenced(effects, ok, nok) {
     return meta(code2);
   }
   function meta(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("chunkString");
       effects.exit("codeFencedFenceMeta");
       return infoBefore(code2);
@@ -7150,7 +7150,7 @@ function tokenizeCodeFenced(effects, ok, nok) {
     return contentStart;
   }
   function contentStart(code2) {
-    return initialPrefix > 0 && markdownSpace(code2) ? factorySpace(
+    return initialPrefix > 0 && markdownSpace$1(code2) ? factorySpace$1(
       effects,
       beforeContentChunk,
       "linePrefix",
@@ -7158,14 +7158,14 @@ function tokenizeCodeFenced(effects, ok, nok) {
     )(code2) : beforeContentChunk(code2);
   }
   function beforeContentChunk(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return effects.check(nonLazyContinuation, atNonLazyBreak, after)(code2);
     }
     effects.enter("codeFlowValue");
     return contentChunk(code2);
   }
   function contentChunk(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("codeFlowValue");
       return beforeContentChunk(code2);
     }
@@ -7187,7 +7187,7 @@ function tokenizeCodeFenced(effects, ok, nok) {
     }
     function start2(code2) {
       effects2.enter("codeFencedFence");
-      return markdownSpace(code2) ? factorySpace(
+      return markdownSpace$1(code2) ? factorySpace$1(
         effects2,
         beforeSequenceClose,
         "linePrefix",
@@ -7209,12 +7209,12 @@ function tokenizeCodeFenced(effects, ok, nok) {
       }
       if (size2 >= sizeOpen) {
         effects2.exit("codeFencedFenceSequence");
-        return markdownSpace(code2) ? factorySpace(effects2, sequenceCloseAfter, "whitespace")(code2) : sequenceCloseAfter(code2);
+        return markdownSpace$1(code2) ? factorySpace$1(effects2, sequenceCloseAfter, "whitespace")(code2) : sequenceCloseAfter(code2);
       }
       return nok2(code2);
     }
     function sequenceCloseAfter(code2) {
-      if (code2 === null || markdownLineEnding(code2)) {
+      if (code2 === null || markdownLineEnding$1(code2)) {
         effects2.exit("codeFencedFence");
         return ok2(code2);
       }
@@ -7251,7 +7251,7 @@ function tokenizeCodeIndented(effects, ok, nok) {
   return start;
   function start(code2) {
     effects.enter("codeIndented");
-    return factorySpace(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
+    return factorySpace$1(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
   }
   function afterPrefix(code2) {
     const tail = self2.events[self2.events.length - 1];
@@ -7261,14 +7261,14 @@ function tokenizeCodeIndented(effects, ok, nok) {
     if (code2 === null) {
       return after(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       return effects.attempt(furtherStart, atBreak, after)(code2);
     }
     effects.enter("codeFlowValue");
     return inside(code2);
   }
   function inside(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("codeFlowValue");
       return atBreak(code2);
     }
@@ -7287,24 +7287,24 @@ function tokenizeFurtherStart(effects, ok, nok) {
     if (self2.parser.lazy[self2.now().line]) {
       return nok(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
       return furtherStart2;
     }
-    return factorySpace(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
+    return factorySpace$1(effects, afterPrefix, "linePrefix", 4 + 1)(code2);
   }
   function afterPrefix(code2) {
     const tail = self2.events[self2.events.length - 1];
-    return tail && tail[1].type === "linePrefix" && tail[2].sliceSerialize(tail[1], true).length >= 4 ? ok(code2) : markdownLineEnding(code2) ? furtherStart2(code2) : nok(code2);
+    return tail && tail[1].type === "linePrefix" && tail[2].sliceSerialize(tail[1], true).length >= 4 ? ok(code2) : markdownLineEnding$1(code2) ? furtherStart2(code2) : nok(code2);
   }
 }
 const codeText = {
   name: "codeText",
   tokenize: tokenizeCodeText,
   resolve: resolveCodeText,
-  previous
+  previous: previous$1
 };
 function resolveCodeText(events) {
   let tailExitIndex = events.length - 4;
@@ -7343,7 +7343,7 @@ function resolveCodeText(events) {
   }
   return events;
 }
-function previous(code2) {
+function previous$1(code2) {
   return code2 !== 96 || this.events[this.events.length - 1][1].type === "characterEscape";
 }
 function tokenizeCodeText(effects, ok, nok) {
@@ -7380,7 +7380,7 @@ function tokenizeCodeText(effects, ok, nok) {
       size2 = 0;
       return sequenceClose(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
@@ -7390,7 +7390,7 @@ function tokenizeCodeText(effects, ok, nok) {
     return data(code2);
   }
   function data(code2) {
-    if (code2 === null || code2 === 32 || code2 === 96 || markdownLineEnding(code2)) {
+    if (code2 === null || code2 === 32 || code2 === 96 || markdownLineEnding$1(code2)) {
       effects.exit("codeTextData");
       return between(code2);
     }
@@ -7574,7 +7574,7 @@ function tokenizeContent(effects, ok) {
     if (code2 === null) {
       return contentEnd(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       return effects.check(
         continuationConstruct,
         contentContinue,
@@ -7608,10 +7608,10 @@ function tokenizeContinuation(effects, ok, nok) {
     effects.enter("lineEnding");
     effects.consume(code2);
     effects.exit("lineEnding");
-    return factorySpace(effects, prefixed, "linePrefix");
+    return factorySpace$1(effects, prefixed, "linePrefix");
   }
   function prefixed(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return nok(code2);
     }
     const tail = self2.events[self2.events.length - 1];
@@ -7666,7 +7666,7 @@ function factoryDestination(effects, ok, nok, type, literalType, literalMarkerTy
       effects.exit(stringType);
       return enclosedBefore(code2);
     }
-    if (code2 === null || code2 === 60 || markdownLineEnding(code2)) {
+    if (code2 === null || code2 === 60 || markdownLineEnding$1(code2)) {
       return nok(code2);
     }
     effects.consume(code2);
@@ -7680,7 +7680,7 @@ function factoryDestination(effects, ok, nok, type, literalType, literalMarkerTy
     return enclosed(code2);
   }
   function raw(code2) {
-    if (!balance && (code2 === null || code2 === 41 || markdownLineEndingOrSpace(code2))) {
+    if (!balance && (code2 === null || code2 === 41 || markdownLineEndingOrSpace$1(code2))) {
       effects.exit("chunkString");
       effects.exit(stringType);
       effects.exit(rawType);
@@ -7711,7 +7711,7 @@ function factoryDestination(effects, ok, nok, type, literalType, literalMarkerTy
     return raw(code2);
   }
 }
-function factoryLabel(effects, ok, nok, type, markerType, stringType) {
+function factoryLabel$1(effects, ok, nok, type, markerType, stringType) {
   const self2 = this;
   let size2 = 0;
   let seen;
@@ -7736,7 +7736,7 @@ function factoryLabel(effects, ok, nok, type, markerType, stringType) {
       effects.exit(type);
       return ok;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
@@ -7748,13 +7748,13 @@ function factoryLabel(effects, ok, nok, type, markerType, stringType) {
     return labelInside(code2);
   }
   function labelInside(code2) {
-    if (code2 === null || code2 === 91 || code2 === 93 || markdownLineEnding(code2) || size2++ > 999) {
+    if (code2 === null || code2 === 91 || code2 === 93 || markdownLineEnding$1(code2) || size2++ > 999) {
       effects.exit("chunkString");
       return atBreak(code2);
     }
     effects.consume(code2);
     if (!seen)
-      seen = !markdownSpace(code2);
+      seen = !markdownSpace$1(code2);
     return code2 === 92 ? labelEscape : labelInside;
   }
   function labelEscape(code2) {
@@ -7799,11 +7799,11 @@ function factoryTitle(effects, ok, nok, type, markerType, stringType) {
     if (code2 === null) {
       return nok(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
-      return factorySpace(effects, atBreak, "linePrefix");
+      return factorySpace$1(effects, atBreak, "linePrefix");
     }
     effects.enter("chunkString", {
       contentType: "string"
@@ -7811,7 +7811,7 @@ function factoryTitle(effects, ok, nok, type, markerType, stringType) {
     return inside(code2);
   }
   function inside(code2) {
-    if (code2 === marker || code2 === null || markdownLineEnding(code2)) {
+    if (code2 === marker || code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("chunkString");
       return atBreak(code2);
     }
@@ -7826,19 +7826,19 @@ function factoryTitle(effects, ok, nok, type, markerType, stringType) {
     return inside(code2);
   }
 }
-function factoryWhitespace(effects, ok) {
+function factoryWhitespace$1(effects, ok) {
   let seen;
   return start;
   function start(code2) {
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
       seen = true;
       return start;
     }
-    if (markdownSpace(code2)) {
-      return factorySpace(
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(
         effects,
         start,
         seen ? "linePrefix" : "lineSuffix"
@@ -7864,7 +7864,7 @@ function tokenizeDefinition(effects, ok, nok) {
     return before(code2);
   }
   function before(code2) {
-    return factoryLabel.call(
+    return factoryLabel$1.call(
       self2,
       effects,
       labelAfter,
@@ -7887,7 +7887,7 @@ function tokenizeDefinition(effects, ok, nok) {
     return nok(code2);
   }
   function markerAfter(code2) {
-    return markdownLineEndingOrSpace(code2) ? factoryWhitespace(effects, destinationBefore)(code2) : destinationBefore(code2);
+    return markdownLineEndingOrSpace$1(code2) ? factoryWhitespace$1(effects, destinationBefore)(code2) : destinationBefore(code2);
   }
   function destinationBefore(code2) {
     return factoryDestination(
@@ -7905,10 +7905,10 @@ function tokenizeDefinition(effects, ok, nok) {
     return effects.attempt(titleBefore, after, after)(code2);
   }
   function after(code2) {
-    return markdownSpace(code2) ? factorySpace(effects, afterWhitespace, "whitespace")(code2) : afterWhitespace(code2);
+    return markdownSpace$1(code2) ? factorySpace$1(effects, afterWhitespace, "whitespace")(code2) : afterWhitespace(code2);
   }
   function afterWhitespace(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("definition");
       self2.parser.defined.push(identifier);
       return ok(code2);
@@ -7919,7 +7919,7 @@ function tokenizeDefinition(effects, ok, nok) {
 function tokenizeTitleBefore(effects, ok, nok) {
   return titleBefore2;
   function titleBefore2(code2) {
-    return markdownLineEndingOrSpace(code2) ? factoryWhitespace(effects, beforeMarker)(code2) : nok(code2);
+    return markdownLineEndingOrSpace$1(code2) ? factoryWhitespace$1(effects, beforeMarker)(code2) : nok(code2);
   }
   function beforeMarker(code2) {
     return factoryTitle(
@@ -7932,10 +7932,10 @@ function tokenizeTitleBefore(effects, ok, nok) {
     )(code2);
   }
   function titleAfter(code2) {
-    return markdownSpace(code2) ? factorySpace(effects, titleAfterOptionalWhitespace, "whitespace")(code2) : titleAfterOptionalWhitespace(code2);
+    return markdownSpace$1(code2) ? factorySpace$1(effects, titleAfterOptionalWhitespace, "whitespace")(code2) : titleAfterOptionalWhitespace(code2);
   }
   function titleAfterOptionalWhitespace(code2) {
-    return code2 === null || markdownLineEnding(code2) ? ok(code2) : nok(code2);
+    return code2 === null || markdownLineEnding$1(code2) ? ok(code2) : nok(code2);
   }
 }
 const hardBreakEscape = {
@@ -7950,7 +7950,7 @@ function tokenizeHardBreakEscape(effects, ok, nok) {
     return after;
   }
   function after(code2) {
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.exit("hardBreakEscape");
       return ok(code2);
     }
@@ -8013,7 +8013,7 @@ function tokenizeHeadingAtx(effects, ok, nok) {
       effects.consume(code2);
       return sequenceOpen;
     }
-    if (code2 === null || markdownLineEndingOrSpace(code2)) {
+    if (code2 === null || markdownLineEndingOrSpace$1(code2)) {
       effects.exit("atxHeadingSequence");
       return atBreak(code2);
     }
@@ -8024,12 +8024,12 @@ function tokenizeHeadingAtx(effects, ok, nok) {
       effects.enter("atxHeadingSequence");
       return sequenceFurther(code2);
     }
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("atxHeading");
       return ok(code2);
     }
-    if (markdownSpace(code2)) {
-      return factorySpace(effects, atBreak, "whitespace")(code2);
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(effects, atBreak, "whitespace")(code2);
     }
     effects.enter("atxHeadingText");
     return data(code2);
@@ -8043,7 +8043,7 @@ function tokenizeHeadingAtx(effects, ok, nok) {
     return atBreak(code2);
   }
   function data(code2) {
-    if (code2 === null || code2 === 35 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === null || code2 === 35 || markdownLineEndingOrSpace$1(code2)) {
       effects.exit("atxHeadingText");
       return atBreak(code2);
     }
@@ -8176,7 +8176,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       marker = 3;
       return self2.interrupt ? ok : continuationDeclarationInside;
     }
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       buffer = String.fromCharCode(code2);
       return tagName;
@@ -8195,7 +8195,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       index = 0;
       return cdataOpenInside;
     }
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       marker = 4;
       return self2.interrupt ? ok : continuationDeclarationInside;
@@ -8221,7 +8221,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
     return nok(code2);
   }
   function tagCloseStart(code2) {
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       buffer = String.fromCharCode(code2);
       return tagName;
@@ -8229,7 +8229,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
     return nok(code2);
   }
   function tagName(code2) {
-    if (code2 === null || code2 === 47 || code2 === 62 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === null || code2 === 47 || code2 === 62 || markdownLineEndingOrSpace$1(code2)) {
       const slash = code2 === 47;
       const name = buffer.toLowerCase();
       if (!slash && !closingTag && htmlRawNames.includes(name)) {
@@ -8247,7 +8247,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       marker = 7;
       return self2.interrupt && !self2.parser.lazy[self2.now().line] ? nok(code2) : closingTag ? completeClosingTagAfter(code2) : completeAttributeNameBefore(code2);
     }
-    if (code2 === 45 || asciiAlphanumeric(code2)) {
+    if (code2 === 45 || asciiAlphanumeric$1(code2)) {
       effects.consume(code2);
       buffer += String.fromCharCode(code2);
       return tagName;
@@ -8262,7 +8262,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
     return nok(code2);
   }
   function completeClosingTagAfter(code2) {
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return completeClosingTagAfter;
     }
@@ -8273,18 +8273,18 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       effects.consume(code2);
       return completeEnd;
     }
-    if (code2 === 58 || code2 === 95 || asciiAlpha(code2)) {
+    if (code2 === 58 || code2 === 95 || asciiAlpha$1(code2)) {
       effects.consume(code2);
       return completeAttributeName;
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return completeAttributeNameBefore;
     }
     return completeEnd(code2);
   }
   function completeAttributeName(code2) {
-    if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric(code2)) {
+    if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric$1(code2)) {
       effects.consume(code2);
       return completeAttributeName;
     }
@@ -8295,7 +8295,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       effects.consume(code2);
       return completeAttributeValueBefore;
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return completeAttributeNameAfter;
     }
@@ -8310,7 +8310,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       markerB = code2;
       return completeAttributeValueQuoted;
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return completeAttributeValueBefore;
     }
@@ -8322,21 +8322,21 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       markerB = null;
       return completeAttributeValueQuotedAfter;
     }
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return nok(code2);
     }
     effects.consume(code2);
     return completeAttributeValueQuoted;
   }
   function completeAttributeValueUnquoted(code2) {
-    if (code2 === null || code2 === 34 || code2 === 39 || code2 === 47 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === null || code2 === 34 || code2 === 39 || code2 === 47 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96 || markdownLineEndingOrSpace$1(code2)) {
       return completeAttributeNameAfter(code2);
     }
     effects.consume(code2);
     return completeAttributeValueUnquoted;
   }
   function completeAttributeValueQuotedAfter(code2) {
-    if (code2 === 47 || code2 === 62 || markdownSpace(code2)) {
+    if (code2 === 47 || code2 === 62 || markdownSpace$1(code2)) {
       return completeAttributeNameBefore(code2);
     }
     return nok(code2);
@@ -8349,10 +8349,10 @@ function tokenizeHtmlFlow(effects, ok, nok) {
     return nok(code2);
   }
   function completeAfter(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return continuation(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return completeAfter;
     }
@@ -8379,7 +8379,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       effects.consume(code2);
       return continuationCdataInside;
     }
-    if (markdownLineEnding(code2) && (marker === 6 || marker === 7)) {
+    if (markdownLineEnding$1(code2) && (marker === 6 || marker === 7)) {
       effects.exit("htmlFlowData");
       return effects.check(
         blankLineBefore,
@@ -8387,7 +8387,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
         continuationStart
       )(code2);
     }
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("htmlFlowData");
       return continuationStart(code2);
     }
@@ -8408,7 +8408,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
     return continuationBefore;
   }
   function continuationBefore(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return continuationStart(code2);
     }
     effects.enter("htmlFlowData");
@@ -8438,7 +8438,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
       }
       return continuation(code2);
     }
-    if (asciiAlpha(code2) && buffer.length < 8) {
+    if (asciiAlpha$1(code2) && buffer.length < 8) {
       effects.consume(code2);
       buffer += String.fromCharCode(code2);
       return continuationRawEndTag;
@@ -8464,7 +8464,7 @@ function tokenizeHtmlFlow(effects, ok, nok) {
     return continuation(code2);
   }
   function continuationClose(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("htmlFlowData");
       return continuationAfter(code2);
     }
@@ -8480,7 +8480,7 @@ function tokenizeNonLazyContinuationStart(effects, ok, nok) {
   const self2 = this;
   return start;
   function start(code2) {
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       effects.enter("lineEnding");
       effects.consume(code2);
       effects.exit("lineEnding");
@@ -8530,7 +8530,7 @@ function tokenizeHtmlText(effects, ok, nok) {
       effects.consume(code2);
       return instruction;
     }
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       return tagOpen;
     }
@@ -8546,7 +8546,7 @@ function tokenizeHtmlText(effects, ok, nok) {
       index = 0;
       return cdataOpenInside;
     }
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       return declaration;
     }
@@ -8567,7 +8567,7 @@ function tokenizeHtmlText(effects, ok, nok) {
       effects.consume(code2);
       return commentClose;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = comment;
       return lineEndingBefore(code2);
     }
@@ -8600,7 +8600,7 @@ function tokenizeHtmlText(effects, ok, nok) {
       effects.consume(code2);
       return cdataClose;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = cdata;
       return lineEndingBefore(code2);
     }
@@ -8628,7 +8628,7 @@ function tokenizeHtmlText(effects, ok, nok) {
     if (code2 === null || code2 === 62) {
       return end(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = declaration;
       return lineEndingBefore(code2);
     }
@@ -8643,7 +8643,7 @@ function tokenizeHtmlText(effects, ok, nok) {
       effects.consume(code2);
       return instructionClose;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = instruction;
       return lineEndingBefore(code2);
     }
@@ -8654,36 +8654,36 @@ function tokenizeHtmlText(effects, ok, nok) {
     return code2 === 62 ? end(code2) : instruction(code2);
   }
   function tagCloseStart(code2) {
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       return tagClose;
     }
     return nok(code2);
   }
   function tagClose(code2) {
-    if (code2 === 45 || asciiAlphanumeric(code2)) {
+    if (code2 === 45 || asciiAlphanumeric$1(code2)) {
       effects.consume(code2);
       return tagClose;
     }
     return tagCloseBetween(code2);
   }
   function tagCloseBetween(code2) {
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = tagCloseBetween;
       return lineEndingBefore(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return tagCloseBetween;
     }
     return end(code2);
   }
   function tagOpen(code2) {
-    if (code2 === 45 || asciiAlphanumeric(code2)) {
+    if (code2 === 45 || asciiAlphanumeric$1(code2)) {
       effects.consume(code2);
       return tagOpen;
     }
-    if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace$1(code2)) {
       return tagOpenBetween(code2);
     }
     return nok(code2);
@@ -8693,22 +8693,22 @@ function tokenizeHtmlText(effects, ok, nok) {
       effects.consume(code2);
       return end;
     }
-    if (code2 === 58 || code2 === 95 || asciiAlpha(code2)) {
+    if (code2 === 58 || code2 === 95 || asciiAlpha$1(code2)) {
       effects.consume(code2);
       return tagOpenAttributeName;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = tagOpenBetween;
       return lineEndingBefore(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return tagOpenBetween;
     }
     return end(code2);
   }
   function tagOpenAttributeName(code2) {
-    if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric(code2)) {
+    if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric$1(code2)) {
       effects.consume(code2);
       return tagOpenAttributeName;
     }
@@ -8719,11 +8719,11 @@ function tokenizeHtmlText(effects, ok, nok) {
       effects.consume(code2);
       return tagOpenAttributeValueBefore;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = tagOpenAttributeNameAfter;
       return lineEndingBefore(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return tagOpenAttributeNameAfter;
     }
@@ -8738,11 +8738,11 @@ function tokenizeHtmlText(effects, ok, nok) {
       marker = code2;
       return tagOpenAttributeValueQuoted;
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = tagOpenAttributeValueBefore;
       return lineEndingBefore(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.consume(code2);
       return tagOpenAttributeValueBefore;
     }
@@ -8758,7 +8758,7 @@ function tokenizeHtmlText(effects, ok, nok) {
     if (code2 === null) {
       return nok(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       returnState = tagOpenAttributeValueQuoted;
       return lineEndingBefore(code2);
     }
@@ -8769,14 +8769,14 @@ function tokenizeHtmlText(effects, ok, nok) {
     if (code2 === null || code2 === 34 || code2 === 39 || code2 === 60 || code2 === 61 || code2 === 96) {
       return nok(code2);
     }
-    if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace$1(code2)) {
       return tagOpenBetween(code2);
     }
     effects.consume(code2);
     return tagOpenAttributeValueUnquoted;
   }
   function tagOpenAttributeValueQuotedAfter(code2) {
-    if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === 47 || code2 === 62 || markdownLineEndingOrSpace$1(code2)) {
       return tagOpenBetween(code2);
     }
     return nok(code2);
@@ -8798,7 +8798,7 @@ function tokenizeHtmlText(effects, ok, nok) {
     return lineEndingAfter;
   }
   function lineEndingAfter(code2) {
-    return markdownSpace(code2) ? factorySpace(
+    return markdownSpace$1(code2) ? factorySpace$1(
       effects,
       lineEndingAfterPrefix,
       "linePrefix",
@@ -8870,7 +8870,7 @@ function resolveToLabelEnd(events, context) {
     start: Object.assign({}, events[open][1].start),
     end: Object.assign({}, events[events.length - 1][1].end)
   };
-  const label = {
+  const label2 = {
     type: "label",
     start: Object.assign({}, events[open][1].start),
     end: Object.assign({}, events[close][1].end)
@@ -8882,7 +8882,7 @@ function resolveToLabelEnd(events, context) {
   };
   media = [
     ["enter", group, context],
-    ["enter", label, context]
+    ["enter", label2, context]
   ];
   media = push(media, events.slice(open + 1, open + offset + 3));
   media = push(media, [["enter", text2, context]]);
@@ -8898,7 +8898,7 @@ function resolveToLabelEnd(events, context) {
     ["exit", text2, context],
     events[close - 2],
     events[close - 1],
-    ["exit", label, context]
+    ["exit", label2, context]
   ]);
   media = push(media, events.slice(close + 1));
   media = push(media, [["exit", group, context]]);
@@ -8981,7 +8981,7 @@ function tokenizeResource(effects, ok, nok) {
     return resourceBefore;
   }
   function resourceBefore(code2) {
-    return markdownLineEndingOrSpace(code2) ? factoryWhitespace(effects, resourceOpen)(code2) : resourceOpen(code2);
+    return markdownLineEndingOrSpace$1(code2) ? factoryWhitespace$1(effects, resourceOpen)(code2) : resourceOpen(code2);
   }
   function resourceOpen(code2) {
     if (code2 === 41) {
@@ -9000,7 +9000,7 @@ function tokenizeResource(effects, ok, nok) {
     )(code2);
   }
   function resourceDestinationAfter(code2) {
-    return markdownLineEndingOrSpace(code2) ? factoryWhitespace(effects, resourceBetween)(code2) : resourceEnd(code2);
+    return markdownLineEndingOrSpace$1(code2) ? factoryWhitespace$1(effects, resourceBetween)(code2) : resourceEnd(code2);
   }
   function resourceDestinationMissing(code2) {
     return nok(code2);
@@ -9019,7 +9019,7 @@ function tokenizeResource(effects, ok, nok) {
     return resourceEnd(code2);
   }
   function resourceTitleAfter(code2) {
-    return markdownLineEndingOrSpace(code2) ? factoryWhitespace(effects, resourceEnd)(code2) : resourceEnd(code2);
+    return markdownLineEndingOrSpace$1(code2) ? factoryWhitespace$1(effects, resourceEnd)(code2) : resourceEnd(code2);
   }
   function resourceEnd(code2) {
     if (code2 === 41) {
@@ -9036,7 +9036,7 @@ function tokenizeReferenceFull(effects, ok, nok) {
   const self2 = this;
   return referenceFull;
   function referenceFull(code2) {
-    return factoryLabel.call(
+    return factoryLabel$1.call(
       self2,
       effects,
       referenceFullAfter,
@@ -9136,7 +9136,7 @@ function tokenizeLineEnding(effects, ok) {
     effects.enter("lineEnding");
     effects.consume(code2);
     effects.exit("lineEnding");
-    return factorySpace(effects, ok, "linePrefix");
+    return factorySpace$1(effects, ok, "linePrefix");
   }
 }
 const thematicBreak = {
@@ -9160,7 +9160,7 @@ function tokenizeThematicBreak(effects, ok, nok) {
       effects.enter("thematicBreakSequence");
       return sequence(code2);
     }
-    if (size2 >= 3 && (code2 === null || markdownLineEnding(code2))) {
+    if (size2 >= 3 && (code2 === null || markdownLineEnding$1(code2))) {
       effects.exit("thematicBreak");
       return ok(code2);
     }
@@ -9173,7 +9173,7 @@ function tokenizeThematicBreak(effects, ok, nok) {
       return sequence;
     }
     effects.exit("thematicBreakSequence");
-    return markdownSpace(code2) ? factorySpace(effects, atBreak, "whitespace")(code2) : atBreak(code2);
+    return markdownSpace$1(code2) ? factorySpace$1(effects, atBreak, "whitespace")(code2) : atBreak(code2);
   }
 }
 const list = {
@@ -9251,7 +9251,7 @@ function tokenizeListStart(effects, ok, nok) {
     return endOfPrefix(code2);
   }
   function otherPrefix(code2) {
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       effects.enter("listItemPrefixWhitespace");
       effects.consume(code2);
       effects.exit("listItemPrefixWhitespace");
@@ -9270,7 +9270,7 @@ function tokenizeListContinuation(effects, ok, nok) {
   return effects.check(blankLine, onBlank, notBlank);
   function onBlank(code2) {
     self2.containerState.furtherBlankLines = self2.containerState.furtherBlankLines || self2.containerState.initialBlankLine;
-    return factorySpace(
+    return factorySpace$1(
       effects,
       ok,
       "listItemIndent",
@@ -9278,7 +9278,7 @@ function tokenizeListContinuation(effects, ok, nok) {
     )(code2);
   }
   function notBlank(code2) {
-    if (self2.containerState.furtherBlankLines || !markdownSpace(code2)) {
+    if (self2.containerState.furtherBlankLines || !markdownSpace$1(code2)) {
       self2.containerState.furtherBlankLines = void 0;
       self2.containerState.initialBlankLine = void 0;
       return notInCurrentItem(code2);
@@ -9290,7 +9290,7 @@ function tokenizeListContinuation(effects, ok, nok) {
   function notInCurrentItem(code2) {
     self2.containerState._closeFlow = true;
     self2.interrupt = void 0;
-    return factorySpace(
+    return factorySpace$1(
       effects,
       effects.attempt(list, ok, nok),
       "linePrefix",
@@ -9300,7 +9300,7 @@ function tokenizeListContinuation(effects, ok, nok) {
 }
 function tokenizeIndent$1(effects, ok, nok) {
   const self2 = this;
-  return factorySpace(
+  return factorySpace$1(
     effects,
     afterPrefix,
     "listItemIndent",
@@ -9316,7 +9316,7 @@ function tokenizeListEnd(effects) {
 }
 function tokenizeListItemPrefixWhitespace(effects, ok, nok) {
   const self2 = this;
-  return factorySpace(
+  return factorySpace$1(
     effects,
     afterPrefix,
     "listItemPrefixWhitespace",
@@ -9324,7 +9324,7 @@ function tokenizeListItemPrefixWhitespace(effects, ok, nok) {
   );
   function afterPrefix(code2) {
     const tail = self2.events[self2.events.length - 1];
-    return !markdownSpace(code2) && tail && tail[1].type === "listItemPrefixWhitespace" ? ok(code2) : nok(code2);
+    return !markdownSpace$1(code2) && tail && tail[1].type === "listItemPrefixWhitespace" ? ok(code2) : nok(code2);
   }
 }
 const setextUnderline = {
@@ -9401,10 +9401,10 @@ function tokenizeSetextUnderline(effects, ok, nok) {
       return inside;
     }
     effects.exit("setextHeadingLineSequence");
-    return markdownSpace(code2) ? factorySpace(effects, after, "lineSuffix")(code2) : after(code2);
+    return markdownSpace$1(code2) ? factorySpace$1(effects, after, "lineSuffix")(code2) : after(code2);
   }
   function after(code2) {
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("setextHeadingLine");
       return ok(code2);
     }
@@ -9422,7 +9422,7 @@ function initializeFlow(effects) {
     effects.attempt(
       this.parser.constructs.flowInitial,
       afterConstruct,
-      factorySpace(
+      factorySpace$1(
         effects,
         effects.attempt(
           this.parser.constructs.flow,
@@ -9690,7 +9690,7 @@ function createTokenizer(parser, initialize, from) {
     state = state(code2);
   }
   function consume(code2) {
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       point.line++;
       point.column = 1;
       point.offset += code2 === -3 ? 2 : 1;
@@ -10173,7 +10173,7 @@ function tokenizeEmailAutolink(effects, ok, nok) {
         emailDomainDot
       )(code2);
     }
-    if (code2 === 45 || code2 === 95 || asciiAlphanumeric(code2)) {
+    if (code2 === 45 || code2 === 95 || asciiAlphanumeric$1(code2)) {
       data = true;
       effects.consume(code2);
       return emailDomain;
@@ -10186,7 +10186,7 @@ function tokenizeEmailAutolink(effects, ok, nok) {
     return emailDomain;
   }
   function emailDomainAfter(code2) {
-    if (data && dot && asciiAlpha(self2.previous)) {
+    if (data && dot && asciiAlpha$1(self2.previous)) {
       effects.exit("literalAutolinkEmail");
       effects.exit("literalAutolink");
       return ok(code2);
@@ -10231,7 +10231,7 @@ function tokenizeProtocolAutolink(effects, ok, nok) {
     return nok(code2);
   }
   function protocolPrefixInside(code2) {
-    if (asciiAlpha(code2) && buffer.length < 5) {
+    if (asciiAlpha$1(code2) && buffer.length < 5) {
       buffer += String.fromCodePoint(code2);
       effects.consume(code2);
       return protocolPrefixInside;
@@ -10257,7 +10257,7 @@ function tokenizeProtocolAutolink(effects, ok, nok) {
     return nok(code2);
   }
   function afterProtocol(code2) {
-    return code2 === null || asciiControl(code2) || markdownLineEndingOrSpace(code2) || unicodeWhitespace(code2) || unicodePunctuation(code2) ? nok(code2) : effects.attempt(domain, effects.attempt(path, protocolAfter), nok)(code2);
+    return code2 === null || asciiControl(code2) || markdownLineEndingOrSpace$1(code2) || unicodeWhitespace(code2) || unicodePunctuation(code2) ? nok(code2) : effects.attempt(domain, effects.attempt(path, protocolAfter), nok)(code2);
   }
   function protocolAfter(code2) {
     effects.exit("literalAutolinkHttp");
@@ -10293,7 +10293,7 @@ function tokenizeDomain(effects, ok, nok) {
     if (code2 === 46 || code2 === 95) {
       return effects.check(trail, domainAfter, domainAtPunctuation)(code2);
     }
-    if (code2 === null || markdownLineEndingOrSpace(code2) || unicodeWhitespace(code2) || code2 !== 45 && unicodePunctuation(code2)) {
+    if (code2 === null || markdownLineEndingOrSpace$1(code2) || unicodeWhitespace(code2) || code2 !== 45 && unicodePunctuation(code2)) {
       return domainAfter(code2);
     }
     seen = true;
@@ -10333,7 +10333,7 @@ function tokenizePath(effects, ok) {
     if (code2 === 33 || code2 === 34 || code2 === 38 || code2 === 39 || code2 === 41 || code2 === 42 || code2 === 44 || code2 === 46 || code2 === 58 || code2 === 59 || code2 === 60 || code2 === 63 || code2 === 93 || code2 === 95 || code2 === 126) {
       return effects.check(trail, ok, pathAtPunctuation)(code2);
     }
-    if (code2 === null || markdownLineEndingOrSpace(code2) || unicodeWhitespace(code2)) {
+    if (code2 === null || markdownLineEndingOrSpace$1(code2) || unicodeWhitespace(code2)) {
       return ok(code2);
     }
     effects.consume(code2);
@@ -10362,26 +10362,26 @@ function tokenizeTrail(effects, ok, nok) {
       effects.consume(code2);
       return trailBracketAfter;
     }
-    if (code2 === 60 || code2 === null || markdownLineEndingOrSpace(code2) || unicodeWhitespace(code2)) {
+    if (code2 === 60 || code2 === null || markdownLineEndingOrSpace$1(code2) || unicodeWhitespace(code2)) {
       return ok(code2);
     }
     return nok(code2);
   }
   function trailBracketAfter(code2) {
-    if (code2 === null || code2 === 40 || code2 === 91 || markdownLineEndingOrSpace(code2) || unicodeWhitespace(code2)) {
+    if (code2 === null || code2 === 40 || code2 === 91 || markdownLineEndingOrSpace$1(code2) || unicodeWhitespace(code2)) {
       return ok(code2);
     }
     return trail2(code2);
   }
   function trailCharRefStart(code2) {
-    return asciiAlpha(code2) ? trailCharRefInside(code2) : nok(code2);
+    return asciiAlpha$1(code2) ? trailCharRefInside(code2) : nok(code2);
   }
   function trailCharRefInside(code2) {
     if (code2 === 59) {
       effects.consume(code2);
       return trail2;
     }
-    if (asciiAlpha(code2)) {
+    if (asciiAlpha$1(code2)) {
       effects.consume(code2);
       return trailCharRefInside;
     }
@@ -10395,20 +10395,20 @@ function tokenizeEmailDomainDotTrail(effects, ok, nok) {
     return after;
   }
   function after(code2) {
-    return asciiAlphanumeric(code2) ? nok(code2) : ok(code2);
+    return asciiAlphanumeric$1(code2) ? nok(code2) : ok(code2);
   }
 }
 function previousWww(code2) {
-  return code2 === null || code2 === 40 || code2 === 42 || code2 === 95 || code2 === 91 || code2 === 93 || code2 === 126 || markdownLineEndingOrSpace(code2);
+  return code2 === null || code2 === 40 || code2 === 42 || code2 === 95 || code2 === 91 || code2 === 93 || code2 === 126 || markdownLineEndingOrSpace$1(code2);
 }
 function previousProtocol(code2) {
-  return !asciiAlpha(code2);
+  return !asciiAlpha$1(code2);
 }
 function previousEmail(code2) {
   return !(code2 === 47 || gfmAtext(code2));
 }
 function gfmAtext(code2) {
-  return code2 === 43 || code2 === 45 || code2 === 46 || code2 === 95 || asciiAlphanumeric(code2);
+  return code2 === 43 || code2 === 45 || code2 === 46 || code2 === 95 || asciiAlphanumeric$1(code2);
 }
 function previousUnbalanced(events) {
   let index = events.length;
@@ -10590,7 +10590,7 @@ function tokenizeGfmFootnoteCall(effects, ok, nok) {
     return callData;
   }
   function callData(code2) {
-    if (size2 > 999 || code2 === 93 && !data || code2 === null || code2 === 91 || markdownLineEndingOrSpace(code2)) {
+    if (size2 > 999 || code2 === 93 && !data || code2 === null || code2 === 91 || markdownLineEndingOrSpace$1(code2)) {
       return nok(code2);
     }
     if (code2 === 93) {
@@ -10605,7 +10605,7 @@ function tokenizeGfmFootnoteCall(effects, ok, nok) {
       effects.exit("gfmFootnoteCall");
       return ok;
     }
-    if (!markdownLineEndingOrSpace(code2)) {
+    if (!markdownLineEndingOrSpace$1(code2)) {
       data = true;
     }
     size2++;
@@ -10648,7 +10648,7 @@ function tokenizeDefinitionStart(effects, ok, nok) {
     return nok(code2);
   }
   function labelInside(code2) {
-    if (size2 > 999 || code2 === 93 && !data || code2 === null || code2 === 91 || markdownLineEndingOrSpace(code2)) {
+    if (size2 > 999 || code2 === 93 && !data || code2 === null || code2 === 91 || markdownLineEndingOrSpace$1(code2)) {
       return nok(code2);
     }
     if (code2 === 93) {
@@ -10661,7 +10661,7 @@ function tokenizeDefinitionStart(effects, ok, nok) {
       effects.exit("gfmFootnoteDefinitionLabel");
       return labelAfter;
     }
-    if (!markdownLineEndingOrSpace(code2)) {
+    if (!markdownLineEndingOrSpace$1(code2)) {
       data = true;
     }
     size2++;
@@ -10684,7 +10684,7 @@ function tokenizeDefinitionStart(effects, ok, nok) {
       if (!defined.includes(identifier)) {
         defined.push(identifier);
       }
-      return factorySpace(
+      return factorySpace$1(
         effects,
         whitespaceAfter,
         "gfmFootnoteDefinitionWhitespace"
@@ -10704,7 +10704,7 @@ function gfmFootnoteDefinitionEnd(effects) {
 }
 function tokenizeIndent(effects, ok, nok) {
   const self2 = this;
-  return factorySpace(
+  return factorySpace$1(
     effects,
     afterPrefix,
     "gfmFootnoteDefinitionIndent",
@@ -10715,14 +10715,14 @@ function tokenizeIndent(effects, ok, nok) {
     return tail && tail[1].type === "gfmFootnoteDefinitionIndent" && tail[2].sliceSerialize(tail[1], true).length === 4 ? ok(code2) : nok(code2);
   }
 }
-const own = {}.hasOwnProperty;
+const own$1 = {}.hasOwnProperty;
 const emptyOptions = {};
 function defaultBackLabel(referenceIndex, rereferenceIndex) {
   return "Back to reference " + (referenceIndex + 1) + (rereferenceIndex > 1 ? "-" + rereferenceIndex : "");
 }
 function gfmFootnoteHtml(options) {
   const config = options || emptyOptions;
-  const label = config.label || "Footnotes";
+  const label2 = config.label || "Footnotes";
   const labelTagName = config.labelTagName || "h2";
   const labelAttributes = config.labelAttributes === null || config.labelAttributes === void 0 ? 'class="sr-only"' : config.labelAttributes;
   const backLabel = config.backLabel || defaultBackLabel;
@@ -10750,7 +10750,7 @@ function gfmFootnoteHtml(options) {
         if (!definitions2) {
           this.setData("gfmFootnoteDefinitions", definitions2 = {});
         }
-        if (!own.call(definitions2, current))
+        if (!own$1.call(definitions2, current))
           definitions2[current] = value;
         tightStack.pop();
         this.setData("slurpOneLineEnding", true);
@@ -10800,7 +10800,7 @@ function gfmFootnoteHtml(options) {
           this.tag(
             '<section data-footnotes="" class="footnotes"><' + labelTagName + ' id="footnote-label"' + (labelAttributes ? " " + labelAttributes : "") + ">"
           );
-          this.raw(this.encode(label));
+          this.raw(this.encode(label2));
           this.tag("</" + labelTagName + ">");
           this.lineEndingIfNeeded();
           this.tag("<ol>");
@@ -11185,7 +11185,7 @@ function tokenizeTable(effects, ok, nok) {
     if (code2 === null) {
       return nok(code2);
     }
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       if (sizeB > 1) {
         sizeB = 0;
         self2.interrupt = true;
@@ -11197,8 +11197,8 @@ function tokenizeTable(effects, ok, nok) {
       }
       return nok(code2);
     }
-    if (markdownSpace(code2)) {
-      return factorySpace(effects, headRowBreak, "whitespace")(code2);
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(effects, headRowBreak, "whitespace")(code2);
     }
     sizeB += 1;
     if (seen) {
@@ -11216,7 +11216,7 @@ function tokenizeTable(effects, ok, nok) {
     return headRowData(code2);
   }
   function headRowData(code2) {
-    if (code2 === null || code2 === 124 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === null || code2 === 124 || markdownLineEndingOrSpace$1(code2)) {
       effects.exit("data");
       return headRowBreak(code2);
     }
@@ -11237,8 +11237,8 @@ function tokenizeTable(effects, ok, nok) {
     }
     effects.enter("tableDelimiterRow");
     seen = false;
-    if (markdownSpace(code2)) {
-      return factorySpace(
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(
         effects,
         headDelimiterBefore,
         "linePrefix",
@@ -11261,8 +11261,8 @@ function tokenizeTable(effects, ok, nok) {
     return headDelimiterNok(code2);
   }
   function headDelimiterCellBefore(code2) {
-    if (markdownSpace(code2)) {
-      return factorySpace(effects, headDelimiterValueBefore, "whitespace")(code2);
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(effects, headDelimiterValueBefore, "whitespace")(code2);
     }
     return headDelimiterValueBefore(code2);
   }
@@ -11279,7 +11279,7 @@ function tokenizeTable(effects, ok, nok) {
       sizeB += 1;
       return headDelimiterLeftAlignmentAfter(code2);
     }
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       return headDelimiterCellAfter(code2);
     }
     return headDelimiterNok(code2);
@@ -11308,8 +11308,8 @@ function tokenizeTable(effects, ok, nok) {
     return headDelimiterRightAlignmentAfter(code2);
   }
   function headDelimiterRightAlignmentAfter(code2) {
-    if (markdownSpace(code2)) {
-      return factorySpace(effects, headDelimiterCellAfter, "whitespace")(code2);
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(effects, headDelimiterCellAfter, "whitespace")(code2);
     }
     return headDelimiterCellAfter(code2);
   }
@@ -11317,7 +11317,7 @@ function tokenizeTable(effects, ok, nok) {
     if (code2 === 124) {
       return headDelimiterBefore(code2);
     }
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       if (!seen || size2 !== sizeB) {
         return headDelimiterNok(code2);
       }
@@ -11341,18 +11341,18 @@ function tokenizeTable(effects, ok, nok) {
       effects.exit("tableCellDivider");
       return bodyRowBreak;
     }
-    if (code2 === null || markdownLineEnding(code2)) {
+    if (code2 === null || markdownLineEnding$1(code2)) {
       effects.exit("tableRow");
       return ok(code2);
     }
-    if (markdownSpace(code2)) {
-      return factorySpace(effects, bodyRowBreak, "whitespace")(code2);
+    if (markdownSpace$1(code2)) {
+      return factorySpace$1(effects, bodyRowBreak, "whitespace")(code2);
     }
     effects.enter("data");
     return bodyRowData(code2);
   }
   function bodyRowData(code2) {
-    if (code2 === null || code2 === 124 || markdownLineEndingOrSpace(code2)) {
+    if (code2 === null || code2 === 124 || markdownLineEndingOrSpace$1(code2)) {
       effects.exit("data");
       return bodyRowBreak(code2);
     }
@@ -11599,7 +11599,7 @@ function tokenizeTasklistCheck(effects, ok, nok) {
     return inside;
   }
   function inside(code2) {
-    if (markdownLineEndingOrSpace(code2)) {
+    if (markdownLineEndingOrSpace$1(code2)) {
       effects.enter("taskListCheckValueUnchecked");
       effects.consume(code2);
       effects.exit("taskListCheckValueUnchecked");
@@ -11624,10 +11624,10 @@ function tokenizeTasklistCheck(effects, ok, nok) {
     return nok(code2);
   }
   function after(code2) {
-    if (markdownLineEnding(code2)) {
+    if (markdownLineEnding$1(code2)) {
       return ok(code2);
     }
-    if (markdownSpace(code2)) {
+    if (markdownSpace$1(code2)) {
       return effects.check(
         {
           tokenize: spaceThenNonSpace
@@ -11640,7 +11640,7 @@ function tokenizeTasklistCheck(effects, ok, nok) {
   }
 }
 function spaceThenNonSpace(effects, ok, nok) {
-  return factorySpace(effects, after, "whitespace");
+  return factorySpace$1(effects, after, "whitespace");
   function after(code2) {
     return code2 === null ? nok(code2) : ok(code2);
   }
@@ -11910,6 +11910,1232 @@ const usertagHtml = (users) => ({
     }
   }
 });
+const asciiAlpha = regexCheck(/[A-Za-z]/);
+const asciiAlphanumeric = regexCheck(/[\dA-Za-z]/);
+function markdownLineEnding(code2) {
+  return code2 !== null && code2 < -2;
+}
+function markdownLineEndingOrSpace(code2) {
+  return code2 !== null && (code2 < 0 || code2 === 32);
+}
+function markdownSpace(code2) {
+  return code2 === -2 || code2 === -1 || code2 === 32;
+}
+function regexCheck(regex) {
+  return check;
+  function check(code2) {
+    return code2 !== null && code2 > -1 && regex.test(String.fromCharCode(code2));
+  }
+}
+function factorySpace(effects, ok, type, max) {
+  const limit = max ? max - 1 : Number.POSITIVE_INFINITY;
+  let size2 = 0;
+  return start;
+  function start(code2) {
+    if (markdownSpace(code2)) {
+      effects.enter(type);
+      return prefix(code2);
+    }
+    return ok(code2);
+  }
+  function prefix(code2) {
+    if (markdownSpace(code2) && size2++ < limit) {
+      effects.consume(code2);
+      return prefix;
+    }
+    effects.exit(type);
+    return ok(code2);
+  }
+}
+function factoryWhitespace(effects, ok) {
+  let seen;
+  return start;
+  function start(code2) {
+    if (markdownLineEnding(code2)) {
+      effects.enter("lineEnding");
+      effects.consume(code2);
+      effects.exit("lineEnding");
+      seen = true;
+      return start;
+    }
+    if (markdownSpace(code2)) {
+      return factorySpace(
+        effects,
+        start,
+        seen ? "linePrefix" : "lineSuffix"
+      )(code2);
+    }
+    return ok(code2);
+  }
+}
+function factoryAttributes(effects, ok, nok, attributesType, attributesMarkerType, attributeType, attributeIdType, attributeClassType, attributeNameType, attributeInitializerType, attributeValueLiteralType, attributeValueType, attributeValueMarker, attributeValueData, disallowEol) {
+  let type;
+  let marker;
+  return start;
+  function start(code2) {
+    effects.enter(attributesType);
+    effects.enter(attributesMarkerType);
+    effects.consume(code2);
+    effects.exit(attributesMarkerType);
+    return between;
+  }
+  function between(code2) {
+    if (code2 === 35) {
+      type = attributeIdType;
+      return shortcutStart(code2);
+    }
+    if (code2 === 46) {
+      type = attributeClassType;
+      return shortcutStart(code2);
+    }
+    if (code2 === 58 || code2 === 95 || asciiAlpha(code2)) {
+      effects.enter(attributeType);
+      effects.enter(attributeNameType);
+      effects.consume(code2);
+      return name;
+    }
+    if (disallowEol && markdownSpace(code2)) {
+      return factorySpace(effects, between, "whitespace")(code2);
+    }
+    if (!disallowEol && markdownLineEndingOrSpace(code2)) {
+      return factoryWhitespace(effects, between)(code2);
+    }
+    return end(code2);
+  }
+  function shortcutStart(code2) {
+    const markerType = type + "Marker";
+    effects.enter(attributeType);
+    effects.enter(type);
+    effects.enter(markerType);
+    effects.consume(code2);
+    effects.exit(markerType);
+    return shortcutStartAfter;
+  }
+  function shortcutStartAfter(code2) {
+    if (code2 === null || code2 === 34 || code2 === 35 || code2 === 39 || code2 === 46 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96 || code2 === 125 || markdownLineEndingOrSpace(code2)) {
+      return nok(code2);
+    }
+    const valueType = type + "Value";
+    effects.enter(valueType);
+    effects.consume(code2);
+    return shortcut;
+  }
+  function shortcut(code2) {
+    if (code2 === null || code2 === 34 || code2 === 39 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96) {
+      return nok(code2);
+    }
+    if (code2 === 35 || code2 === 46 || code2 === 125 || markdownLineEndingOrSpace(code2)) {
+      const valueType = type + "Value";
+      effects.exit(valueType);
+      effects.exit(type);
+      effects.exit(attributeType);
+      return between(code2);
+    }
+    effects.consume(code2);
+    return shortcut;
+  }
+  function name(code2) {
+    if (code2 === 45 || code2 === 46 || code2 === 58 || code2 === 95 || asciiAlphanumeric(code2)) {
+      effects.consume(code2);
+      return name;
+    }
+    effects.exit(attributeNameType);
+    if (disallowEol && markdownSpace(code2)) {
+      return factorySpace(effects, nameAfter, "whitespace")(code2);
+    }
+    if (!disallowEol && markdownLineEndingOrSpace(code2)) {
+      return factoryWhitespace(effects, nameAfter)(code2);
+    }
+    return nameAfter(code2);
+  }
+  function nameAfter(code2) {
+    if (code2 === 61) {
+      effects.enter(attributeInitializerType);
+      effects.consume(code2);
+      effects.exit(attributeInitializerType);
+      return valueBefore;
+    }
+    effects.exit(attributeType);
+    return between(code2);
+  }
+  function valueBefore(code2) {
+    if (code2 === null || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96 || code2 === 125 || disallowEol && markdownLineEnding(code2)) {
+      return nok(code2);
+    }
+    if (code2 === 34 || code2 === 39) {
+      effects.enter(attributeValueLiteralType);
+      effects.enter(attributeValueMarker);
+      effects.consume(code2);
+      effects.exit(attributeValueMarker);
+      marker = code2;
+      return valueQuotedStart;
+    }
+    if (disallowEol && markdownSpace(code2)) {
+      return factorySpace(effects, valueBefore, "whitespace")(code2);
+    }
+    if (!disallowEol && markdownLineEndingOrSpace(code2)) {
+      return factoryWhitespace(effects, valueBefore)(code2);
+    }
+    effects.enter(attributeValueType);
+    effects.enter(attributeValueData);
+    effects.consume(code2);
+    marker = void 0;
+    return valueUnquoted;
+  }
+  function valueUnquoted(code2) {
+    if (code2 === null || code2 === 34 || code2 === 39 || code2 === 60 || code2 === 61 || code2 === 62 || code2 === 96) {
+      return nok(code2);
+    }
+    if (code2 === 125 || markdownLineEndingOrSpace(code2)) {
+      effects.exit(attributeValueData);
+      effects.exit(attributeValueType);
+      effects.exit(attributeType);
+      return between(code2);
+    }
+    effects.consume(code2);
+    return valueUnquoted;
+  }
+  function valueQuotedStart(code2) {
+    if (code2 === marker) {
+      effects.enter(attributeValueMarker);
+      effects.consume(code2);
+      effects.exit(attributeValueMarker);
+      effects.exit(attributeValueLiteralType);
+      effects.exit(attributeType);
+      return valueQuotedAfter;
+    }
+    effects.enter(attributeValueType);
+    return valueQuotedBetween(code2);
+  }
+  function valueQuotedBetween(code2) {
+    if (code2 === marker) {
+      effects.exit(attributeValueType);
+      return valueQuotedStart(code2);
+    }
+    if (code2 === null) {
+      return nok(code2);
+    }
+    if (markdownLineEnding(code2)) {
+      return disallowEol ? nok(code2) : factoryWhitespace(effects, valueQuotedBetween)(code2);
+    }
+    effects.enter(attributeValueData);
+    effects.consume(code2);
+    return valueQuoted;
+  }
+  function valueQuoted(code2) {
+    if (code2 === marker || code2 === null || markdownLineEnding(code2)) {
+      effects.exit(attributeValueData);
+      return valueQuotedBetween(code2);
+    }
+    effects.consume(code2);
+    return valueQuoted;
+  }
+  function valueQuotedAfter(code2) {
+    return code2 === 125 || markdownLineEndingOrSpace(code2) ? between(code2) : end(code2);
+  }
+  function end(code2) {
+    if (code2 === 125) {
+      effects.enter(attributesMarkerType);
+      effects.consume(code2);
+      effects.exit(attributesMarkerType);
+      effects.exit(attributesType);
+      return ok;
+    }
+    return nok(code2);
+  }
+}
+function factoryLabel(effects, ok, nok, type, markerType, stringType, disallowEol) {
+  let size2 = 0;
+  let balance = 0;
+  let previous2;
+  return start;
+  function start(code2) {
+    effects.enter(type);
+    effects.enter(markerType);
+    effects.consume(code2);
+    effects.exit(markerType);
+    return afterStart;
+  }
+  function afterStart(code2) {
+    if (code2 === 93) {
+      effects.enter(markerType);
+      effects.consume(code2);
+      effects.exit(markerType);
+      effects.exit(type);
+      return ok;
+    }
+    effects.enter(stringType);
+    return lineStart(code2);
+  }
+  function lineStart(code2) {
+    if (code2 === 93 && !balance) {
+      return atClosingBrace(code2);
+    }
+    const token = effects.enter("chunkText", {
+      contentType: "text",
+      previous: previous2
+    });
+    if (previous2)
+      previous2.next = token;
+    previous2 = token;
+    return data(code2);
+  }
+  function data(code2) {
+    if (code2 === null || size2 > 999) {
+      return nok(code2);
+    }
+    if (code2 === 91 && ++balance > 32) {
+      return nok(code2);
+    }
+    if (code2 === 93 && !balance--) {
+      effects.exit("chunkText");
+      return atClosingBrace(code2);
+    }
+    if (markdownLineEnding(code2)) {
+      if (disallowEol) {
+        return nok(code2);
+      }
+      effects.consume(code2);
+      effects.exit("chunkText");
+      return lineStart;
+    }
+    effects.consume(code2);
+    return code2 === 92 ? dataEscape : data;
+  }
+  function dataEscape(code2) {
+    if (code2 === 91 || code2 === 92 || code2 === 93) {
+      effects.consume(code2);
+      size2++;
+      return data;
+    }
+    return data(code2);
+  }
+  function atClosingBrace(code2) {
+    effects.exit(stringType);
+    effects.enter(markerType);
+    effects.consume(code2);
+    effects.exit(markerType);
+    effects.exit(type);
+    return ok;
+  }
+}
+function factoryName(effects, ok, nok, type) {
+  const self2 = this;
+  return start;
+  function start(code2) {
+    if (asciiAlpha(code2)) {
+      effects.enter(type);
+      effects.consume(code2);
+      return name;
+    }
+    return nok(code2);
+  }
+  function name(code2) {
+    if (code2 === 45 || code2 === 95 || asciiAlphanumeric(code2)) {
+      effects.consume(code2);
+      return name;
+    }
+    effects.exit(type);
+    return self2.previous === 45 || self2.previous === 95 ? nok(code2) : ok(code2);
+  }
+}
+const directiveContainer = {
+  tokenize: tokenizeDirectiveContainer,
+  concrete: true
+};
+const label$2 = {
+  tokenize: tokenizeLabel$2,
+  partial: true
+};
+const attributes$2 = {
+  tokenize: tokenizeAttributes$2,
+  partial: true
+};
+const nonLazyLine = {
+  tokenize: tokenizeNonLazyLine,
+  partial: true
+};
+function tokenizeDirectiveContainer(effects, ok, nok) {
+  const self2 = this;
+  const tail = self2.events[self2.events.length - 1];
+  const initialSize = tail && tail[1].type === "linePrefix" ? tail[2].sliceSerialize(tail[1], true).length : 0;
+  let sizeOpen = 0;
+  let previous2;
+  return start;
+  function start(code2) {
+    effects.enter("directiveContainer");
+    effects.enter("directiveContainerFence");
+    effects.enter("directiveContainerSequence");
+    return sequenceOpen(code2);
+  }
+  function sequenceOpen(code2) {
+    if (code2 === 58) {
+      effects.consume(code2);
+      sizeOpen++;
+      return sequenceOpen;
+    }
+    if (sizeOpen < 3) {
+      return nok(code2);
+    }
+    effects.exit("directiveContainerSequence");
+    return factoryName.call(
+      self2,
+      effects,
+      afterName,
+      nok,
+      "directiveContainerName"
+    )(code2);
+  }
+  function afterName(code2) {
+    return code2 === 91 ? effects.attempt(label$2, afterLabel, afterLabel)(code2) : afterLabel(code2);
+  }
+  function afterLabel(code2) {
+    return code2 === 123 ? effects.attempt(attributes$2, afterAttributes, afterAttributes)(code2) : afterAttributes(code2);
+  }
+  function afterAttributes(code2) {
+    return factorySpace(effects, openAfter, "whitespace")(code2);
+  }
+  function openAfter(code2) {
+    effects.exit("directiveContainerFence");
+    if (code2 === null) {
+      return afterOpening(code2);
+    }
+    if (markdownLineEnding(code2)) {
+      if (self2.interrupt) {
+        return ok(code2);
+      }
+      return effects.attempt(nonLazyLine, contentStart, afterOpening)(code2);
+    }
+    return nok(code2);
+  }
+  function afterOpening(code2) {
+    effects.exit("directiveContainer");
+    return ok(code2);
+  }
+  function contentStart(code2) {
+    if (code2 === null) {
+      effects.exit("directiveContainer");
+      return ok(code2);
+    }
+    effects.enter("directiveContainerContent");
+    return lineStart(code2);
+  }
+  function lineStart(code2) {
+    if (code2 === null) {
+      return after(code2);
+    }
+    return effects.attempt(
+      {
+        tokenize: tokenizeClosingFence,
+        partial: true
+      },
+      after,
+      initialSize ? factorySpace(effects, chunkStart, "linePrefix", initialSize + 1) : chunkStart
+    )(code2);
+  }
+  function chunkStart(code2) {
+    if (code2 === null) {
+      return after(code2);
+    }
+    const token = effects.enter("chunkDocument", {
+      contentType: "document",
+      previous: previous2
+    });
+    if (previous2)
+      previous2.next = token;
+    previous2 = token;
+    return contentContinue(code2);
+  }
+  function contentContinue(code2) {
+    if (code2 === null) {
+      const t = effects.exit("chunkDocument");
+      self2.parser.lazy[t.start.line] = false;
+      return after(code2);
+    }
+    if (markdownLineEnding(code2)) {
+      return effects.check(nonLazyLine, nonLazyLineAfter, lineAfter)(code2);
+    }
+    effects.consume(code2);
+    return contentContinue;
+  }
+  function nonLazyLineAfter(code2) {
+    effects.consume(code2);
+    const t = effects.exit("chunkDocument");
+    self2.parser.lazy[t.start.line] = false;
+    return lineStart;
+  }
+  function lineAfter(code2) {
+    const t = effects.exit("chunkDocument");
+    self2.parser.lazy[t.start.line] = false;
+    return after(code2);
+  }
+  function after(code2) {
+    effects.exit("directiveContainerContent");
+    effects.exit("directiveContainer");
+    return ok(code2);
+  }
+  function tokenizeClosingFence(effects2, ok2, nok2) {
+    let size2 = 0;
+    return factorySpace(effects2, closingPrefixAfter, "linePrefix", 4);
+    function closingPrefixAfter(code2) {
+      effects2.enter("directiveContainerFence");
+      effects2.enter("directiveContainerSequence");
+      return closingSequence(code2);
+    }
+    function closingSequence(code2) {
+      if (code2 === 58) {
+        effects2.consume(code2);
+        size2++;
+        return closingSequence;
+      }
+      if (size2 < sizeOpen)
+        return nok2(code2);
+      effects2.exit("directiveContainerSequence");
+      return factorySpace(effects2, closingSequenceEnd, "whitespace")(code2);
+    }
+    function closingSequenceEnd(code2) {
+      if (code2 === null || markdownLineEnding(code2)) {
+        effects2.exit("directiveContainerFence");
+        return ok2(code2);
+      }
+      return nok2(code2);
+    }
+  }
+}
+function tokenizeLabel$2(effects, ok, nok) {
+  return factoryLabel(
+    effects,
+    ok,
+    nok,
+    "directiveContainerLabel",
+    "directiveContainerLabelMarker",
+    "directiveContainerLabelString",
+    true
+  );
+}
+function tokenizeAttributes$2(effects, ok, nok) {
+  return factoryAttributes(
+    effects,
+    ok,
+    nok,
+    "directiveContainerAttributes",
+    "directiveContainerAttributesMarker",
+    "directiveContainerAttribute",
+    "directiveContainerAttributeId",
+    "directiveContainerAttributeClass",
+    "directiveContainerAttributeName",
+    "directiveContainerAttributeInitializerMarker",
+    "directiveContainerAttributeValueLiteral",
+    "directiveContainerAttributeValue",
+    "directiveContainerAttributeValueMarker",
+    "directiveContainerAttributeValueData",
+    true
+  );
+}
+function tokenizeNonLazyLine(effects, ok, nok) {
+  const self2 = this;
+  return start;
+  function start(code2) {
+    effects.enter("lineEnding");
+    effects.consume(code2);
+    effects.exit("lineEnding");
+    return lineStart;
+  }
+  function lineStart(code2) {
+    return self2.parser.lazy[self2.now().line] ? nok(code2) : ok(code2);
+  }
+}
+const directiveLeaf = {
+  tokenize: tokenizeDirectiveLeaf
+};
+const label$1 = {
+  tokenize: tokenizeLabel$1,
+  partial: true
+};
+const attributes$1 = {
+  tokenize: tokenizeAttributes$1,
+  partial: true
+};
+function tokenizeDirectiveLeaf(effects, ok, nok) {
+  const self2 = this;
+  return start;
+  function start(code2) {
+    effects.enter("directiveLeaf");
+    effects.enter("directiveLeafSequence");
+    effects.consume(code2);
+    return inStart;
+  }
+  function inStart(code2) {
+    if (code2 === 58) {
+      effects.consume(code2);
+      effects.exit("directiveLeafSequence");
+      return factoryName.call(
+        self2,
+        effects,
+        afterName,
+        nok,
+        "directiveLeafName"
+      );
+    }
+    return nok(code2);
+  }
+  function afterName(code2) {
+    return code2 === 91 ? effects.attempt(label$1, afterLabel, afterLabel)(code2) : afterLabel(code2);
+  }
+  function afterLabel(code2) {
+    return code2 === 123 ? effects.attempt(attributes$1, afterAttributes, afterAttributes)(code2) : afterAttributes(code2);
+  }
+  function afterAttributes(code2) {
+    return factorySpace(effects, end, "whitespace")(code2);
+  }
+  function end(code2) {
+    if (code2 === null || markdownLineEnding(code2)) {
+      effects.exit("directiveLeaf");
+      return ok(code2);
+    }
+    return nok(code2);
+  }
+}
+function tokenizeLabel$1(effects, ok, nok) {
+  return factoryLabel(
+    effects,
+    ok,
+    nok,
+    "directiveLeafLabel",
+    "directiveLeafLabelMarker",
+    "directiveLeafLabelString",
+    true
+  );
+}
+function tokenizeAttributes$1(effects, ok, nok) {
+  return factoryAttributes(
+    effects,
+    ok,
+    nok,
+    "directiveLeafAttributes",
+    "directiveLeafAttributesMarker",
+    "directiveLeafAttribute",
+    "directiveLeafAttributeId",
+    "directiveLeafAttributeClass",
+    "directiveLeafAttributeName",
+    "directiveLeafAttributeInitializerMarker",
+    "directiveLeafAttributeValueLiteral",
+    "directiveLeafAttributeValue",
+    "directiveLeafAttributeValueMarker",
+    "directiveLeafAttributeValueData",
+    true
+  );
+}
+const directiveText = {
+  tokenize: tokenizeDirectiveText,
+  previous
+};
+const label = {
+  tokenize: tokenizeLabel,
+  partial: true
+};
+const attributes = {
+  tokenize: tokenizeAttributes,
+  partial: true
+};
+function previous(code2) {
+  return code2 !== 58 || this.events[this.events.length - 1][1].type === "characterEscape";
+}
+function tokenizeDirectiveText(effects, ok, nok) {
+  const self2 = this;
+  return start;
+  function start(code2) {
+    effects.enter("directiveText");
+    effects.enter("directiveTextMarker");
+    effects.consume(code2);
+    effects.exit("directiveTextMarker");
+    return factoryName.call(self2, effects, afterName, nok, "directiveTextName");
+  }
+  function afterName(code2) {
+    return code2 === 58 ? nok(code2) : code2 === 91 ? effects.attempt(label, afterLabel, afterLabel)(code2) : afterLabel(code2);
+  }
+  function afterLabel(code2) {
+    return code2 === 123 ? effects.attempt(attributes, afterAttributes, afterAttributes)(code2) : afterAttributes(code2);
+  }
+  function afterAttributes(code2) {
+    effects.exit("directiveText");
+    return ok(code2);
+  }
+}
+function tokenizeLabel(effects, ok, nok) {
+  return factoryLabel(
+    effects,
+    ok,
+    nok,
+    "directiveTextLabel",
+    "directiveTextLabelMarker",
+    "directiveTextLabelString"
+  );
+}
+function tokenizeAttributes(effects, ok, nok) {
+  return factoryAttributes(
+    effects,
+    ok,
+    nok,
+    "directiveTextAttributes",
+    "directiveTextAttributesMarker",
+    "directiveTextAttribute",
+    "directiveTextAttributeId",
+    "directiveTextAttributeClass",
+    "directiveTextAttributeName",
+    "directiveTextAttributeInitializerMarker",
+    "directiveTextAttributeValueLiteral",
+    "directiveTextAttributeValue",
+    "directiveTextAttributeValueMarker",
+    "directiveTextAttributeValueData"
+  );
+}
+function directive$1() {
+  return {
+    text: {
+      [58]: directiveText
+    },
+    flow: {
+      [58]: [directiveContainer, directiveLeaf]
+    }
+  };
+}
+const characterEntitiesLegacy = [
+  "AElig",
+  "AMP",
+  "Aacute",
+  "Acirc",
+  "Agrave",
+  "Aring",
+  "Atilde",
+  "Auml",
+  "COPY",
+  "Ccedil",
+  "ETH",
+  "Eacute",
+  "Ecirc",
+  "Egrave",
+  "Euml",
+  "GT",
+  "Iacute",
+  "Icirc",
+  "Igrave",
+  "Iuml",
+  "LT",
+  "Ntilde",
+  "Oacute",
+  "Ocirc",
+  "Ograve",
+  "Oslash",
+  "Otilde",
+  "Ouml",
+  "QUOT",
+  "REG",
+  "THORN",
+  "Uacute",
+  "Ucirc",
+  "Ugrave",
+  "Uuml",
+  "Yacute",
+  "aacute",
+  "acirc",
+  "acute",
+  "aelig",
+  "agrave",
+  "amp",
+  "aring",
+  "atilde",
+  "auml",
+  "brvbar",
+  "ccedil",
+  "cedil",
+  "cent",
+  "copy",
+  "curren",
+  "deg",
+  "divide",
+  "eacute",
+  "ecirc",
+  "egrave",
+  "eth",
+  "euml",
+  "frac12",
+  "frac14",
+  "frac34",
+  "gt",
+  "iacute",
+  "icirc",
+  "iexcl",
+  "igrave",
+  "iquest",
+  "iuml",
+  "laquo",
+  "lt",
+  "macr",
+  "micro",
+  "middot",
+  "nbsp",
+  "not",
+  "ntilde",
+  "oacute",
+  "ocirc",
+  "ograve",
+  "ordf",
+  "ordm",
+  "oslash",
+  "otilde",
+  "ouml",
+  "para",
+  "plusmn",
+  "pound",
+  "quot",
+  "raquo",
+  "reg",
+  "sect",
+  "shy",
+  "sup1",
+  "sup2",
+  "sup3",
+  "szlig",
+  "thorn",
+  "times",
+  "uacute",
+  "ucirc",
+  "ugrave",
+  "uml",
+  "uuml",
+  "yacute",
+  "yen",
+  "yuml"
+];
+const characterReferenceInvalid = {
+  0: "\uFFFD",
+  128: "\u20AC",
+  130: "\u201A",
+  131: "\u0192",
+  132: "\u201E",
+  133: "\u2026",
+  134: "\u2020",
+  135: "\u2021",
+  136: "\u02C6",
+  137: "\u2030",
+  138: "\u0160",
+  139: "\u2039",
+  140: "\u0152",
+  142: "\u017D",
+  145: "\u2018",
+  146: "\u2019",
+  147: "\u201C",
+  148: "\u201D",
+  149: "\u2022",
+  150: "\u2013",
+  151: "\u2014",
+  152: "\u02DC",
+  153: "\u2122",
+  154: "\u0161",
+  155: "\u203A",
+  156: "\u0153",
+  158: "\u017E",
+  159: "\u0178"
+};
+function isDecimal(character) {
+  const code2 = typeof character === "string" ? character.charCodeAt(0) : character;
+  return code2 >= 48 && code2 <= 57;
+}
+function isHexadecimal(character) {
+  const code2 = typeof character === "string" ? character.charCodeAt(0) : character;
+  return code2 >= 97 && code2 <= 102 || code2 >= 65 && code2 <= 70 || code2 >= 48 && code2 <= 57;
+}
+function isAlphabetical(character) {
+  const code2 = typeof character === "string" ? character.charCodeAt(0) : character;
+  return code2 >= 97 && code2 <= 122 || code2 >= 65 && code2 <= 90;
+}
+function isAlphanumerical(character) {
+  return isAlphabetical(character) || isDecimal(character);
+}
+const fromCharCode = String.fromCharCode;
+const messages = [
+  "",
+  "Named character references must be terminated by a semicolon",
+  "Numeric character references must be terminated by a semicolon",
+  "Named character references cannot be empty",
+  "Numeric character references cannot be empty",
+  "Named character references must be known",
+  "Numeric character references cannot be disallowed",
+  "Numeric character references cannot be outside the permissible Unicode range"
+];
+function parseEntities(value, options = {}) {
+  const additional = typeof options.additional === "string" ? options.additional.charCodeAt(0) : options.additional;
+  const result = [];
+  let index = 0;
+  let lines = -1;
+  let queue2 = "";
+  let point;
+  let indent2;
+  if (options.position) {
+    if ("start" in options.position || "indent" in options.position) {
+      indent2 = options.position.indent;
+      point = options.position.start;
+    } else {
+      point = options.position;
+    }
+  }
+  let line = (point ? point.line : 0) || 1;
+  let column = (point ? point.column : 0) || 1;
+  let previous2 = now();
+  let character;
+  index--;
+  while (++index <= value.length) {
+    if (character === 10) {
+      column = (indent2 ? indent2[lines] : 0) || 1;
+    }
+    character = value.charCodeAt(index);
+    if (character === 38) {
+      const following = value.charCodeAt(index + 1);
+      if (following === 9 || following === 10 || following === 12 || following === 32 || following === 38 || following === 60 || Number.isNaN(following) || additional && following === additional) {
+        queue2 += fromCharCode(character);
+        column++;
+        continue;
+      }
+      const start = index + 1;
+      let begin = start;
+      let end = start;
+      let type;
+      if (following === 35) {
+        end = ++begin;
+        const following2 = value.charCodeAt(end);
+        if (following2 === 88 || following2 === 120) {
+          type = "hexadecimal";
+          end = ++begin;
+        } else {
+          type = "decimal";
+        }
+      } else {
+        type = "named";
+      }
+      let characterReferenceCharacters = "";
+      let characterReference2 = "";
+      let characters = "";
+      const test = type === "named" ? isAlphanumerical : type === "decimal" ? isDecimal : isHexadecimal;
+      end--;
+      while (++end <= value.length) {
+        const following2 = value.charCodeAt(end);
+        if (!test(following2)) {
+          break;
+        }
+        characters += fromCharCode(following2);
+        if (type === "named" && characterEntitiesLegacy.includes(characters)) {
+          characterReferenceCharacters = characters;
+          characterReference2 = decodeNamedCharacterReference(characters);
+        }
+      }
+      let terminated = value.charCodeAt(end) === 59;
+      if (terminated) {
+        end++;
+        const namedReference = type === "named" ? decodeNamedCharacterReference(characters) : false;
+        if (namedReference) {
+          characterReferenceCharacters = characters;
+          characterReference2 = namedReference;
+        }
+      }
+      let diff = 1 + end - start;
+      let reference = "";
+      if (!terminated && options.nonTerminated === false)
+        ;
+      else if (!characters) {
+        if (type !== "named") {
+          warning(4, diff);
+        }
+      } else if (type === "named") {
+        if (terminated && !characterReference2) {
+          warning(5, 1);
+        } else {
+          if (characterReferenceCharacters !== characters) {
+            end = begin + characterReferenceCharacters.length;
+            diff = 1 + end - begin;
+            terminated = false;
+          }
+          if (!terminated) {
+            const reason = characterReferenceCharacters ? 1 : 3;
+            if (options.attribute) {
+              const following2 = value.charCodeAt(end);
+              if (following2 === 61) {
+                warning(reason, diff);
+                characterReference2 = "";
+              } else if (isAlphanumerical(following2)) {
+                characterReference2 = "";
+              } else {
+                warning(reason, diff);
+              }
+            } else {
+              warning(reason, diff);
+            }
+          }
+        }
+        reference = characterReference2;
+      } else {
+        if (!terminated) {
+          warning(2, diff);
+        }
+        let referenceCode = Number.parseInt(
+          characters,
+          type === "hexadecimal" ? 16 : 10
+        );
+        if (prohibited(referenceCode)) {
+          warning(7, diff);
+          reference = fromCharCode(65533);
+        } else if (referenceCode in characterReferenceInvalid) {
+          warning(6, diff);
+          reference = characterReferenceInvalid[referenceCode];
+        } else {
+          let output = "";
+          if (disallowed(referenceCode)) {
+            warning(6, diff);
+          }
+          if (referenceCode > 65535) {
+            referenceCode -= 65536;
+            output += fromCharCode(referenceCode >>> (10 & 1023) | 55296);
+            referenceCode = 56320 | referenceCode & 1023;
+          }
+          reference = output + fromCharCode(referenceCode);
+        }
+      }
+      if (reference) {
+        flush2();
+        previous2 = now();
+        index = end - 1;
+        column += end - start + 1;
+        result.push(reference);
+        const next = now();
+        next.offset++;
+        if (options.reference) {
+          options.reference.call(
+            options.referenceContext,
+            reference,
+            { start: previous2, end: next },
+            value.slice(start - 1, end)
+          );
+        }
+        previous2 = next;
+      } else {
+        characters = value.slice(start - 1, end);
+        queue2 += characters;
+        column += characters.length;
+        index = end - 1;
+      }
+    } else {
+      if (character === 10) {
+        line++;
+        lines++;
+        column = 0;
+      }
+      if (Number.isNaN(character)) {
+        flush2();
+      } else {
+        queue2 += fromCharCode(character);
+        column++;
+      }
+    }
+  }
+  return result.join("");
+  function now() {
+    return {
+      line,
+      column,
+      offset: index + ((point ? point.offset : 0) || 0)
+    };
+  }
+  function warning(code2, offset) {
+    let position;
+    if (options.warning) {
+      position = now();
+      position.column += offset;
+      position.offset += offset;
+      options.warning.call(
+        options.warningContext,
+        messages[code2],
+        position,
+        code2
+      );
+    }
+  }
+  function flush2() {
+    if (queue2) {
+      result.push(queue2);
+      if (options.text) {
+        options.text.call(options.textContext, queue2, {
+          start: previous2,
+          end: now()
+        });
+      }
+      queue2 = "";
+    }
+  }
+}
+function prohibited(code2) {
+  return code2 >= 55296 && code2 <= 57343 || code2 > 1114111;
+}
+function disallowed(code2) {
+  return code2 >= 1 && code2 <= 8 || code2 === 11 || code2 >= 13 && code2 <= 31 || code2 >= 127 && code2 <= 159 || code2 >= 64976 && code2 <= 65007 || (code2 & 65535) === 65535 || (code2 & 65535) === 65534;
+}
+const own = {}.hasOwnProperty;
+function directiveHtml(options) {
+  const options_ = options || {};
+  return {
+    enter: {
+      directiveContainer() {
+        enter.call(this, "containerDirective");
+      },
+      directiveContainerAttributes: enterAttributes,
+      directiveContainerLabel: enterLabel,
+      directiveContainerContent() {
+        this.buffer();
+      },
+      directiveLeaf() {
+        enter.call(this, "leafDirective");
+      },
+      directiveLeafAttributes: enterAttributes,
+      directiveLeafLabel: enterLabel,
+      directiveText() {
+        enter.call(this, "textDirective");
+      },
+      directiveTextAttributes: enterAttributes,
+      directiveTextLabel: enterLabel
+    },
+    exit: {
+      directiveContainer: exit2,
+      directiveContainerAttributeClassValue: exitAttributeClassValue,
+      directiveContainerAttributeIdValue: exitAttributeIdValue,
+      directiveContainerAttributeName: exitAttributeName,
+      directiveContainerAttributeValue: exitAttributeValue,
+      directiveContainerAttributes: exitAttributes,
+      directiveContainerContent: exitContainerContent,
+      directiveContainerFence: exitContainerFence,
+      directiveContainerLabel: exitLabel,
+      directiveContainerName: exitName,
+      directiveLeaf: exit2,
+      directiveLeafAttributeClassValue: exitAttributeClassValue,
+      directiveLeafAttributeIdValue: exitAttributeIdValue,
+      directiveLeafAttributeName: exitAttributeName,
+      directiveLeafAttributeValue: exitAttributeValue,
+      directiveLeafAttributes: exitAttributes,
+      directiveLeafLabel: exitLabel,
+      directiveLeafName: exitName,
+      directiveText: exit2,
+      directiveTextAttributeClassValue: exitAttributeClassValue,
+      directiveTextAttributeIdValue: exitAttributeIdValue,
+      directiveTextAttributeName: exitAttributeName,
+      directiveTextAttributeValue: exitAttributeValue,
+      directiveTextAttributes: exitAttributes,
+      directiveTextLabel: exitLabel,
+      directiveTextName: exitName
+    }
+  };
+  function enter(type) {
+    let stack = this.getData("directiveStack");
+    if (!stack)
+      this.setData("directiveStack", stack = []);
+    stack.push({
+      type,
+      name: ""
+    });
+  }
+  function exitName(token) {
+    const stack = this.getData("directiveStack");
+    stack[stack.length - 1].name = this.sliceSerialize(token);
+  }
+  function enterLabel() {
+    this.buffer();
+  }
+  function exitLabel() {
+    const data = this.resume();
+    const stack = this.getData("directiveStack");
+    stack[stack.length - 1].label = data;
+  }
+  function enterAttributes() {
+    this.buffer();
+    this.setData("directiveAttributes", []);
+  }
+  function exitAttributeIdValue(token) {
+    const attributes2 = this.getData("directiveAttributes");
+    attributes2.push([
+      "id",
+      parseEntities(this.sliceSerialize(token), {
+        attribute: true
+      })
+    ]);
+  }
+  function exitAttributeClassValue(token) {
+    const attributes2 = this.getData("directiveAttributes");
+    attributes2.push([
+      "class",
+      parseEntities(this.sliceSerialize(token), {
+        attribute: true
+      })
+    ]);
+  }
+  function exitAttributeName(token) {
+    const attributes2 = this.getData("directiveAttributes");
+    attributes2.push([this.sliceSerialize(token), ""]);
+  }
+  function exitAttributeValue(token) {
+    const attributes2 = this.getData("directiveAttributes");
+    attributes2[attributes2.length - 1][1] = parseEntities(
+      this.sliceSerialize(token),
+      {
+        attribute: true
+      }
+    );
+  }
+  function exitAttributes() {
+    const stack = this.getData("directiveStack");
+    const attributes2 = this.getData("directiveAttributes");
+    const cleaned = {};
+    let index = -1;
+    while (++index < attributes2.length) {
+      const attribute = attributes2[index];
+      if (attribute[0] === "class" && cleaned.class) {
+        cleaned.class += " " + attribute[1];
+      } else {
+        cleaned[attribute[0]] = attribute[1];
+      }
+    }
+    this.resume();
+    this.setData("directiveAttributes");
+    stack[stack.length - 1].attributes = cleaned;
+  }
+  function exitContainerContent() {
+    const data = this.resume();
+    const stack = this.getData("directiveStack");
+    stack[stack.length - 1].content = data;
+  }
+  function exitContainerFence() {
+    const stack = this.getData("directiveStack");
+    const directive2 = stack[stack.length - 1];
+    if (!directive2._fenceCount)
+      directive2._fenceCount = 0;
+    directive2._fenceCount++;
+    if (directive2._fenceCount === 1)
+      this.setData("slurpOneLineEnding", true);
+  }
+  function exit2() {
+    const stack = this.getData("directiveStack");
+    const directive2 = stack.pop();
+    let found;
+    let result;
+    if (own.call(options_, directive2.name)) {
+      result = options_[directive2.name].call(this, directive2);
+      found = result !== false;
+    }
+    if (!found && own.call(options_, "*")) {
+      result = options_["*"].call(this, directive2);
+      found = result !== false;
+    }
+    if (!found && directive2.type !== "textDirective") {
+      this.setData("slurpOneLineEnding", true);
+    }
+  }
+}
 var markdown = (text2, { textFormatting }) => {
   if (textFormatting) {
     let gfmDisabled = [];
@@ -11925,12 +13151,14 @@ var markdown = (text2, { textFormatting }) => {
             disable: { null: gfmDisabled }
           },
           underline,
-          usertag
+          usertag,
+          directive$1()
         ],
         htmlExtensions: [
           gfmHtml(),
           underlineHtml,
-          usertagHtml(textFormatting.users)
+          usertagHtml(textFormatting.users),
+          directiveHtml({ rainbow, blink, red, gold, silver, bronze, shake })
         ]
       }
     );
@@ -11958,6 +13186,62 @@ var markdown = (text2, { textFormatting }) => {
     }
   ];
 };
+function rainbow(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span class="vac-effects-rainbow">');
+  this.raw(this.encode(d.label));
+  this.tag("</span>");
+}
+function blink(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span class="vac-effects-blink">');
+  this.raw(this.encode(d.label));
+  this.tag("</span>");
+}
+function red(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span style="color: red">');
+  this.raw(this.encode(d.label));
+  this.tag("</span>");
+}
+function gold(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span class="vac-effects-gold">');
+  this.raw(this.encode(d.label));
+  this.tag("</span>");
+}
+function silver(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span class="vac-effects-silver">');
+  this.raw(this.encode(d.label));
+  this.tag("</span>");
+}
+function bronze(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span class="vac-effects-bronze">');
+  this.raw(this.encode(d.label));
+  this.tag("</span>");
+}
+function shake(d) {
+  if (d.type !== "textDirective")
+    return false;
+  this.tag('<span class="vac-effects-shake">');
+  const encodedText = this.encode(d.label);
+  for (let i = 0; i < encodedText.length; i++) {
+    const letter = encodedText.charAt(i);
+    const delay = (-Math.random()).toString();
+    this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">');
+    this.raw(letter === " " ? "<pre>  </pre>" : letter);
+    this.tag("</span>");
+  }
+  this.tag("</span>");
+}
 const IMAGE_TYPES = ["png", "jpg", "jpeg", "webp", "svg", "gif"];
 const VIDEO_TYPES = ["mp4", "video/ogg", "webm", "quicktime"];
 const AUDIO_TYPES = ["mp3", "audio/ogg", "wav", "mpeg"];
@@ -14641,7 +15925,7 @@ function create_fragment(ctx) {
   let input_placeholder_value;
   let input_aria_expanded_value;
   let input_aria_activedescendant_value;
-  let label;
+  let label2;
   let t0_value = ctx[0].searchLabel + "";
   let t0;
   let span0;
@@ -14723,7 +16007,7 @@ function create_fragment(ctx) {
       div4 = element("div");
       div1 = element("div");
       input = element("input");
-      label = element("label");
+      label2 = element("label");
       t0 = text(t0_value);
       span0 = element("span");
       t1 = text(t1_value);
@@ -14770,8 +16054,8 @@ function create_fragment(ctx) {
       attr(input, "aria-describedby", "search-description");
       attr(input, "aria-autocomplete", "list");
       attr(input, "aria-activedescendant", input_aria_activedescendant_value = ctx[26] ? `emo-${ctx[26]}` : "");
-      attr(label, "class", "sr-only");
-      attr(label, "for", "search");
+      attr(label2, "class", "sr-only");
+      attr(label2, "for", "search");
       attr(span0, "id", "search-description");
       attr(span0, "class", "sr-only");
       attr(div1, "class", "search-wrapper");
@@ -14827,8 +16111,8 @@ function create_fragment(ctx) {
       append(div4, div1);
       append(div1, input);
       set_input_value(input, ctx[2]);
-      append(div1, label);
-      append(label, t0);
+      append(div1, label2);
+      append(label2, t0);
       append(div1, span0);
       append(span0, t1);
       append(div4, div2);
@@ -34980,7 +36264,7 @@ const cssThemeVars = ({
     "--chat-icon-color-audio-confirm": icons.audioConfirm
   };
 };
-var _style_0 = '.vac-fade-spinner-enter-from{opacity:0}.vac-fade-spinner-enter-active{transition:opacity .8s}.vac-fade-spinner-leave-active{transition:opacity .2s;opacity:0}.vac-fade-image-enter-from{opacity:0}.vac-fade-image-enter-active{transition:opacity 1s}.vac-fade-image-leave-active{transition:opacity .5s;opacity:0}.vac-fade-message-enter-from{opacity:0}.vac-fade-message-enter-active{transition:opacity .5s}.vac-fade-message-leave-active{transition:opacity .2s;opacity:0}.vac-slide-left-enter-active,.vac-slide-right-enter-active{transition:all .3s ease;transition-property:transform,opacity}.vac-slide-left-leave-active,.vac-slide-right-leave-active{transition:all .2s cubic-bezier(1,.5,.8,1)!important;transition-property:transform,opacity}.vac-slide-left-enter-from,.vac-slide-left-leave-to{transform:translate(10px);opacity:0}.vac-slide-right-enter-from,.vac-slide-right-leave-to{transform:translate(-10px);opacity:0}.vac-slide-up-enter-active{transition:all .3s ease}.vac-slide-up-leave-active{transition:all .2s cubic-bezier(1,.5,.8,1)}.vac-slide-up-enter-from,.vac-slide-up-leave-to{transform:translateY(10px);opacity:0}.vac-bounce-enter-active{animation:vac-bounce-in .5s}.vac-bounce-leave-active{animation:vac-bounce-in .3s reverse}@keyframes vac-bounce-in{0%{transform:scale(0)}50%{transform:scale(1.05)}to{transform:scale(1)}}.vac-fade-preview-enter{opacity:0}.vac-fade-preview-enter-active{transition:opacity .1s}.vac-fade-preview-leave-active{transition:opacity .2s;opacity:0}.vac-bounce-preview-enter-active{animation:vac-bounce-image-in .4s}.vac-bounce-preview-leave-active{animation:vac-bounce-image-in .3s reverse}@keyframes vac-bounce-image-in{0%{transform:scale(.6)}to{transform:scale(1)}}.vac-menu-list{border-radius:4px;display:block;cursor:pointer;background:var(--chat-dropdown-bg-color);padding:6px 0}.vac-menu-list :hover{background:var(--chat-dropdown-bg-color-hover);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-menu-list :not(:hover){transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-menu-item{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1 1 100%;flex:1 1 100%;min-height:30px;padding:5px 16px;position:relative;white-space:nowrap;line-height:30px}.vac-menu-options{position:absolute;right:10px;top:20px;z-index:9999;min-width:150px;display:inline-block;border-radius:4px;font-size:14px;color:var(--chat-color);overflow-y:auto;overflow-x:hidden;contain:content;box-shadow:0 2px 2px -4px #0000001a,0 2px 2px 1px #0000001f,0 1px 8px 1px #0000001f}.vac-app-border{border:var(--chat-border-style)}.vac-app-border-t{border-top:var(--chat-border-style)}.vac-app-border-r{border-right:var(--chat-border-style)}.vac-app-border-b{border-bottom:var(--chat-border-style)}.vac-app-box-shadow{transition:all .5s;box-shadow:0 2px 2px -4px #0000001a,0 2px 2px 1px #0000001f,0 1px 8px 1px #0000001f}.vac-item-clickable{cursor:pointer}.vac-vertical-center{display:flex;align-items:center;height:100%}.vac-vertical-center .vac-vertical-container{width:100%;text-align:center}.vac-svg-button{max-height:30px;display:flex;cursor:pointer;transition:all .2s}.vac-svg-button:hover{transform:scale(1.1);opacity:.7}.vac-avatar{background-size:cover;background-position:center center;background-repeat:no-repeat;background-color:#ddd;height:42px;width:42px;min-height:42px;min-width:42px;margin-right:15px;border-radius:50%}.vac-blur-loading{filter:blur(3px)}.vac-badge-counter{height:13px;width:auto;min-width:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:3px;font-size:11px;font-weight:500}.vac-text-ellipsis{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vac-text-tag{color:var(--chat-message-color-tag);cursor:pointer}.vac-file-container{display:flex;align-content:center;justify-content:center;flex-wrap:wrap;text-align:center;background:var(--chat-bg-color-input);border:var(--chat-border-style-input);border-radius:4px;padding:10px}.vac-file-container svg{height:28px;width:28px}.vac-file-container .vac-text-extension{font-size:12px;color:var(--chat-message-color-file-extension);margin-top:-2px}.markdown p{margin:0}.markdown ol{display:flex;flex-direction:column;list-style-position:inside}.markdown ul{display:flex;flex-direction:column}.markdown code{display:block;font-size:12px;color:var(--chat-markdown-color-multi);background:var(--chat-markdown-bg);border:1px solid var(--chat-markdown-border);border-radius:3px;margin:4px 0;padding:7px}.markdown p code{display:inline-block;font-size:12px;color:var(--chat-markdown-color);background:var(--chat-markdown-bg);border:1px solid var(--chat-markdown-border);border-radius:3px;margin:2px 0;padding:2px 3px}.markdown img,.markdown p>img{max-width:200px;max-height:200px}.vac-card-window{width:100%;display:block;max-width:100%;background:var(--chat-content-bg-color);color:var(--chat-color);overflow-wrap:break-word;white-space:normal;border:var(--chat-container-border);border-radius:var(--chat-container-border-radius);box-shadow:var(--chat-container-box-shadow);-webkit-tap-highlight-color:transparent}.vac-card-window *{font-family:inherit}.vac-card-window a{color:#0d579c;font-weight:500}.vac-card-window .vac-chat-container{height:100%;display:flex}.vac-card-window .vac-chat-container input{min-width:10px}.vac-card-window .vac-chat-container textarea,.vac-card-window .vac-chat-container input[type=text],.vac-card-window .vac-chat-container input[type=search]{-webkit-appearance:none}.vac-media-preview{position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;display:flex;align-items:center;background-color:#000c;outline:none}.vac-media-preview .vac-media-preview-container{height:calc(100% - 140px);width:calc(100% - 80px);padding:70px 40px;margin:0 auto}.vac-media-preview .vac-image-preview{width:100%;height:100%;background-size:contain;background-repeat:no-repeat;background-position:center}.vac-media-preview video{width:100%;height:100%}.vac-media-preview .vac-svg-button{position:absolute;top:30px;right:30px;transform:scale(1.4)}@media only screen and (max-width: 768px){.vac-media-preview .vac-svg-button{top:20px;right:20px;transform:scale(1.2)}.vac-media-preview .vac-media-preview-container{width:calc(100% - 40px);padding:70px 20px}}.vac-col-messages{position:relative;height:100%;flex:1;overflow:hidden;display:flex;flex-flow:column}.vac-col-messages .vac-container-center{height:100%;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.vac-col-messages .vac-room-empty{font-size:14px;color:#9ca6af;font-style:italic;line-height:20px;white-space:pre-line}.vac-col-messages .vac-room-empty div{padding:0 10%}.vac-col-messages .vac-container-scroll{background:var(--chat-content-bg-color);flex:1;overflow-y:auto;margin-right:1px;margin-top:65px;-webkit-overflow-scrolling:touch}.vac-col-messages .vac-container-scroll.vac-scroll-smooth{scroll-behavior:smooth}.vac-col-messages .vac-messages-container{padding:0 5px 5px}.vac-col-messages .vac-text-started{font-size:14px;color:var(--chat-message-color-started);font-style:italic;text-align:center;margin-top:25px;margin-bottom:20px}.vac-col-messages .vac-icon-scroll{position:absolute;bottom:80px;right:20px;padding:8px;background:var(--chat-bg-scroll-icon);border-radius:50%;box-shadow:0 1px 1px -1px #0003,0 1px 1px #00000024,0 1px 2px #0000001f;display:flex;cursor:pointer;z-index:10}.vac-col-messages .vac-icon-scroll svg{height:25px;width:25px}.vac-col-messages .vac-messages-count{position:absolute;top:-8px;left:11px;background-color:var(--chat-message-bg-color-scroll-counter);color:var(--chat-message-color-scroll-counter)}.vac-col-messages .vac-messages-hidden{opacity:0}@media only screen and (max-width: 768px){.vac-col-messages .vac-container-scroll{margin-top:50px}.vac-col-messages .vac-text-started{margin-top:20px}.vac-col-messages .vac-icon-scroll{bottom:70px}}.vac-room-header{position:absolute;display:flex;align-items:center;height:64px;width:100%;z-index:10;margin-right:1px;background:var(--chat-header-bg-color);border-top-right-radius:var(--chat-container-border-radius)}.vac-room-header .vac-room-wrapper{display:flex;align-items:center;min-width:0;height:100%;width:100%;padding:0 16px}.vac-room-header .vac-toggle-button{margin-right:15px}.vac-room-header .vac-toggle-button svg{height:26px;width:26px}.vac-room-header .vac-rotate-icon{transform:rotate(180deg)!important}.vac-room-header .vac-rotate-icon-init{transform:rotate(360deg)}.vac-room-header .vac-info-wrapper,.vac-room-header .vac-room-selection{display:flex;align-items:center;min-width:0;width:100%;height:100%}.vac-room-header .vac-room-selection .vac-selection-button{padding:8px 16px;color:var(--chat-color-button);background-color:var(--chat-bg-color-button);border-radius:4px;margin-right:10px;cursor:pointer;transition:all .2s}.vac-room-header .vac-room-selection .vac-selection-button:hover{opacity:.7}.vac-room-header .vac-room-selection .vac-selection-button:active{opacity:.9}.vac-room-header .vac-room-selection .vac-selection-button .vac-selection-button-count{margin-left:6px;opacity:.9}.vac-room-header .vac-room-selection .vac-selection-cancel{display:flex;align-items:center;margin-left:auto;white-space:nowrap;color:var(--chat-color-button-clear);transition:all .2s}.vac-room-header .vac-room-selection .vac-selection-cancel:hover{opacity:.7}.vac-room-header .vac-room-name{font-size:17px;font-weight:500;line-height:22px;color:var(--chat-header-color-name)}.vac-room-header .vac-room-info{font-size:13px;line-height:18px;color:var(--chat-header-color-info)}.vac-room-header .vac-room-options{margin-left:auto}@media only screen and (max-width: 768px){.vac-room-header{height:50px}.vac-room-header .vac-room-wrapper{padding:0 10px}.vac-room-header .vac-room-name{font-size:16px;line-height:22px}.vac-room-header .vac-room-info{font-size:12px;line-height:16px}.vac-room-header .vac-avatar{height:37px;width:37px;min-height:37px;min-width:37px}}.vac-room-footer{width:100%;border-bottom-right-radius:4px;z-index:10}.vac-box-footer{display:flex;position:relative;background:var(--chat-footer-bg-color);padding:10px 8px}.vac-textarea{max-height:300px;overflow-y:auto;height:20px;width:100%;line-height:20px;outline:0;resize:none;border-radius:20px;padding:12px 16px;box-sizing:content-box;font-size:16px;background:var(--chat-bg-color-input);color:var(--chat-color);caret-color:var(--chat-color-caret);border:var(--chat-border-style-input)}.vac-textarea::placeholder{color:var(--chat-color-placeholder);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vac-textarea-outline{border:1px solid var(--chat-border-color-input-selected);box-shadow:inset 0 0 0 1px var(--chat-border-color-input-selected)}.vac-icon-textarea,.vac-icon-textarea-left{display:flex;align-items:center}.vac-icon-textarea svg,.vac-icon-textarea .vac-wrapper,.vac-icon-textarea-left svg,.vac-icon-textarea-left .vac-wrapper{margin:0 7px}.vac-icon-textarea{margin-left:5px}.vac-icon-textarea-left{display:flex;align-items:center;margin-right:5px}.vac-icon-textarea-left svg,.vac-icon-textarea-left .vac-wrapper{margin:0 7px}.vac-icon-textarea-left .vac-icon-microphone{fill:var(--chat-icon-color-microphone);margin:0 7px}.vac-icon-textarea-left .vac-dot-audio-record{height:15px;width:15px;border-radius:50%;background-color:var(--chat-message-bg-color-audio-record);animation:vac-scaling .8s ease-in-out infinite alternate}@keyframes vac-scaling{0%{transform:scale(1);opacity:.4}to{transform:scale(1.1);opacity:1}}.vac-icon-textarea-left .vac-dot-audio-record-time{font-size:16px;color:var(--chat-color);margin-left:8px;width:45px}.vac-icon-textarea-left .vac-icon-audio-stop,.vac-icon-textarea-left .vac-icon-audio-confirm{min-height:28px;min-width:28px}.vac-icon-textarea-left .vac-icon-audio-stop svg,.vac-icon-textarea-left .vac-icon-audio-confirm svg{min-height:28px;min-width:28px}.vac-icon-textarea-left .vac-icon-audio-stop{margin-right:20px}.vac-icon-textarea-left .vac-icon-audio-stop #vac-icon-close-outline{fill:var(--chat-icon-color-audio-cancel)}.vac-icon-textarea-left .vac-icon-audio-confirm{margin-right:3px;margin-left:12px}.vac-icon-textarea-left .vac-icon-audio-confirm #vac-icon-checkmark{fill:var(--chat-icon-color-audio-confirm)}.vac-send-disabled,.vac-send-disabled svg{cursor:none!important;pointer-events:none!important;transform:none!important}@media only screen and (max-width: 768px){.vac-room-footer{width:100%}.vac-box-footer{padding:7px 2px 7px 7px}.vac-box-footer.vac-box-footer-border{border-top:var(--chat-border-style-input)}.vac-textarea{padding:7px;line-height:18px}.vac-textarea::placeholder{color:transparent}.vac-icon-textarea svg,.vac-icon-textarea .vac-wrapper,.vac-icon-textarea-left svg,.vac-icon-textarea-left .vac-wrapper{margin:0 5px!important}}@media only screen and (max-height: 768px){.vac-textarea{max-height:120px}}.vac-emojis-container{width:calc(100% - 16px);padding:10px 8px;background:var(--chat-footer-bg-color);display:flex;align-items:center;overflow:auto}.vac-emojis-container .vac-emoji-element{padding:0 8px;font-size:30px;border-radius:4px;cursor:pointer;background:var(--chat-footer-bg-color-tag);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-emojis-container .vac-emoji-element-active{background:var(--chat-footer-bg-color-tag-active)}@media only screen and (max-width: 768px){.vac-emojis-container{width:calc(100% - 10px);padding:7px 5px}.vac-emojis-container .vac-emoji-element{padding:0 7px;font-size:26px}}.vac-reply-container{display:flex;padding:10px 10px 0;background:var(--chat-footer-bg-color);align-items:center;width:calc(100% - 20px)}.vac-reply-container .vac-reply-box{width:100%;overflow:hidden;background:var(--chat-footer-bg-color-reply);border-radius:4px;padding:8px 10px}.vac-reply-container .vac-reply-info{overflow:hidden}.vac-reply-container .vac-reply-username{color:var(--chat-message-color-reply-username);font-size:12px;line-height:15px;margin-bottom:2px}.vac-reply-container .vac-reply-content{font-size:12px;color:var(--chat-message-color-reply-content);white-space:pre-line}.vac-reply-container .vac-icon-reply{margin-left:10px}.vac-reply-container .vac-icon-reply svg{height:20px;width:20px}.vac-reply-container .vac-image-reply{max-height:100px;max-width:200px;margin:4px 10px 0 0;border-radius:4px}.vac-reply-container .vac-audio-reply{margin-right:10px}.vac-reply-container .vac-file-container{max-width:80px}@media only screen and (max-width: 768px){.vac-reply-container{padding:5px 8px;width:calc(100% - 16px)}}.vac-room-files-container{display:flex;align-items:center;padding:10px 6px 0;background:var(--chat-footer-bg-color)}.vac-room-files-container .vac-files-box{display:flex;overflow:auto;width:calc(100% - 30px)}.vac-room-files-container video{height:100px;border:var(--chat-border-style-input);border-radius:4px}.vac-room-files-container .vac-icon-close{margin-left:auto}.vac-room-files-container .vac-icon-close svg{height:20px;width:20px}@media only screen and (max-width: 768px){.vac-files-container{padding:6px 4px 4px 2px}}.vac-room-file-container{display:flex;position:relative;margin:0 4px}.vac-room-file-container .vac-message-image{position:relative;background-color:var(--chat-message-bg-color-image)!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;height:100px;width:100px;border:var(--chat-border-style-input);border-radius:4px}.vac-room-file-container .vac-file-container{height:80px;width:80px}.vac-room-file-container .vac-icon-remove{position:absolute;top:6px;left:6px;z-index:10}.vac-room-file-container .vac-icon-remove svg{height:20px;width:20px;border-radius:50%}.vac-room-file-container .vac-icon-remove:before{content:" ";position:absolute;width:100%;height:100%;background:rgba(0,0,0,.5);border-radius:50%;z-index:-1}.vac-tags-container{display:flex;flex-direction:column;align-items:center;width:100%}.vac-tags-container .vac-tags-box{display:flex;width:100%;height:54px;overflow:hidden;cursor:pointer;background:var(--chat-footer-bg-color-tag);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-tags-container .vac-tags-box-active{background:var(--chat-footer-bg-color-tag-active)}.vac-tags-container .vac-tags-info{display:flex;overflow:hidden;padding:0 20px;align-items:center}.vac-tags-container .vac-tags-avatar{height:34px;width:34px;min-height:34px;min-width:34px}.vac-tags-container .vac-tags-username{font-size:14px}@media only screen and (max-width: 768px){.vac-tags-container .vac-tags-box{height:50px}.vac-tags-container .vac-tags-info{padding:0 12px}}.vac-template-container{display:flex;flex-direction:column;align-items:center;width:100%}.vac-template-container .vac-template-box{display:flex;width:100%;height:54px;overflow:hidden;cursor:pointer;background:var(--chat-footer-bg-color-tag);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-template-container .vac-template-active{background:var(--chat-footer-bg-color-tag-active)}.vac-template-container .vac-template-info{display:flex;overflow:hidden;padding:0 20px;align-items:center}.vac-template-container .vac-template-tag{font-size:14px;font-weight:700;margin-right:10px}.vac-template-container .vac-template-text{font-size:14px}@media only screen and (max-width: 768px){.vac-template-container .vac-template-box{height:50px}.vac-template-container .vac-template-info{padding:0 12px}}.vac-rooms-container{display:flex;flex-flow:column;flex:0 0 25%;min-width:260px;max-width:500px;position:relative;background:var(--chat-sidemenu-bg-color);height:100%;border-top-left-radius:var(--chat-container-border-radius);border-bottom-left-radius:var(--chat-container-border-radius)}.vac-rooms-container.vac-rooms-container-full{flex:0 0 100%;max-width:100%}.vac-rooms-container .vac-rooms-empty{font-size:14px;color:#9ca6af;font-style:italic;text-align:center;margin:40px 0;line-height:20px;white-space:pre-line}.vac-rooms-container .vac-room-list{flex:1;position:relative;max-width:100%;cursor:pointer;padding:0 10px 5px;overflow-y:auto}.vac-rooms-container .vac-room-item{border-radius:8px;align-items:center;display:flex;flex:1 1 100%;margin-bottom:5px;padding:0 14px;position:relative;min-height:71px;transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-rooms-container .vac-room-item:hover{background:var(--chat-sidemenu-bg-color-hover)}.vac-rooms-container .vac-room-selected{color:var(--chat-sidemenu-color-active)!important;background:var(--chat-sidemenu-bg-color-active)!important}.vac-rooms-container .vac-room-selected:hover{background:var(--chat-sidemenu-bg-color-active)!important}@media only screen and (max-width: 768px){.vac-rooms-container .vac-room-list{padding:0 7px 5px}.vac-rooms-container .vac-room-item{min-height:60px;padding:0 8px}}.vac-room-container{display:flex;flex:1;align-items:center;width:100%}.vac-room-container .vac-name-container{flex:1}.vac-room-container .vac-title-container{display:flex;align-items:center;line-height:25px}.vac-room-container .vac-state-circle{width:9px;height:9px;border-radius:50%;background-color:var(--chat-room-color-offline);margin-right:6px;transition:.3s}.vac-room-container .vac-state-online{background-color:var(--chat-room-color-online)}.vac-room-container .vac-room-name{flex:1;color:var(--chat-room-color-username);font-weight:500}.vac-room-container .vac-text-date{margin-left:5px;font-size:11px;color:var(--chat-room-color-timestamp)}.vac-room-container .vac-text-last{display:flex;align-items:center;font-size:12px;line-height:19px;color:var(--chat-room-color-message)}.vac-room-container .vac-message-new{color:var(--chat-room-color-username);font-weight:500}.vac-room-container .vac-icon-check{display:flex;vertical-align:middle;height:14px;width:14px;margin-top:-2px;margin-right:2px}.vac-room-container .vac-icon-microphone{height:15px;width:15px;vertical-align:middle;margin:-3px 1px 0 -2px;fill:var(--chat-room-color-message)}.vac-room-container .vac-room-options-container{display:flex;margin-left:auto}.vac-room-container .vac-room-badge{background-color:var(--chat-room-bg-color-badge);color:var(--chat-room-color-badge);margin-left:5px}.vac-room-container .vac-list-room-options{height:19px;width:19px;align-items:center;margin-left:5px}.vac-box-empty{margin-top:10px}@media only screen and (max-width: 768px){.vac-box-empty{margin-top:7px}}.vac-box-search{position:sticky;display:flex;align-items:center;height:64px;padding:0 15px}.vac-box-search .vac-icon-search{display:flex;position:absolute;left:30px}.vac-box-search .vac-icon-search svg{width:18px;height:18px}.vac-box-search .vac-input{height:38px;width:100%;background:var(--chat-bg-color-input);color:var(--chat-color);font-size:15px;outline:0;caret-color:var(--chat-color-caret);padding:10px 10px 10px 40px;border:1px solid var(--chat-sidemenu-border-color-search);border-radius:20px}.vac-box-search .vac-input::placeholder{color:var(--chat-color-placeholder)}.vac-box-search .vac-add-icon{margin-left:auto;padding-left:10px}@media only screen and (max-width: 768px){.vac-box-search{height:58px}}.vac-message-wrapper .vac-message-sticker{background-color:transparent!important;box-shadow:none!important}.vac-message-wrapper .vac-card-info{border-radius:4px;text-align:center;margin:10px auto;font-size:12px;padding:4px;display:block;overflow-wrap:break-word;position:relative;white-space:normal;box-shadow:0 1px 1px -1px #0000001a,0 1px 1px -1px #0000001c,0 1px 2px -1px #0000001c}.vac-message-wrapper .vac-card-date{max-width:150px;font-weight:500;text-transform:uppercase;color:var(--chat-message-color-date);background-color:var(--chat-message-bg-color-date)}.vac-message-wrapper .vac-card-system{max-width:250px;padding:8px 4px;color:var(--chat-message-color-system);background-color:var(--chat-message-bg-color-system)}.vac-message-wrapper .vac-line-new{color:var(--chat-message-color-new-messages);position:relative;text-align:center;font-size:13px;padding:10px 0}.vac-message-wrapper .vac-line-new:after,.vac-message-wrapper .vac-line-new:before{border-top:1px solid var(--chat-message-color-new-messages);content:"";left:0;position:absolute;top:50%;width:calc(50% - 60px)}.vac-message-wrapper .vac-line-new:before{left:auto;right:0}.vac-message-wrapper .vac-message-box{display:flex;flex:0 0 50%;max-width:50%;justify-content:flex-start;line-height:1.4}.vac-message-wrapper .vac-avatar{height:28px;width:28px;min-height:28px;min-width:28px;margin:0 0 2px;align-self:flex-end}.vac-message-wrapper .vac-avatar-current-offset{margin-right:28px}.vac-message-wrapper .vac-avatar-offset{margin-left:28px}.vac-message-wrapper .vac-failure-container{position:relative;align-self:flex-end;height:20px;width:20px;margin:0 0 2px -4px;border-radius:50%;background-color:#f44336}.vac-message-wrapper .vac-failure-container.vac-failure-container-avatar{margin-right:6px}.vac-message-wrapper .vac-failure-container .vac-failure-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:15px;font-weight:700}.vac-message-wrapper .vac-message-container{position:relative;padding:2px 10px;align-items:end;min-width:100px;box-sizing:content-box}.vac-message-wrapper .vac-message-container-offset{margin-top:10px}.vac-message-wrapper .vac-offset-current{margin-left:50%;justify-content:flex-end}.vac-message-wrapper .vac-message-card{background-color:var(--chat-message-bg-color);color:var(--chat-message-color);border-radius:8px;font-size:14px;padding:6px 9px 3px;white-space:pre-line;max-width:100%;-webkit-transition-property:box-shadow,opacity;transition-property:box-shadow,opacity;transition:box-shadow .28s cubic-bezier(.4,0,.2,1);will-change:box-shadow;box-shadow:0 1px 1px -1px #0000001a,0 1px 1px -1px #0000001c,0 1px 2px -1px #0000001c}.vac-message-wrapper .vac-message-highlight{box-shadow:0 1px 2px -1px #0000001a,0 1px 2px -1px #0000001c,0 1px 5px -1px #0000001c}.vac-message-wrapper .vac-message-current{background-color:var(--chat-message-bg-color-me)!important}.vac-message-wrapper .vac-message-deleted{color:var(--chat-message-color-deleted)!important;font-size:13px!important;font-style:italic!important;background-color:var(--chat-message-bg-color-deleted)!important}.vac-message-wrapper .vac-message-selected{background-color:var(--chat-message-bg-color-selected)!important;transition:background-color .2s}.vac-message-wrapper .vac-message-image{position:relative;background-color:var(--chat-message-bg-color-image)!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;height:250px;width:250px;max-width:100%;border-radius:4px;margin:4px auto 5px;transition:.4s filter linear}.vac-message-wrapper .vac-text-username{font-size:13px;color:var(--chat-message-color-username);margin-bottom:2px}.vac-message-wrapper .vac-username-reply{margin-bottom:5px}.vac-message-wrapper .vac-text-timestamp{font-size:10px;color:var(--chat-message-color-timestamp);text-align:right}.vac-message-wrapper .vac-progress-time{float:left;margin:-2px 0 0 40px;color:var(--chat-color);font-size:12px}.vac-message-wrapper .vac-icon-edited,.vac-message-wrapper .vac-icon-safe,.vac-message-wrapper .vac-icon-unsafe{-webkit-box-align:center;align-items:center;display:-webkit-inline-box;display:inline-flex;justify-content:center;letter-spacing:normal;line-height:1;text-indent:0;vertical-align:middle;margin:0 4px 2px}.vac-message-wrapper .vac-icon-edited svg,.vac-message-wrapper .vac-icon-safe svg,.vac-message-wrapper .vac-icon-unsafe svg{height:12px;width:12px}.vac-message-wrapper .vac-icon-safe{fill:var(--chat-message-color-timestamp)}.vac-message-wrapper .vac-icon-unsafe{fill:var(--chat-message-color-timestamp-unsafe)}.vac-message-wrapper .vac-icon-check{height:14px;width:14px;vertical-align:middle;margin:-3px -3px 0 3px}@media only screen and (max-width: 768px){.vac-message-wrapper .vac-message-container{padding:2px 3px 1px}.vac-message-wrapper .vac-message-container-offset{margin-top:10px}.vac-message-wrapper .vac-message-box{flex:0 0 80%;max-width:80%}.vac-message-wrapper .vac-avatar{height:25px;width:25px;min-height:25px;min-width:25px;margin:0 6px 1px 0}.vac-message-wrapper .vac-avatar.vac-avatar-current{margin:0 0 1px 6px}.vac-message-wrapper .vac-avatar-current-offset{margin-right:31px}.vac-message-wrapper .vac-avatar-offset{margin-left:31px}.vac-message-wrapper .vac-failure-container{margin-left:2px}.vac-message-wrapper .vac-failure-container.vac-failure-container-avatar{margin-right:0}.vac-message-wrapper .vac-offset-current{margin-left:20%}.vac-message-wrapper .vac-progress-time{margin-left:37px}}.vac-audio-player{display:flex;margin:8px 0 5px}.vac-audio-player .vac-svg-button{max-width:18px;margin-left:7px}@media only screen and (max-width: 768px){.vac-audio-player{margin:4px 0 0}.vac-audio-player .vac-svg-button{max-width:16px;margin-left:5px}}.vac-player-bar{display:flex;align-items:center;max-width:calc(100% - 18px);margin-right:7px;margin-left:20px}.vac-player-bar .vac-player-progress{width:190px}.vac-player-bar .vac-player-progress .vac-line-container{position:relative;height:4px;border-radius:5px;background-color:var(--chat-message-bg-color-audio-line)}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-progress{position:absolute;height:inherit;background-color:var(--chat-message-bg-color-audio-progress);border-radius:inherit}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-dot{position:absolute;top:-5px;margin-left:-7px;height:14px;width:14px;border-radius:50%;background-color:var(--chat-message-bg-color-audio-progress-selector);transition:transform .25s}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-dot__active{transform:scale(1.2)}@media only screen and (max-width: 768px){.vac-player-bar{margin-right:5px}.vac-player-bar .vac-player-progress .vac-line-container{height:3px}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-dot{height:12px;width:12px;top:-5px;margin-left:-5px}}.vac-message-actions-wrapper .vac-options-container{position:absolute;top:2px;right:10px;height:40px;width:70px;overflow:hidden;border-top-right-radius:8px}.vac-message-actions-wrapper .vac-blur-container{position:absolute;height:100%;width:100%;left:8px;bottom:10px;background:var(--chat-message-bg-color);filter:blur(3px);border-bottom-left-radius:8px}.vac-message-actions-wrapper .vac-options-me{background:var(--chat-message-bg-color-me)}.vac-message-actions-wrapper .vac-message-options{background:var(--chat-icon-bg-dropdown-message);border-radius:50%;position:absolute;top:7px;right:7px}.vac-message-actions-wrapper .vac-message-options svg{height:17px;width:17px;padding:5px;margin:-5px}.vac-message-actions-wrapper .vac-message-emojis{position:absolute;top:6px;right:30px}.vac-message-actions-wrapper .vac-menu-options{right:15px}.vac-message-actions-wrapper .vac-menu-left{right:-118px}@media only screen and (max-width: 768px){.vac-message-actions-wrapper .vac-options-container{right:3px}.vac-message-actions-wrapper .vac-menu-left{right:-50px}}.vac-message-files-container .vac-file-wrapper{position:relative;width:fit-content}.vac-message-files-container .vac-file-wrapper .vac-file-container{height:60px;width:60px;margin:3px 0 5px;cursor:pointer;transition:all .6s}.vac-message-files-container .vac-file-wrapper .vac-file-container:hover{opacity:.85}.vac-message-files-container .vac-file-wrapper .vac-file-container svg{height:30px;width:30px}.vac-message-files-container .vac-file-wrapper .vac-file-container.vac-file-container-progress{background-color:#0000004d}.vac-message-file-container{position:relative;z-index:0}.vac-message-file-container .vac-message-image-container{cursor:pointer}.vac-message-file-container .vac-image-buttons{position:absolute;width:100%;height:100%;border-radius:4px;background:linear-gradient(to bottom,rgba(0,0,0,0) 55%,rgba(0,0,0,.02) 60%,rgba(0,0,0,.05) 65%,rgba(0,0,0,.1) 70%,rgba(0,0,0,.2) 75%,rgba(0,0,0,.3) 80%,rgba(0,0,0,.5) 85%,rgba(0,0,0,.6) 90%,rgba(0,0,0,.7) 95%,rgba(0,0,0,.8) 100%)}.vac-message-file-container .vac-image-buttons svg{height:26px;width:26px}.vac-message-file-container .vac-image-buttons .vac-button-view,.vac-message-file-container .vac-image-buttons .vac-button-download{position:absolute;bottom:6px;left:7px}.vac-message-file-container .vac-image-buttons :first-child{left:40px}.vac-message-file-container .vac-image-buttons .vac-button-view{max-width:18px;bottom:8px}.vac-message-file-container .vac-video-container{width:350px;max-width:100%;margin:4px auto 5px;cursor:pointer}.vac-message-file-container .vac-video-container video{width:100%;height:100%;border-radius:4px}.vac-button-reaction{display:inline-flex;align-items:center;border:var(--chat-message-border-style-reaction);outline:none;background:var(--chat-message-bg-color-reaction);border-radius:4px;margin:4px 2px 0;transition:.3s;padding:0 5px;font-size:18px;line-height:23px}.vac-button-reaction span{font-size:11px;font-weight:500;min-width:7px;color:var(--chat-message-color-reaction-counter)}.vac-button-reaction:hover{border:var(--chat-message-border-style-reaction-hover);background:var(--chat-message-bg-color-reaction-hover);cursor:pointer}.vac-button-reaction.vac-reaction-me{border:var(--chat-message-border-style-reaction-me);background:var(--chat-message-bg-color-reaction-me)}.vac-button-reaction.vac-reaction-me span{color:var(--chat-message-color-reaction-counter-me)}.vac-button-reaction.vac-reaction-me:hover{border:var(--chat-message-border-style-reaction-hover-me);background:var(--chat-message-bg-color-reaction-hover-me)}.vac-reply-message{background:var(--chat-message-bg-color-reply);border-radius:4px;margin:-1px -5px 8px;padding:8px 10px}.vac-reply-message .vac-reply-username{color:var(--chat-message-color-reply-username);font-size:12px;line-height:15px;margin-bottom:2px}.vac-reply-message .vac-image-reply-container{width:70px}.vac-reply-message .vac-image-reply-container .vac-message-image-reply{height:70px;width:70px;margin:4px auto 3px}.vac-reply-message .vac-video-reply-container{width:200px;max-width:100%}.vac-reply-message .vac-video-reply-container video{width:100%;height:100%;border-radius:4px}.vac-reply-message .vac-reply-content{font-size:12px;color:var(--chat-message-color-reply-content)}.vac-reply-message .vac-file-container{height:60px;width:60px}.vac-emoji-wrapper{position:relative;display:flex}.vac-emoji-wrapper .vac-emoji-reaction svg{height:19px;width:19px}.vac-emoji-wrapper .vac-emoji-picker{position:absolute;z-index:9999;bottom:32px;right:10px;width:300px;padding-top:4px;overflow:scroll;box-sizing:border-box;border-radius:.5rem;background:var(--chat-emoji-bg-color);box-shadow:0 1px 2px -2px #0000001a,0 1px 2px -1px #0000001a,0 1px 2px 1px #0000001a;scrollbar-width:none}.vac-emoji-wrapper .vac-emoji-picker::-webkit-scrollbar{display:none}.vac-emoji-wrapper .vac-emoji-picker.vac-picker-reaction{position:fixed;top:initial;right:initial}.vac-emoji-wrapper .vac-emoji-picker emoji-picker{height:100%;width:100%;--emoji-size: 1.2rem;--background: var(--chat-emoji-bg-color);--emoji-padding: .4rem;--border-color: var(--chat-sidemenu-border-color-search);--button-hover-background: var(--chat-sidemenu-bg-color-hover);--button-active-background: var(--chat-sidemenu-bg-color-hover)}.vac-format-message-wrapper .vac-format-container{display:inline}.vac-format-message-wrapper .vac-icon-deleted{height:14px;width:14px;vertical-align:middle;margin:-2px 2px 0 0;fill:var(--chat-message-color-deleted)}.vac-format-message-wrapper .vac-icon-deleted.vac-icon-deleted-room{margin:-3px 1px 0 0;fill:var(--chat-room-color-message)}.vac-format-message-wrapper .vac-image-link-container{background-color:var(--chat-message-bg-color-media);padding:8px;margin:2px auto;border-radius:4px}.vac-format-message-wrapper .vac-image-link{position:relative;background-color:var(--chat-message-bg-color-image)!important;background-size:contain;background-position:center center!important;background-repeat:no-repeat!important;height:150px;width:150px;max-width:100%;border-radius:4px;margin:0 auto}.vac-format-message-wrapper .vac-image-link-message{max-width:166px;font-size:12px}.vac-loader-wrapper.vac-container-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9}.vac-loader-wrapper.vac-container-top{padding:21px}.vac-loader-wrapper.vac-container-top #vac-circle{height:20px;width:20px}.vac-loader-wrapper #vac-circle{margin:auto;height:28px;width:28px;border:3px rgba(0,0,0,.25) solid;border-top:3px var(--chat-color-spinner) solid;border-right:3px var(--chat-color-spinner) solid;border-bottom:3px var(--chat-color-spinner) solid;border-radius:50%;-webkit-animation:vac-spin 1s infinite linear;animation:vac-spin 1s infinite linear}@media only screen and (max-width: 768px){.vac-loader-wrapper #vac-circle{height:24px;width:24px}.vac-loader-wrapper.vac-container-top{padding:18px}.vac-loader-wrapper.vac-container-top #vac-circle{height:16px;width:16px}}@-webkit-keyframes vac-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@keyframes vac-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}#vac-icon-search{fill:var(--chat-icon-color-search)}#vac-icon-add{fill:var(--chat-icon-color-add)}#vac-icon-toggle{fill:var(--chat-icon-color-toggle)}#vac-icon-menu{fill:var(--chat-icon-color-menu)}#vac-icon-close{fill:var(--chat-icon-color-close)}#vac-icon-close-image{fill:var(--chat-icon-color-close-image)}#vac-icon-file{fill:var(--chat-icon-color-file)}#vac-icon-paperclip{fill:var(--chat-icon-color-paperclip)}#vac-icon-close-outline{fill:var(--chat-icon-color-close-outline)}#vac-icon-close-outline-preview{fill:var(--chat-icon-color-close-preview)}#vac-icon-send{fill:var(--chat-icon-color-send)}#vac-icon-send-disabled{fill:var(--chat-icon-color-send-disabled)}#vac-icon-emoji{fill:var(--chat-icon-color-emoji)}#vac-icon-emoji-reaction{fill:var(--chat-icon-color-emoji-reaction)}#vac-icon-document{fill:var(--chat-icon-color-document)}#vac-icon-pencil{fill:var(--chat-icon-color-pencil)}#vac-icon-checkmark,#vac-icon-double-checkmark{fill:var(--chat-icon-color-checkmark)}#vac-icon-checkmark-seen,#vac-icon-double-checkmark-seen{fill:var(--chat-icon-color-checkmark-seen)}#vac-icon-eye{fill:var(--chat-icon-color-eye)}#vac-icon-dropdown-message{fill:var(--chat-icon-color-dropdown-message)}#vac-icon-dropdown-room{fill:var(--chat-icon-color-dropdown-room)}#vac-icon-dropdown-scroll{fill:var(--chat-icon-color-dropdown-scroll)}#vac-icon-audio-play{fill:var(--chat-icon-color-audio-play)}#vac-icon-audio-pause{fill:var(--chat-icon-color-audio-pause)}.vac-progress-wrapper{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9}.vac-progress-wrapper circle{transition:stroke-dashoffset .35s;transform:rotate(-90deg);transform-origin:50% 50%}.vac-progress-wrapper .vac-progress-content{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1;margin-top:-2px;background-color:#000000b3;border-radius:50%}.vac-progress-wrapper .vac-progress-content .vac-progress-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;color:#fff}.vac-progress-wrapper .vac-progress-content .vac-progress-text .vac-progress-pourcent{font-size:9px;font-weight:400}\n';
+var _style_0 = '.vac-fade-spinner-enter-from{opacity:0}.vac-fade-spinner-enter-active{transition:opacity .8s}.vac-fade-spinner-leave-active{transition:opacity .2s;opacity:0}.vac-fade-image-enter-from{opacity:0}.vac-fade-image-enter-active{transition:opacity 1s}.vac-fade-image-leave-active{transition:opacity .5s;opacity:0}.vac-fade-message-enter-from{opacity:0}.vac-fade-message-enter-active{transition:opacity .5s}.vac-fade-message-leave-active{transition:opacity .2s;opacity:0}.vac-slide-left-enter-active,.vac-slide-right-enter-active{transition:all .3s ease;transition-property:transform,opacity}.vac-slide-left-leave-active,.vac-slide-right-leave-active{transition:all .2s cubic-bezier(1,.5,.8,1)!important;transition-property:transform,opacity}.vac-slide-left-enter-from,.vac-slide-left-leave-to{transform:translate(10px);opacity:0}.vac-slide-right-enter-from,.vac-slide-right-leave-to{transform:translate(-10px);opacity:0}.vac-slide-up-enter-active{transition:all .3s ease}.vac-slide-up-leave-active{transition:all .2s cubic-bezier(1,.5,.8,1)}.vac-slide-up-enter-from,.vac-slide-up-leave-to{transform:translateY(10px);opacity:0}.vac-bounce-enter-active{animation:vac-bounce-in .5s}.vac-bounce-leave-active{animation:vac-bounce-in .3s reverse}@keyframes vac-bounce-in{0%{transform:scale(0)}50%{transform:scale(1.05)}to{transform:scale(1)}}.vac-fade-preview-enter{opacity:0}.vac-fade-preview-enter-active{transition:opacity .1s}.vac-fade-preview-leave-active{transition:opacity .2s;opacity:0}.vac-bounce-preview-enter-active{animation:vac-bounce-image-in .4s}.vac-bounce-preview-leave-active{animation:vac-bounce-image-in .3s reverse}@keyframes vac-bounce-image-in{0%{transform:scale(.6)}to{transform:scale(1)}}.vac-menu-list{border-radius:4px;display:block;cursor:pointer;background:var(--chat-dropdown-bg-color);padding:6px 0}.vac-menu-list :hover{background:var(--chat-dropdown-bg-color-hover);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-menu-list :not(:hover){transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-menu-item{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:1;-ms-flex:1 1 100%;flex:1 1 100%;min-height:30px;padding:5px 16px;position:relative;white-space:nowrap;line-height:30px}.vac-menu-options{position:absolute;right:10px;top:20px;z-index:9999;min-width:150px;display:inline-block;border-radius:4px;font-size:14px;color:var(--chat-color);overflow-y:auto;overflow-x:hidden;contain:content;box-shadow:0 2px 2px -4px #0000001a,0 2px 2px 1px #0000001f,0 1px 8px 1px #0000001f}.vac-app-border{border:var(--chat-border-style)}.vac-app-border-t{border-top:var(--chat-border-style)}.vac-app-border-r{border-right:var(--chat-border-style)}.vac-app-border-b{border-bottom:var(--chat-border-style)}.vac-app-box-shadow{transition:all .5s;box-shadow:0 2px 2px -4px #0000001a,0 2px 2px 1px #0000001f,0 1px 8px 1px #0000001f}.vac-item-clickable{cursor:pointer}.vac-vertical-center{display:flex;align-items:center;height:100%}.vac-vertical-center .vac-vertical-container{width:100%;text-align:center}.vac-svg-button{max-height:30px;display:flex;cursor:pointer;transition:all .2s}.vac-svg-button:hover{transform:scale(1.1);opacity:.7}.vac-avatar{background-size:cover;background-position:center center;background-repeat:no-repeat;background-color:#ddd;height:42px;width:42px;min-height:42px;min-width:42px;margin-right:15px;border-radius:50%}.vac-blur-loading{filter:blur(3px)}.vac-badge-counter{height:13px;width:auto;min-width:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:3px;font-size:11px;font-weight:500}.vac-text-ellipsis{width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vac-text-tag{color:var(--chat-message-color-tag);cursor:pointer}.vac-file-container{display:flex;align-content:center;justify-content:center;flex-wrap:wrap;text-align:center;background:var(--chat-bg-color-input);border:var(--chat-border-style-input);border-radius:4px;padding:10px}.vac-file-container svg{height:28px;width:28px}.vac-file-container .vac-text-extension{font-size:12px;color:var(--chat-message-color-file-extension);margin-top:-2px}@keyframes move-bg{0%{background-position:0% center}to{background-position:200% center}}@keyframes blink{50%{opacity:0}}@keyframes shake{0%{transform:translate(1px,1px) rotate(0)}10%{transform:translate(-1px,-2px) rotate(-1deg)}20%{transform:translate(-3px) rotate(1deg)}30%{transform:translate(3px,2px) rotate(0)}40%{transform:translate(1px,-1px) rotate(1deg)}50%{transform:translate(-1px,2px) rotate(-1deg)}60%{transform:translate(-3px,1px) rotate(0)}70%{transform:translate(3px,1px) rotate(-1deg)}80%{transform:translate(-1px,-1px) rotate(1deg)}90%{transform:translate(1px,2px) rotate(0)}to{transform:translate(1px,-2px) rotate(-1deg)}}.markdown p{margin:0}.markdown ol{display:flex;flex-direction:column;list-style-position:inside}.markdown ul{display:flex;flex-direction:column}.markdown code{display:block;font-size:12px;color:var(--chat-markdown-color-multi);background:var(--chat-markdown-bg);border:1px solid var(--chat-markdown-border);border-radius:3px;margin:4px 0;padding:7px}.markdown p code{display:inline-block;font-size:12px;color:var(--chat-markdown-color);background:var(--chat-markdown-bg);border:1px solid var(--chat-markdown-border);border-radius:3px;margin:2px 0;padding:2px 3px}.markdown img,.markdown p>img{max-width:200px;max-height:200px}.markdown .vac-effects-rainbow{background:linear-gradient(to right,rgb(252,104,110),rgb(255,255,110),rgb(155,255,110),rgb(252,102,255),rgb(153,100,255),rgb(114,255,255),rgb(252,104,110));background-size:200% 200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:move-bg 3s linear infinite;animation:move-bg 3s linear infinite;animation-direction:reverse;margin:0}.markdown .vac-effects-blink{-webkit-animation:blink 1s linear infinite;animation:blink 1s steps(1,end) infinite;margin:0}.markdown .vac-effects-gold{background:linear-gradient(to right,#FEDB37,#FDB931,#9f7928,#8A6E2F,#FEDB37);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:move-bg 3s linear infinite;animation:move-bg 3s linear infinite;animation-direction:reverse;margin:0}.markdown .vac-effects-bronze{background:linear-gradient(to right,#ffdeca,#ca7345,#a14521,#732100,#ffdeca);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:move-bg 3s linear infinite;animation:move-bg 3s linear infinite;animation-direction:reverse;margin:0}.markdown .vac-effects-silver{background:linear-gradient(to right,#fff,#555,#555,#555,#fff);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-animation:move-bg 3s linear infinite;animation:move-bg 3s linear infinite;animation-direction:reverse;margin:0}.markdown .vac-effects-shake{display:inline-flex;margin:0}.markdown .vac-effects-shake-letter{animation:shake .5s linear infinite}.vac-card-window{width:100%;display:block;max-width:100%;background:var(--chat-content-bg-color);color:var(--chat-color);overflow-wrap:break-word;white-space:normal;border:var(--chat-container-border);border-radius:var(--chat-container-border-radius);box-shadow:var(--chat-container-box-shadow);-webkit-tap-highlight-color:transparent}.vac-card-window *{font-family:inherit}.vac-card-window a{color:#0d579c;font-weight:500}.vac-card-window .vac-chat-container{height:100%;display:flex}.vac-card-window .vac-chat-container input{min-width:10px}.vac-card-window .vac-chat-container textarea,.vac-card-window .vac-chat-container input[type=text],.vac-card-window .vac-chat-container input[type=search]{-webkit-appearance:none}.vac-media-preview{position:fixed;top:0;left:0;z-index:99;width:100vw;height:100vh;display:flex;align-items:center;background-color:#000c;outline:none}.vac-media-preview .vac-media-preview-container{height:calc(100% - 140px);width:calc(100% - 80px);padding:70px 40px;margin:0 auto}.vac-media-preview .vac-image-preview{width:100%;height:100%;background-size:contain;background-repeat:no-repeat;background-position:center}.vac-media-preview video{width:100%;height:100%}.vac-media-preview .vac-svg-button{position:absolute;top:30px;right:30px;transform:scale(1.4)}@media only screen and (max-width: 768px){.vac-media-preview .vac-svg-button{top:20px;right:20px;transform:scale(1.2)}.vac-media-preview .vac-media-preview-container{width:calc(100% - 40px);padding:70px 20px}}.vac-col-messages{position:relative;height:100%;flex:1;overflow:hidden;display:flex;flex-flow:column}.vac-col-messages .vac-container-center{height:100%;width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}.vac-col-messages .vac-room-empty{font-size:14px;color:#9ca6af;font-style:italic;line-height:20px;white-space:pre-line}.vac-col-messages .vac-room-empty div{padding:0 10%}.vac-col-messages .vac-container-scroll{background:var(--chat-content-bg-color);flex:1;overflow-y:auto;margin-right:1px;margin-top:65px;-webkit-overflow-scrolling:touch}.vac-col-messages .vac-container-scroll.vac-scroll-smooth{scroll-behavior:smooth}.vac-col-messages .vac-messages-container{padding:0 5px 5px}.vac-col-messages .vac-text-started{font-size:14px;color:var(--chat-message-color-started);font-style:italic;text-align:center;margin-top:25px;margin-bottom:20px}.vac-col-messages .vac-icon-scroll{position:absolute;bottom:80px;right:20px;padding:8px;background:var(--chat-bg-scroll-icon);border-radius:50%;box-shadow:0 1px 1px -1px #0003,0 1px 1px #00000024,0 1px 2px #0000001f;display:flex;cursor:pointer;z-index:10}.vac-col-messages .vac-icon-scroll svg{height:25px;width:25px}.vac-col-messages .vac-messages-count{position:absolute;top:-8px;left:11px;background-color:var(--chat-message-bg-color-scroll-counter);color:var(--chat-message-color-scroll-counter)}.vac-col-messages .vac-messages-hidden{opacity:0}@media only screen and (max-width: 768px){.vac-col-messages .vac-container-scroll{margin-top:50px}.vac-col-messages .vac-text-started{margin-top:20px}.vac-col-messages .vac-icon-scroll{bottom:70px}}.vac-room-header{position:absolute;display:flex;align-items:center;height:64px;width:100%;z-index:10;margin-right:1px;background:var(--chat-header-bg-color);border-top-right-radius:var(--chat-container-border-radius)}.vac-room-header .vac-room-wrapper{display:flex;align-items:center;min-width:0;height:100%;width:100%;padding:0 16px}.vac-room-header .vac-toggle-button{margin-right:15px}.vac-room-header .vac-toggle-button svg{height:26px;width:26px}.vac-room-header .vac-rotate-icon{transform:rotate(180deg)!important}.vac-room-header .vac-rotate-icon-init{transform:rotate(360deg)}.vac-room-header .vac-info-wrapper,.vac-room-header .vac-room-selection{display:flex;align-items:center;min-width:0;width:100%;height:100%}.vac-room-header .vac-room-selection .vac-selection-button{padding:8px 16px;color:var(--chat-color-button);background-color:var(--chat-bg-color-button);border-radius:4px;margin-right:10px;cursor:pointer;transition:all .2s}.vac-room-header .vac-room-selection .vac-selection-button:hover{opacity:.7}.vac-room-header .vac-room-selection .vac-selection-button:active{opacity:.9}.vac-room-header .vac-room-selection .vac-selection-button .vac-selection-button-count{margin-left:6px;opacity:.9}.vac-room-header .vac-room-selection .vac-selection-cancel{display:flex;align-items:center;margin-left:auto;white-space:nowrap;color:var(--chat-color-button-clear);transition:all .2s}.vac-room-header .vac-room-selection .vac-selection-cancel:hover{opacity:.7}.vac-room-header .vac-room-name{font-size:17px;font-weight:500;line-height:22px;color:var(--chat-header-color-name)}.vac-room-header .vac-room-info{font-size:13px;line-height:18px;color:var(--chat-header-color-info)}.vac-room-header .vac-room-options{margin-left:auto}@media only screen and (max-width: 768px){.vac-room-header{height:50px}.vac-room-header .vac-room-wrapper{padding:0 10px}.vac-room-header .vac-room-name{font-size:16px;line-height:22px}.vac-room-header .vac-room-info{font-size:12px;line-height:16px}.vac-room-header .vac-avatar{height:37px;width:37px;min-height:37px;min-width:37px}}.vac-room-footer{width:100%;border-bottom-right-radius:4px;z-index:10}.vac-box-footer{display:flex;position:relative;background:var(--chat-footer-bg-color);padding:10px 8px}.vac-textarea{max-height:300px;overflow-y:auto;height:20px;width:100%;line-height:20px;outline:0;resize:none;border-radius:20px;padding:12px 16px;box-sizing:content-box;font-size:16px;background:var(--chat-bg-color-input);color:var(--chat-color);caret-color:var(--chat-color-caret);border:var(--chat-border-style-input)}.vac-textarea::placeholder{color:var(--chat-color-placeholder);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vac-textarea-outline{border:1px solid var(--chat-border-color-input-selected);box-shadow:inset 0 0 0 1px var(--chat-border-color-input-selected)}.vac-icon-textarea,.vac-icon-textarea-left{display:flex;align-items:center}.vac-icon-textarea svg,.vac-icon-textarea .vac-wrapper,.vac-icon-textarea-left svg,.vac-icon-textarea-left .vac-wrapper{margin:0 7px}.vac-icon-textarea{margin-left:5px}.vac-icon-textarea-left{display:flex;align-items:center;margin-right:5px}.vac-icon-textarea-left svg,.vac-icon-textarea-left .vac-wrapper{margin:0 7px}.vac-icon-textarea-left .vac-icon-microphone{fill:var(--chat-icon-color-microphone);margin:0 7px}.vac-icon-textarea-left .vac-dot-audio-record{height:15px;width:15px;border-radius:50%;background-color:var(--chat-message-bg-color-audio-record);animation:vac-scaling .8s ease-in-out infinite alternate}@keyframes vac-scaling{0%{transform:scale(1);opacity:.4}to{transform:scale(1.1);opacity:1}}.vac-icon-textarea-left .vac-dot-audio-record-time{font-size:16px;color:var(--chat-color);margin-left:8px;width:45px}.vac-icon-textarea-left .vac-icon-audio-stop,.vac-icon-textarea-left .vac-icon-audio-confirm{min-height:28px;min-width:28px}.vac-icon-textarea-left .vac-icon-audio-stop svg,.vac-icon-textarea-left .vac-icon-audio-confirm svg{min-height:28px;min-width:28px}.vac-icon-textarea-left .vac-icon-audio-stop{margin-right:20px}.vac-icon-textarea-left .vac-icon-audio-stop #vac-icon-close-outline{fill:var(--chat-icon-color-audio-cancel)}.vac-icon-textarea-left .vac-icon-audio-confirm{margin-right:3px;margin-left:12px}.vac-icon-textarea-left .vac-icon-audio-confirm #vac-icon-checkmark{fill:var(--chat-icon-color-audio-confirm)}.vac-send-disabled,.vac-send-disabled svg{cursor:none!important;pointer-events:none!important;transform:none!important}@media only screen and (max-width: 768px){.vac-room-footer{width:100%}.vac-box-footer{padding:7px 2px 7px 7px}.vac-box-footer.vac-box-footer-border{border-top:var(--chat-border-style-input)}.vac-textarea{padding:7px;line-height:18px}.vac-textarea::placeholder{color:transparent}.vac-icon-textarea svg,.vac-icon-textarea .vac-wrapper,.vac-icon-textarea-left svg,.vac-icon-textarea-left .vac-wrapper{margin:0 5px!important}}@media only screen and (max-height: 768px){.vac-textarea{max-height:120px}}.vac-emojis-container{width:calc(100% - 16px);padding:10px 8px;background:var(--chat-footer-bg-color);display:flex;align-items:center;overflow:auto}.vac-emojis-container .vac-emoji-element{padding:0 8px;font-size:30px;border-radius:4px;cursor:pointer;background:var(--chat-footer-bg-color-tag);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-emojis-container .vac-emoji-element-active{background:var(--chat-footer-bg-color-tag-active)}@media only screen and (max-width: 768px){.vac-emojis-container{width:calc(100% - 10px);padding:7px 5px}.vac-emojis-container .vac-emoji-element{padding:0 7px;font-size:26px}}.vac-reply-container{display:flex;padding:10px 10px 0;background:var(--chat-footer-bg-color);align-items:center;width:calc(100% - 20px)}.vac-reply-container .vac-reply-box{width:100%;overflow:hidden;background:var(--chat-footer-bg-color-reply);border-radius:4px;padding:8px 10px}.vac-reply-container .vac-reply-info{overflow:hidden}.vac-reply-container .vac-reply-username{color:var(--chat-message-color-reply-username);font-size:12px;line-height:15px;margin-bottom:2px}.vac-reply-container .vac-reply-content{font-size:12px;color:var(--chat-message-color-reply-content);white-space:pre-line}.vac-reply-container .vac-icon-reply{margin-left:10px}.vac-reply-container .vac-icon-reply svg{height:20px;width:20px}.vac-reply-container .vac-image-reply{max-height:100px;max-width:200px;margin:4px 10px 0 0;border-radius:4px}.vac-reply-container .vac-audio-reply{margin-right:10px}.vac-reply-container .vac-file-container{max-width:80px}@media only screen and (max-width: 768px){.vac-reply-container{padding:5px 8px;width:calc(100% - 16px)}}.vac-room-files-container{display:flex;align-items:center;padding:10px 6px 0;background:var(--chat-footer-bg-color)}.vac-room-files-container .vac-files-box{display:flex;overflow:auto;width:calc(100% - 30px)}.vac-room-files-container video{height:100px;border:var(--chat-border-style-input);border-radius:4px}.vac-room-files-container .vac-icon-close{margin-left:auto}.vac-room-files-container .vac-icon-close svg{height:20px;width:20px}@media only screen and (max-width: 768px){.vac-files-container{padding:6px 4px 4px 2px}}.vac-room-file-container{display:flex;position:relative;margin:0 4px}.vac-room-file-container .vac-message-image{position:relative;background-color:var(--chat-message-bg-color-image)!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;height:100px;width:100px;border:var(--chat-border-style-input);border-radius:4px}.vac-room-file-container .vac-file-container{height:80px;width:80px}.vac-room-file-container .vac-icon-remove{position:absolute;top:6px;left:6px;z-index:10}.vac-room-file-container .vac-icon-remove svg{height:20px;width:20px;border-radius:50%}.vac-room-file-container .vac-icon-remove:before{content:" ";position:absolute;width:100%;height:100%;background:rgba(0,0,0,.5);border-radius:50%;z-index:-1}.vac-tags-container{display:flex;flex-direction:column;align-items:center;width:100%}.vac-tags-container .vac-tags-box{display:flex;width:100%;height:54px;overflow:hidden;cursor:pointer;background:var(--chat-footer-bg-color-tag);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-tags-container .vac-tags-box-active{background:var(--chat-footer-bg-color-tag-active)}.vac-tags-container .vac-tags-info{display:flex;overflow:hidden;padding:0 20px;align-items:center}.vac-tags-container .vac-tags-avatar{height:34px;width:34px;min-height:34px;min-width:34px}.vac-tags-container .vac-tags-username{font-size:14px}@media only screen and (max-width: 768px){.vac-tags-container .vac-tags-box{height:50px}.vac-tags-container .vac-tags-info{padding:0 12px}}.vac-template-container{display:flex;flex-direction:column;align-items:center;width:100%}.vac-template-container .vac-template-box{display:flex;width:100%;height:54px;overflow:hidden;cursor:pointer;background:var(--chat-footer-bg-color-tag);transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-template-container .vac-template-active{background:var(--chat-footer-bg-color-tag-active)}.vac-template-container .vac-template-info{display:flex;overflow:hidden;padding:0 20px;align-items:center}.vac-template-container .vac-template-tag{font-size:14px;font-weight:700;margin-right:10px}.vac-template-container .vac-template-text{font-size:14px}@media only screen and (max-width: 768px){.vac-template-container .vac-template-box{height:50px}.vac-template-container .vac-template-info{padding:0 12px}}.vac-rooms-container{display:flex;flex-flow:column;flex:0 0 25%;min-width:260px;max-width:500px;position:relative;background:var(--chat-sidemenu-bg-color);height:100%;border-top-left-radius:var(--chat-container-border-radius);border-bottom-left-radius:var(--chat-container-border-radius)}.vac-rooms-container.vac-rooms-container-full{flex:0 0 100%;max-width:100%}.vac-rooms-container .vac-rooms-empty{font-size:14px;color:#9ca6af;font-style:italic;text-align:center;margin:40px 0;line-height:20px;white-space:pre-line}.vac-rooms-container .vac-room-list{flex:1;position:relative;max-width:100%;cursor:pointer;padding:0 10px 5px;overflow-y:auto}.vac-rooms-container .vac-room-item{border-radius:8px;align-items:center;display:flex;flex:1 1 100%;margin-bottom:5px;padding:0 14px;position:relative;min-height:71px;transition:background-color .3s cubic-bezier(.25,.8,.5,1)}.vac-rooms-container .vac-room-item:hover{background:var(--chat-sidemenu-bg-color-hover)}.vac-rooms-container .vac-room-selected{color:var(--chat-sidemenu-color-active)!important;background:var(--chat-sidemenu-bg-color-active)!important}.vac-rooms-container .vac-room-selected:hover{background:var(--chat-sidemenu-bg-color-active)!important}@media only screen and (max-width: 768px){.vac-rooms-container .vac-room-list{padding:0 7px 5px}.vac-rooms-container .vac-room-item{min-height:60px;padding:0 8px}}.vac-room-container{display:flex;flex:1;align-items:center;width:100%}.vac-room-container .vac-name-container{flex:1}.vac-room-container .vac-title-container{display:flex;align-items:center;line-height:25px}.vac-room-container .vac-state-circle{width:9px;height:9px;border-radius:50%;background-color:var(--chat-room-color-offline);margin-right:6px;transition:.3s}.vac-room-container .vac-state-online{background-color:var(--chat-room-color-online)}.vac-room-container .vac-room-name{flex:1;color:var(--chat-room-color-username);font-weight:500}.vac-room-container .vac-text-date{margin-left:5px;font-size:11px;color:var(--chat-room-color-timestamp)}.vac-room-container .vac-text-last{display:flex;align-items:center;font-size:12px;line-height:19px;color:var(--chat-room-color-message)}.vac-room-container .vac-message-new{color:var(--chat-room-color-username);font-weight:500}.vac-room-container .vac-icon-check{display:flex;vertical-align:middle;height:14px;width:14px;margin-top:-2px;margin-right:2px}.vac-room-container .vac-icon-microphone{height:15px;width:15px;vertical-align:middle;margin:-3px 1px 0 -2px;fill:var(--chat-room-color-message)}.vac-room-container .vac-room-options-container{display:flex;margin-left:auto}.vac-room-container .vac-room-badge{background-color:var(--chat-room-bg-color-badge);color:var(--chat-room-color-badge);margin-left:5px}.vac-room-container .vac-list-room-options{height:19px;width:19px;align-items:center;margin-left:5px}.vac-box-empty{margin-top:10px}@media only screen and (max-width: 768px){.vac-box-empty{margin-top:7px}}.vac-box-search{position:sticky;display:flex;align-items:center;height:64px;padding:0 15px}.vac-box-search .vac-icon-search{display:flex;position:absolute;left:30px}.vac-box-search .vac-icon-search svg{width:18px;height:18px}.vac-box-search .vac-input{height:38px;width:100%;background:var(--chat-bg-color-input);color:var(--chat-color);font-size:15px;outline:0;caret-color:var(--chat-color-caret);padding:10px 10px 10px 40px;border:1px solid var(--chat-sidemenu-border-color-search);border-radius:20px}.vac-box-search .vac-input::placeholder{color:var(--chat-color-placeholder)}.vac-box-search .vac-add-icon{margin-left:auto;padding-left:10px}@media only screen and (max-width: 768px){.vac-box-search{height:58px}}.vac-message-wrapper .vac-message-sticker{background-color:transparent!important;box-shadow:none!important}.vac-message-wrapper .vac-card-info{border-radius:4px;text-align:center;margin:10px auto;font-size:12px;padding:4px;display:block;overflow-wrap:break-word;position:relative;white-space:normal;box-shadow:0 1px 1px -1px #0000001a,0 1px 1px -1px #0000001c,0 1px 2px -1px #0000001c}.vac-message-wrapper .vac-card-date{max-width:150px;font-weight:500;text-transform:uppercase;color:var(--chat-message-color-date);background-color:var(--chat-message-bg-color-date)}.vac-message-wrapper .vac-card-system{max-width:250px;padding:8px 4px;color:var(--chat-message-color-system);background-color:var(--chat-message-bg-color-system)}.vac-message-wrapper .vac-line-new{color:var(--chat-message-color-new-messages);position:relative;text-align:center;font-size:13px;padding:10px 0}.vac-message-wrapper .vac-line-new:after,.vac-message-wrapper .vac-line-new:before{border-top:1px solid var(--chat-message-color-new-messages);content:"";left:0;position:absolute;top:50%;width:calc(50% - 60px)}.vac-message-wrapper .vac-line-new:before{left:auto;right:0}.vac-message-wrapper .vac-message-box{display:flex;flex:0 0 50%;max-width:50%;justify-content:flex-start;line-height:1.4}.vac-message-wrapper .vac-avatar{height:28px;width:28px;min-height:28px;min-width:28px;margin:0 0 2px;align-self:flex-end}.vac-message-wrapper .vac-avatar-current-offset{margin-right:28px}.vac-message-wrapper .vac-avatar-offset{margin-left:28px}.vac-message-wrapper .vac-failure-container{position:relative;align-self:flex-end;height:20px;width:20px;margin:0 0 2px -4px;border-radius:50%;background-color:#f44336}.vac-message-wrapper .vac-failure-container.vac-failure-container-avatar{margin-right:6px}.vac-message-wrapper .vac-failure-container .vac-failure-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:15px;font-weight:700}.vac-message-wrapper .vac-message-container{position:relative;padding:2px 10px;align-items:end;min-width:100px;box-sizing:content-box}.vac-message-wrapper .vac-message-container-offset{margin-top:10px}.vac-message-wrapper .vac-offset-current{margin-left:50%;justify-content:flex-end}.vac-message-wrapper .vac-message-card{background-color:var(--chat-message-bg-color);color:var(--chat-message-color);border-radius:8px;font-size:14px;padding:6px 9px 3px;white-space:pre-line;max-width:100%;-webkit-transition-property:box-shadow,opacity;transition-property:box-shadow,opacity;transition:box-shadow .28s cubic-bezier(.4,0,.2,1);will-change:box-shadow;box-shadow:0 1px 1px -1px #0000001a,0 1px 1px -1px #0000001c,0 1px 2px -1px #0000001c}.vac-message-wrapper .vac-message-highlight{box-shadow:0 1px 2px -1px #0000001a,0 1px 2px -1px #0000001c,0 1px 5px -1px #0000001c}.vac-message-wrapper .vac-message-current{background-color:var(--chat-message-bg-color-me)!important}.vac-message-wrapper .vac-message-deleted{color:var(--chat-message-color-deleted)!important;font-size:13px!important;font-style:italic!important;background-color:var(--chat-message-bg-color-deleted)!important}.vac-message-wrapper .vac-message-selected{background-color:var(--chat-message-bg-color-selected)!important;transition:background-color .2s}.vac-message-wrapper .vac-message-image{position:relative;background-color:var(--chat-message-bg-color-image)!important;background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;height:250px;width:250px;max-width:100%;border-radius:4px;margin:4px auto 5px;transition:.4s filter linear}.vac-message-wrapper .vac-text-username{font-size:13px;color:var(--chat-message-color-username);margin-bottom:2px}.vac-message-wrapper .vac-username-reply{margin-bottom:5px}.vac-message-wrapper .vac-text-timestamp{font-size:10px;color:var(--chat-message-color-timestamp);text-align:right}.vac-message-wrapper .vac-progress-time{float:left;margin:-2px 0 0 40px;color:var(--chat-color);font-size:12px}.vac-message-wrapper .vac-icon-edited,.vac-message-wrapper .vac-icon-safe,.vac-message-wrapper .vac-icon-unsafe{-webkit-box-align:center;align-items:center;display:-webkit-inline-box;display:inline-flex;justify-content:center;letter-spacing:normal;line-height:1;text-indent:0;vertical-align:middle;margin:0 4px 2px}.vac-message-wrapper .vac-icon-edited svg,.vac-message-wrapper .vac-icon-safe svg,.vac-message-wrapper .vac-icon-unsafe svg{height:12px;width:12px}.vac-message-wrapper .vac-icon-safe{fill:var(--chat-message-color-timestamp)}.vac-message-wrapper .vac-icon-unsafe{fill:var(--chat-message-color-timestamp-unsafe)}.vac-message-wrapper .vac-icon-check{height:14px;width:14px;vertical-align:middle;margin:-3px -3px 0 3px}@media only screen and (max-width: 768px){.vac-message-wrapper .vac-message-container{padding:2px 3px 1px}.vac-message-wrapper .vac-message-container-offset{margin-top:10px}.vac-message-wrapper .vac-message-box{flex:0 0 80%;max-width:80%}.vac-message-wrapper .vac-avatar{height:25px;width:25px;min-height:25px;min-width:25px;margin:0 6px 1px 0}.vac-message-wrapper .vac-avatar.vac-avatar-current{margin:0 0 1px 6px}.vac-message-wrapper .vac-avatar-current-offset{margin-right:31px}.vac-message-wrapper .vac-avatar-offset{margin-left:31px}.vac-message-wrapper .vac-failure-container{margin-left:2px}.vac-message-wrapper .vac-failure-container.vac-failure-container-avatar{margin-right:0}.vac-message-wrapper .vac-offset-current{margin-left:20%}.vac-message-wrapper .vac-progress-time{margin-left:37px}}.vac-audio-player{display:flex;margin:8px 0 5px}.vac-audio-player .vac-svg-button{max-width:18px;margin-left:7px}@media only screen and (max-width: 768px){.vac-audio-player{margin:4px 0 0}.vac-audio-player .vac-svg-button{max-width:16px;margin-left:5px}}.vac-player-bar{display:flex;align-items:center;max-width:calc(100% - 18px);margin-right:7px;margin-left:20px}.vac-player-bar .vac-player-progress{width:190px}.vac-player-bar .vac-player-progress .vac-line-container{position:relative;height:4px;border-radius:5px;background-color:var(--chat-message-bg-color-audio-line)}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-progress{position:absolute;height:inherit;background-color:var(--chat-message-bg-color-audio-progress);border-radius:inherit}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-dot{position:absolute;top:-5px;margin-left:-7px;height:14px;width:14px;border-radius:50%;background-color:var(--chat-message-bg-color-audio-progress-selector);transition:transform .25s}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-dot__active{transform:scale(1.2)}@media only screen and (max-width: 768px){.vac-player-bar{margin-right:5px}.vac-player-bar .vac-player-progress .vac-line-container{height:3px}.vac-player-bar .vac-player-progress .vac-line-container .vac-line-dot{height:12px;width:12px;top:-5px;margin-left:-5px}}.vac-message-actions-wrapper .vac-options-container{position:absolute;top:2px;right:10px;height:40px;width:70px;overflow:hidden;border-top-right-radius:8px}.vac-message-actions-wrapper .vac-blur-container{position:absolute;height:100%;width:100%;left:8px;bottom:10px;background:var(--chat-message-bg-color);filter:blur(3px);border-bottom-left-radius:8px}.vac-message-actions-wrapper .vac-options-me{background:var(--chat-message-bg-color-me)}.vac-message-actions-wrapper .vac-message-options{background:var(--chat-icon-bg-dropdown-message);border-radius:50%;position:absolute;top:7px;right:7px}.vac-message-actions-wrapper .vac-message-options svg{height:17px;width:17px;padding:5px;margin:-5px}.vac-message-actions-wrapper .vac-message-emojis{position:absolute;top:6px;right:30px}.vac-message-actions-wrapper .vac-menu-options{right:15px}.vac-message-actions-wrapper .vac-menu-left{right:-118px}@media only screen and (max-width: 768px){.vac-message-actions-wrapper .vac-options-container{right:3px}.vac-message-actions-wrapper .vac-menu-left{right:-50px}}.vac-message-files-container .vac-file-wrapper{position:relative;width:fit-content}.vac-message-files-container .vac-file-wrapper .vac-file-container{height:60px;width:60px;margin:3px 0 5px;cursor:pointer;transition:all .6s}.vac-message-files-container .vac-file-wrapper .vac-file-container:hover{opacity:.85}.vac-message-files-container .vac-file-wrapper .vac-file-container svg{height:30px;width:30px}.vac-message-files-container .vac-file-wrapper .vac-file-container.vac-file-container-progress{background-color:#0000004d}.vac-message-file-container{position:relative;z-index:0}.vac-message-file-container .vac-message-image-container{cursor:pointer}.vac-message-file-container .vac-image-buttons{position:absolute;width:100%;height:100%;border-radius:4px;background:linear-gradient(to bottom,rgba(0,0,0,0) 55%,rgba(0,0,0,.02) 60%,rgba(0,0,0,.05) 65%,rgba(0,0,0,.1) 70%,rgba(0,0,0,.2) 75%,rgba(0,0,0,.3) 80%,rgba(0,0,0,.5) 85%,rgba(0,0,0,.6) 90%,rgba(0,0,0,.7) 95%,rgba(0,0,0,.8) 100%)}.vac-message-file-container .vac-image-buttons svg{height:26px;width:26px}.vac-message-file-container .vac-image-buttons .vac-button-view,.vac-message-file-container .vac-image-buttons .vac-button-download{position:absolute;bottom:6px;left:7px}.vac-message-file-container .vac-image-buttons :first-child{left:40px}.vac-message-file-container .vac-image-buttons .vac-button-view{max-width:18px;bottom:8px}.vac-message-file-container .vac-video-container{width:350px;max-width:100%;margin:4px auto 5px;cursor:pointer}.vac-message-file-container .vac-video-container video{width:100%;height:100%;border-radius:4px}.vac-button-reaction{display:inline-flex;align-items:center;border:var(--chat-message-border-style-reaction);outline:none;background:var(--chat-message-bg-color-reaction);border-radius:4px;margin:4px 2px 0;transition:.3s;padding:0 5px;font-size:18px;line-height:23px}.vac-button-reaction span{font-size:11px;font-weight:500;min-width:7px;color:var(--chat-message-color-reaction-counter)}.vac-button-reaction:hover{border:var(--chat-message-border-style-reaction-hover);background:var(--chat-message-bg-color-reaction-hover);cursor:pointer}.vac-button-reaction.vac-reaction-me{border:var(--chat-message-border-style-reaction-me);background:var(--chat-message-bg-color-reaction-me)}.vac-button-reaction.vac-reaction-me span{color:var(--chat-message-color-reaction-counter-me)}.vac-button-reaction.vac-reaction-me:hover{border:var(--chat-message-border-style-reaction-hover-me);background:var(--chat-message-bg-color-reaction-hover-me)}.vac-reply-message{background:var(--chat-message-bg-color-reply);border-radius:4px;margin:-1px -5px 8px;padding:8px 10px}.vac-reply-message .vac-reply-username{color:var(--chat-message-color-reply-username);font-size:12px;line-height:15px;margin-bottom:2px}.vac-reply-message .vac-image-reply-container{width:70px}.vac-reply-message .vac-image-reply-container .vac-message-image-reply{height:70px;width:70px;margin:4px auto 3px}.vac-reply-message .vac-video-reply-container{width:200px;max-width:100%}.vac-reply-message .vac-video-reply-container video{width:100%;height:100%;border-radius:4px}.vac-reply-message .vac-reply-content{font-size:12px;color:var(--chat-message-color-reply-content)}.vac-reply-message .vac-file-container{height:60px;width:60px}.vac-emoji-wrapper{position:relative;display:flex}.vac-emoji-wrapper .vac-emoji-reaction svg{height:19px;width:19px}.vac-emoji-wrapper .vac-emoji-picker{position:absolute;z-index:9999;bottom:32px;right:10px;width:300px;padding-top:4px;overflow:scroll;box-sizing:border-box;border-radius:.5rem;background:var(--chat-emoji-bg-color);box-shadow:0 1px 2px -2px #0000001a,0 1px 2px -1px #0000001a,0 1px 2px 1px #0000001a;scrollbar-width:none}.vac-emoji-wrapper .vac-emoji-picker::-webkit-scrollbar{display:none}.vac-emoji-wrapper .vac-emoji-picker.vac-picker-reaction{position:fixed;top:initial;right:initial}.vac-emoji-wrapper .vac-emoji-picker emoji-picker{height:100%;width:100%;--emoji-size: 1.2rem;--background: var(--chat-emoji-bg-color);--emoji-padding: .4rem;--border-color: var(--chat-sidemenu-border-color-search);--button-hover-background: var(--chat-sidemenu-bg-color-hover);--button-active-background: var(--chat-sidemenu-bg-color-hover)}.vac-format-message-wrapper .vac-format-container{display:inline}.vac-format-message-wrapper .vac-icon-deleted{height:14px;width:14px;vertical-align:middle;margin:-2px 2px 0 0;fill:var(--chat-message-color-deleted)}.vac-format-message-wrapper .vac-icon-deleted.vac-icon-deleted-room{margin:-3px 1px 0 0;fill:var(--chat-room-color-message)}.vac-format-message-wrapper .vac-image-link-container{background-color:var(--chat-message-bg-color-media);padding:8px;margin:2px auto;border-radius:4px}.vac-format-message-wrapper .vac-image-link{position:relative;background-color:var(--chat-message-bg-color-image)!important;background-size:contain;background-position:center center!important;background-repeat:no-repeat!important;height:150px;width:150px;max-width:100%;border-radius:4px;margin:0 auto}.vac-format-message-wrapper .vac-image-link-message{max-width:166px;font-size:12px}.vac-loader-wrapper.vac-container-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9}.vac-loader-wrapper.vac-container-top{padding:21px}.vac-loader-wrapper.vac-container-top #vac-circle{height:20px;width:20px}.vac-loader-wrapper #vac-circle{margin:auto;height:28px;width:28px;border:3px rgba(0,0,0,.25) solid;border-top:3px var(--chat-color-spinner) solid;border-right:3px var(--chat-color-spinner) solid;border-bottom:3px var(--chat-color-spinner) solid;border-radius:50%;-webkit-animation:vac-spin 1s infinite linear;animation:vac-spin 1s infinite linear}@media only screen and (max-width: 768px){.vac-loader-wrapper #vac-circle{height:24px;width:24px}.vac-loader-wrapper.vac-container-top{padding:18px}.vac-loader-wrapper.vac-container-top #vac-circle{height:16px;width:16px}}@-webkit-keyframes vac-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}@keyframes vac-spin{0%{-webkit-transform:rotate(0deg);transform:rotate(0)}to{-webkit-transform:rotate(359deg);transform:rotate(359deg)}}#vac-icon-search{fill:var(--chat-icon-color-search)}#vac-icon-add{fill:var(--chat-icon-color-add)}#vac-icon-toggle{fill:var(--chat-icon-color-toggle)}#vac-icon-menu{fill:var(--chat-icon-color-menu)}#vac-icon-close{fill:var(--chat-icon-color-close)}#vac-icon-close-image{fill:var(--chat-icon-color-close-image)}#vac-icon-file{fill:var(--chat-icon-color-file)}#vac-icon-paperclip{fill:var(--chat-icon-color-paperclip)}#vac-icon-close-outline{fill:var(--chat-icon-color-close-outline)}#vac-icon-close-outline-preview{fill:var(--chat-icon-color-close-preview)}#vac-icon-send{fill:var(--chat-icon-color-send)}#vac-icon-send-disabled{fill:var(--chat-icon-color-send-disabled)}#vac-icon-emoji{fill:var(--chat-icon-color-emoji)}#vac-icon-emoji-reaction{fill:var(--chat-icon-color-emoji-reaction)}#vac-icon-document{fill:var(--chat-icon-color-document)}#vac-icon-pencil{fill:var(--chat-icon-color-pencil)}#vac-icon-checkmark,#vac-icon-double-checkmark{fill:var(--chat-icon-color-checkmark)}#vac-icon-checkmark-seen,#vac-icon-double-checkmark-seen{fill:var(--chat-icon-color-checkmark-seen)}#vac-icon-eye{fill:var(--chat-icon-color-eye)}#vac-icon-dropdown-message{fill:var(--chat-icon-color-dropdown-message)}#vac-icon-dropdown-room{fill:var(--chat-icon-color-dropdown-room)}#vac-icon-dropdown-scroll{fill:var(--chat-icon-color-dropdown-scroll)}#vac-icon-audio-play{fill:var(--chat-icon-color-audio-play)}#vac-icon-audio-pause{fill:var(--chat-icon-color-audio-pause)}.vac-progress-wrapper{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9}.vac-progress-wrapper circle{transition:stroke-dashoffset .35s;transform:rotate(-90deg);transform-origin:50% 50%}.vac-progress-wrapper .vac-progress-content{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:-1;margin-top:-2px;background-color:#000000b3;border-radius:50%}.vac-progress-wrapper .vac-progress-content .vac-progress-text{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-weight:700;color:#fff}.vac-progress-wrapper .vac-progress-content .vac-progress-text .vac-progress-pourcent{font-size:9px;font-weight:400}\n';
 const _sfc_main = {
   name: "ChatContainer",
   components: {

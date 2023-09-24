@@ -157,7 +157,7 @@ function shake(d) {
 
     const delay = (-Math.random()).toString()
     this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">')
-    this.raw(letter)
+    this.raw(letter === ' ' ? '<pre>  </pre>' : letter)
     this.tag('</span>')
   }
 
