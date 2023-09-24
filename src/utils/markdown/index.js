@@ -70,8 +70,10 @@ export default (text, { textFormatting }) => {
 function rainbow(d) {
   if (d.type !== 'textDirective') return false
 
+  const target = d.content ?? d.label
+
   this.tag('<span class="vac-effects-rainbow">')
-  this.raw(d.label)
+  this.raw(target)
   this.tag('</span>')
 }
 
@@ -83,8 +85,10 @@ function rainbow(d) {
 function blink(d) {
   if (d.type !== 'textDirective') return false
 
+  const target = d.content ?? d.label
+
   this.tag('<span class="vac-effects-blink">')
-  this.raw(d.label)
+  this.raw(target)
   this.tag('</span>')
 }
 
@@ -96,8 +100,10 @@ function blink(d) {
 function red(d) {
   if (d.type !== 'textDirective') return false
 
+  const target = d.content ?? d.label
+
   this.tag('<span style="color: red">')
-  this.raw(d.label)
+  this.raw(target)
   this.tag('</span>')
 }
 
@@ -109,8 +115,10 @@ function red(d) {
 function gold(d) {
   if (d.type !== 'textDirective') return false
 
+  const target = d.content ?? d.label
+
   this.tag('<span class="vac-effects-gold">')
-  this.raw(d.label)
+  this.raw(target)
   this.tag('</span>')
 }
 
@@ -122,8 +130,10 @@ function gold(d) {
 function silver(d) {
   if (d.type !== 'textDirective') return false
 
+  const target = d.content ?? d.label
+
   this.tag('<span class="vac-effects-silver">')
-  this.raw(d.label)
+  this.raw(target)
   this.tag('</span>')
 }
 
@@ -135,8 +145,10 @@ function silver(d) {
 function bronze(d) {
   if (d.type !== 'textDirective') return false
 
+  const target = d.content ?? d.label
+
   this.tag('<span class="vac-effects-bronze">')
-  this.raw(d.label)
+  this.raw(target)
   this.tag('</span>')
 }
 
@@ -150,7 +162,8 @@ function shake(d) {
 
   this.tag('<span class="vac-effects-shake">')
 
-  const encodedText = this.encode(d.label)
+  const target = d.content ?? d.label
+  const encodedText = this.encode(target)
 
   for (let i = 0; i < encodedText.length; i++) {
     const letter = encodedText.charAt(i)

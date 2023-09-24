@@ -13187,52 +13187,66 @@ var markdown = (text2, { textFormatting }) => {
   ];
 };
 function rainbow(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
+  const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-rainbow">');
-  this.raw(d.label);
+  this.raw(target);
   this.tag("</span>");
 }
 function blink(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
+  const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-blink">');
-  this.raw(d.label);
+  this.raw(target);
   this.tag("</span>");
 }
 function red(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
+  const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span style="color: red">');
-  this.raw(d.label);
+  this.raw(target);
   this.tag("</span>");
 }
 function gold(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
+  const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-gold">');
-  this.raw(d.label);
+  this.raw(target);
   this.tag("</span>");
 }
 function silver(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
+  const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-silver">');
-  this.raw(d.label);
+  this.raw(target);
   this.tag("</span>");
 }
 function bronze(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
+  const target = (_a = d.content) != null ? _a : d.label;
   this.tag('<span class="vac-effects-bronze">');
-  this.raw(d.label);
+  this.raw(target);
   this.tag("</span>");
 }
 function shake(d) {
+  var _a;
   if (d.type !== "textDirective")
     return false;
   this.tag('<span class="vac-effects-shake">');
-  const encodedText = this.encode(d.label);
+  const target = (_a = d.content) != null ? _a : d.label;
+  const encodedText = this.encode(target);
   for (let i = 0; i < encodedText.length; i++) {
     const letter = encodedText.charAt(i);
     const delay = (-Math.random()).toString();
