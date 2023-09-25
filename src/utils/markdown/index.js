@@ -165,14 +165,14 @@ function shake(d) {
   const target = d.content ?? d.label
   const encodedText = this.encode(target)
 
-  for (let i = 0; i < encodedText.length; i++) {
-    const letter = encodedText.charAt(i)
+  const letterArray = [...encodedText]
 
+  letterArray.forEach(letter => {
     const delay = (-Math.random()).toString()
     this.tag('<span class="vac-effects-shake-letter" style="animation-delay: ' + delay + 's;">')
     this.raw(letter)
     this.tag('</span>')
-  }
+  })
 
   this.tag('</span>')
 }
