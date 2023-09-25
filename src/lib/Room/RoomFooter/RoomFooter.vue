@@ -611,6 +611,7 @@ export default {
 				) {
 					this.$emit('edit-message', {
 						messageId: this.editedMessage._id,
+            indexId: this.editedMessage.indexId,
 						newContent: message,
 						files: files,
 						replyMessage: this.messageReply,

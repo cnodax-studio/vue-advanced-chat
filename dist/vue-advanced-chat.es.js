@@ -33570,6 +33570,7 @@ const _sfc_main$a = {
         if (this.editedMessage.content !== message || ((_a = this.editedMessage.files) == null ? void 0 : _a.length) || this.files.length) {
           this.$emit("edit-message", {
             messageId: this.editedMessage._id,
+            indexId: this.editedMessage.indexId,
             newContent: message,
             files,
             replyMessage: this.messageReply,
