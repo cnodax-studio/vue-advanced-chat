@@ -31,7 +31,7 @@
 					v-if="!messageSelectionEnabled && messageSelectionAnimationEnded"
 				>
 					<div
-						v-if="!singleRoom"
+						v-if="!singleRoom || forceShowToggleRoomList"
 						class="vac-svg-button vac-toggle-button"
 						:class="{
 							'vac-rotate-icon-init': !isMobile,
@@ -131,7 +131,8 @@ export default {
 		room: { type: Object, required: true },
 		messageSelectionEnabled: { type: Boolean, required: true },
 		messageSelectionActions: { type: Array, required: true },
-		selectedMessagesTotal: { type: Number, required: true }
+		selectedMessagesTotal: { type: Number, required: true },
+    forceShowToggleRoomList: { type: [Boolean, String], default: false },
 	},
 
 	emits: [

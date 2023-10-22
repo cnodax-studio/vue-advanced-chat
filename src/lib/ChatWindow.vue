@@ -53,6 +53,7 @@
 				:show-footer="showFooterCasted"
 				:text-messages="t"
 				:single-room="singleRoomCasted"
+        :force-show-toggle-room-list="forceShowToggleRoomListCasted"
 				:show-rooms-list="showRoomsList && roomsListOpenedCasted"
 				:text-formatting="textFormattingCasted"
 				:link-options="linkOptionsCasted"
@@ -143,6 +144,7 @@ export default {
 		messagesLoaded: { type: [Boolean, String], default: false },
 		roomActions: { type: [Array, String], default: () => [] },
 		menuActions: { type: [Array, String], default: () => [] },
+    forceShowToggleRoomList: { type: [Boolean, String], default: false },
 		messageActions: {
 			type: [Array, String],
 			default: () => [
@@ -276,6 +278,9 @@ export default {
 		},
 		singleRoomCasted() {
 			return this.castBoolean(this.singleRoom)
+		},
+		forceShowToggleRoomListCasted() {
+			return this.castBoolean(this.forceShowToggleRoomList)
 		},
 		roomsListOpenedCasted() {
 			return this.castBoolean(this.roomsListOpened)
@@ -470,8 +475,11 @@ export default {
 			this.isMobile = window.innerWidth < Number(this.responsiveBreakpoint)
 		},
 		toggleRoomsList() {
-			this.showRoomsList = !this.showRoomsList
-			if (this.isMobile) this.room = {}
+      if (!this.forceShowToggleRoomListCasted) {
+        this.showRoomsList = !this.showRoomsList
+        if (this.isMobile) this.room = {}
+      }
+
 			this.$emit('toggle-rooms-list', { opened: this.showRoomsList })
 		},
 		fetchRoom({ room }) {

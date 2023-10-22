@@ -63,6 +63,7 @@
 							'vac-item-clickable': messageSelectionEnabled,
 							'vac-message-selected': isMessageSelected,
 							'vac-message-sticker': isSticker,
+							'vac-message-emoji': isEmoji,
 						}"
 						@mouseover="onHoverMessage"
 						@mouseleave="onLeaveMessage"
@@ -349,6 +350,9 @@ export default {
 		},
     isSticker() {
       return this.message.sticker === true
+    },
+    isEmoji() {
+      return this.message.emoji === true
     },
 		isMessageHover() {
 			return (

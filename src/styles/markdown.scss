@@ -136,3 +136,9 @@
 
 	.vac-effects-shake-letter { animation: shake 0.5s linear infinite; }
 }
+
+div.vac-message-emoji > div.vac-format-message-wrapper > div.markdown > p > img {
+	max-width: 100px !important;
+	max-height: 100px !important;
+	margin-bottom: -15px !important;
+}
