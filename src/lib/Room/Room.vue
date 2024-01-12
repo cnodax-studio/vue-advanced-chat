@@ -142,6 +142,7 @@
 			:show-footer="showFooter"
 			:accepted-files="acceptedFiles"
 			:capture-files="captureFiles"
+			:multiple-files="multipleFiles"
 			:textarea-action-enabled="textareaActionEnabled"
 			:textarea-auto-focus="textareaAutoFocus"
 			:user-tags-enabled="userTagsEnabled"
@@ -213,6 +214,7 @@ export default {
 		showFooter: { type: Boolean, required: true },
 		acceptedFiles: { type: String, required: true },
 		captureFiles: { type: String, required: true },
+		multipleFiles: { type: Boolean, default: true },
 		textFormatting: { type: Object, required: true },
 		linkOptions: { type: Object, required: true },
 		loadingRooms: { type: Boolean, required: true },

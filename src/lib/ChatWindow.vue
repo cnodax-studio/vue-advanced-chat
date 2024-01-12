@@ -67,6 +67,7 @@
 				:scroll-distance="scrollDistance"
 				:accepted-files="acceptedFiles"
 				:capture-files="captureFiles"
+				:multiple-files="multipleFilesCasted"
 				:templates-text="templatesTextCasted"
 				:username-options="usernameOptionsCasted"
 				:emoji-data-source="emojiDataSource"
@@ -201,6 +202,7 @@ export default {
 		scrollDistance: { type: Number, default: 60 },
 		acceptedFiles: { type: String, default: '*' },
 		captureFiles: { type: String, default: undefined }, // TODO: revert for fix on mobile PWA
+		multipleFiles: { type: [Boolean, String], default: true },
 		templatesText: { type: [Array, String], default: () => [] },
 		mediaPreviewEnabled: { type: [Boolean, String], default: true },
 		usernameOptions: {
@@ -296,6 +298,9 @@ export default {
 		},
 		messagesLoadedCasted() {
 			return this.castBoolean(this.messagesLoaded)
+		},
+		multipleFilesCasted() {
+			return this.castBoolean(this.multipleFiles)
 		},
 		showSearchCasted() {
 			return this.castBoolean(this.showSearch)
