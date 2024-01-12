@@ -95,7 +95,7 @@
               :show="message.loading === true"
               :infinite="true"
               type="infinite-messages"
-              style='height: 50px; width: 50px; position: relative; left: 0; right: 0; transform: none;'
+              style="height: 50px; width: 50px; position: relative; left: 0; right: 0; transform: none;"
             >
               <template v-for="(idx, name) in $slots" #[name]="data">
                 <slot :name="name" v-bind="data" />

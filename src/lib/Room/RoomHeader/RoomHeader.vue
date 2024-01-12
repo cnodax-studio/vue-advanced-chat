@@ -132,7 +132,7 @@ export default {
 		messageSelectionEnabled: { type: Boolean, required: true },
 		messageSelectionActions: { type: Array, required: true },
 		selectedMessagesTotal: { type: Number, required: true },
-    forceShowToggleRoomList: { type: [Boolean, String], default: false },
+    forceShowToggleRoomList: { type: [Boolean, String], default: false }
 	},
 
 	emits: [
